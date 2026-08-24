@@ -1,0 +1,54 @@
+import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
+import en from '~/locales/en.json';
+import ja from '~/locales/ja.json';
+import { site } from '~/config/site';
+
+const homePage = readFileSync(new URL('../src/components/home/HomePage.astro', import.meta.url), 'utf8');
+
+describe('WARDOGS homepage research content', () => {
+  it('uses the researched homepage SEO metadata', () => {
+    expect(en.home.meta.title).toBe('WARDOGS Wiki — Weapons, Vehicles & Beginner Guides');
+    expect(en.home.meta.description).toContain('cash economy tips');
+    expect(en.home.meta.keywords).toContain('Control Zone');
+  });
+
+  it('uses the homepage keyword as the Hero title in every locale', () => {
+    expect(en.home.hero.title).toBe('WARDOGS Wiki');
+    expect(ja.home.hero.title).toBe('WARDOGS Wiki');
+  });
+
+  it('keeps the trailer inside the right-hand Hero column', () => {
+    const heroStart = homePage.indexOf('<section class="relative flex min-h-[52vh]');
+    const heroEnd = homePage.indexOf('</section>', heroStart);
+    const videoPosition = homePage.indexOf('<VideoSection', heroStart);
+
+    expect(homePage).toContain('md:grid-cols-2');
+    expect(videoPosition).toBeGreaterThan(heroStart);
+    expect(videoPosition).toBeLessThan(heroEnd);
+  });
+
+  it('uses the researched official entities and release facts', () => {
+    expect(site.social.official).toBe('https://bulkhead.com/games/wardogs/');
+    expect(site.social.discord).toBe('https://discord.gg/TxKKdspkCp');
+    expect(site.social.youtube).toBe('https://www.youtube.com/watch?v=hVtmnaUCpuQ');
+    expect(site.social.reddit).toBe('https://www.reddit.com/r/WarDogs/');
+    expect(site.game.publisher).toBe('Team17');
+    expect(en.home.hero.stats).toEqual([
+      'Early Access Sep 10, 2026',
+      'Updated Aug 2026',
+      '100-Player Battles',
+      '3 Teams',
+      '1M+ Steam Wishlists',
+    ]);
+  });
+
+  it('keeps the researched homepage structure in both locales without codes', () => {
+    for (const locale of [en, ja]) {
+      expect(locale.home.start.cards).toHaveLength(4);
+      expect(locale.home.aboutGame.paragraphs).toHaveLength(2);
+      expect(locale.home.finalCta.title).toBeTruthy();
+      expect(JSON.stringify(locale.home)).not.toMatch(/redeem|code/i);
+    }
+  });
+});

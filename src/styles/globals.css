@@ -1,0 +1,321 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Theme color variables — the ONLY place to change colors when re-theming.
+ *
+ * 👉 RE-THEME: Change ONLY these 4 lines (2 in :root, 2 in .dark).
+ * All other CSS variables and all components reference these via var().
+ * Do NOT hardcode hex/rgba/Tailwind color classes elsewhere.
+ */
+@layer base {
+  :root {
+    /* Light mode theme color — pending confirmation; research supplied no official brand HSL. */
+    --brand: 37 92% 52%;
+    --brand-light: 37 92% 62%;
+    /* Split H/S for derived shades (e.g. darker button backgrounds). */
+    --brand-h: 37;
+    --brand-s: 92%;
+    /* Text-safe shade of the brand: --brand at 52% lightness is only 3.1:1
+       on white (WCAG AA needs 4.5:1 for text). Derived from the H/S splits,
+       so fork themes that only edit --brand/--brand-light stay consistent. */
+    --brand-text: var(--brand-h) var(--brand-s) 40%;
+  }
+
+  .dark {
+    /* Dark mode theme color — pending confirmation; retain the existing accessible fallback. */
+    --brand: 37 90% 48%;
+    --brand-light: 37 90% 58%;
+    --brand-h: 37;
+    --brand-s: 90%;
+    --brand-text: var(--brand-h) var(--brand-s) 52%;
+  }
+}
+
+/* Other design tokens — these reference --brand, so they auto-follow theme changes. */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --border: 214 32% 91%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+  }
+
+  .dark {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 98%;
+    --muted: 217 33% 14%;
+    --muted-foreground: 215 20% 65%;
+    --border: 217 33% 18%;
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 98%;
+  }
+
+  /* AMOLED black (html.dark.black) — pure-black surfaces for OLED phones:
+     saves battery and many players prefer it. Only overrides surface tones;
+     brand/foreground inherit from .dark. */
+  .black {
+    --background: 0 0% 0%;
+    --muted: 0 0% 10%;
+    --border: 0 0% 16%;
+    --card: 0 0% 4%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+
+  /* Prevent FOUC: apply dark class before paint. */
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+}
+
+/* Utility classes referencing the theme token. */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+    /* Button background needs white text contrast ≥ 4.5:1 (WCAG AA).
+       --brand (52% lightness) gives only 3.1:1, so we darken it
+       to ~40% for button backgrounds. This does NOT change --brand
+       itself — it's a derived value for buttons only. */
+    background-color: hsl(var(--brand-h) var(--brand-s) 40%);
+  }
+  .btn-primary:hover {
+    background-color: hsl(var(--brand-h) var(--brand-s) 35%);
+  }
+
+  /* Floating pill variant of btn-primary (landing community QR widget) —
+     same AA-safe darkened brand background, rounded + shadowed. */
+  .btn-fab {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+    background-color: hsl(var(--brand-h) var(--brand-s) 40%);
+  }
+  .btn-fab:hover {
+    background-color: hsl(var(--brand-h) var(--brand-s) 35%);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-md border border-border bg-background px-4 py-2 text-sm font-medium transition hover:bg-muted;
+  }
+
+  .card {
+    @apply rounded-lg border bg-card text-card-foreground transition hover:border-nav/50 hover:shadow-md;
+    position: relative;
+    isolation: isolate;
+    border-radius: 0.25rem;
+    border-color: hsl(var(--foreground) / 0.2);
+    box-shadow:
+      inset 0 0 0 1px hsl(var(--background) / 0.45),
+      0 0 0 1px hsl(var(--foreground) / 0.06);
+  }
+
+  /* Reference-card treatment: a second inset frame with clipped corner
+     accents gives the UI the restrained military briefing-card look. */
+  .card::before,
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0.42rem;
+    pointer-events: none;
+    border: 1px solid transparent;
+    opacity: 0.72;
+  }
+  .card::before {
+    border-top-color: hsl(var(--foreground) / 0.22);
+    border-left-color: hsl(var(--foreground) / 0.22);
+  }
+  .card::after {
+    border-right-color: hsl(var(--foreground) / 0.22);
+    border-bottom-color: hsl(var(--foreground) / 0.22);
+  }
+
+  /* The reference title uses a wide, blocky military display face. Keep the
+     stack local and deterministic; every fallback remains system-installed. */
+  .display-title {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', 'Roboto Condensed', ui-sans-serif, system-ui, sans-serif;
+    font-stretch: condensed;
+    font-weight: 900;
+    letter-spacing: 0.045em;
+    line-height: 0.92;
+    text-transform: uppercase;
+    color: hsl(var(--foreground));
+    text-shadow: 0 2px 0 hsl(var(--background) / 0.35);
+  }
+
+  /* Homepage field brief: amber accents, hairline frames, and a restrained
+     grid make the official trailer feel like an in-universe briefing screen. */
+  .hero-field {
+    background-color: hsl(var(--background));
+    background-image:
+      linear-gradient(hsl(var(--foreground) / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.04) 1px, transparent 1px);
+    background-size: 4rem 4rem;
+  }
+
+  .hero-field__media,
+  .hero-field__veil {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero-field__media {
+    z-index: 0;
+    overflow: hidden;
+    background-color: hsl(var(--background));
+  }
+
+  .hero-field__poster,
+  .hero-field__iframe {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    min-width: 177.78vh;
+    min-height: 56.25vw;
+    transform: translate(-50%, -50%) scale(1.08);
+    object-fit: cover;
+  }
+
+  .hero-field__poster {
+    filter: grayscale(0.35) saturate(0.7) contrast(1.05);
+    opacity: 0.56;
+  }
+
+  .hero-field__iframe {
+    border: 0;
+    opacity: 0.42;
+  }
+
+  .hero-field__veil {
+    z-index: 1;
+    background-image:
+      linear-gradient(90deg, hsl(var(--background) / 0.84) 0%, hsl(var(--background) / 0.66) 44%, hsl(var(--background) / 0.42) 100%),
+      linear-gradient(180deg, hsl(var(--background) / 0.56) 0%, transparent 46%, hsl(var(--background) / 0.9) 100%);
+  }
+
+  .hero-field__frame {
+    z-index: 2;
+    border: 1px solid hsl(var(--foreground) / 0.2);
+    box-shadow:
+      inset 0 0 0 1px hsl(var(--background) / 0.5),
+      0 0 0 1px hsl(var(--foreground) / 0.05);
+  }
+
+  .hero-field__frame::before,
+  .hero-field__frame::after {
+    content: '';
+    position: absolute;
+    width: 2.25rem;
+    height: 2.25rem;
+    pointer-events: none;
+  }
+
+  .hero-field__frame::before {
+    left: -1px;
+    top: -1px;
+    border-left: 2px solid hsl(var(--brand));
+    border-top: 2px solid hsl(var(--brand));
+  }
+
+  .hero-field__frame::after {
+    right: -1px;
+    bottom: -1px;
+    border-right: 2px solid hsl(var(--brand));
+    border-bottom: 2px solid hsl(var(--brand));
+  }
+
+  .hero-field__eyebrow,
+  .hero-field__panel-label {
+    color: hsl(var(--brand-light));
+  }
+
+  .hero-field__panel-label {
+    margin-bottom: 0.6rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .hero-field__stats li {
+    min-height: 3.4rem;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Unified section vertical rhythm — use on all homepage sections. */
+  .section {
+    @apply mx-auto max-w-7xl px-4 py-12 md:py-16;
+  }
+
+  /* Mobile table fix: GFM tables inside prose (boss stats, loadouts, drop
+     rates) easily exceed narrow viewports. Making the table itself a
+     scrollable block lets readers swipe horizontally instead of seeing a
+     broken, squeezed layout. Applies to ALL prose tables site-wide. */
+  .prose table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Markdown body images (`![alt](/images/...)`) aren't processed by Astro
+     Image, so they arrive without intrinsic width/height attributes and
+     cause layout shift when they load. Reserving a 16:9 box pre-load keeps
+     CLS at 0 — pair with 16:9 source images (800×450 recommended); other
+     aspect ratios are letterboxed, never cropped. :not([class]) scopes this
+     to plain markdown <img>; component images (video thumbnails etc.) carry
+     utility classes and are excluded. */
+  .prose img:not([class]) {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    border-radius: 0.5rem;
+    background-color: hsl(var(--muted));
+  }
+}
+
+/* Print styles — readers printing long guides get clean content only:
+   no header/footer/ads/TOC/floating buttons, full-width article. */
+@media print {
+  header,
+  footer,
+  .toc-nav,
+  #back-to-top,
+  #reading-progress,
+  #cookie-consent,
+  #sticky-banner,
+  [data-helpful-root],
+  [data-share-root] {
+    display: none !important;
+  }
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  .prose table {
+    display: table;
+    overflow: visible;
+  }
+}
+
+/* Theme initialization script — runs before paint to avoid FOUC. */
+/* The actual <script> is injected in BaseLayout.astro. */

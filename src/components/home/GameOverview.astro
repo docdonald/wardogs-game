@@ -1,0 +1,40 @@
+---
+interface GameStat {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  title: string;
+  paragraphs: string[];
+  stats: GameStat[];
+  cta?: string;
+  href?: string;
+}
+
+const { title, paragraphs, stats, cta, href } = Astro.props;
+---
+
+<section class="section border-t border-border">
+  <div class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+    <div>
+      <h2 class="display-title text-2xl md:text-3xl">{title}</h2>
+      <div class="mt-4 space-y-4 text-muted-foreground">
+        {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      {cta && href && (
+        <a href={href} class="btn-outline mt-6 inline-flex">{cta}</a>
+      )}
+    </div>
+    <dl class="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
+      {stats.map((stat) => (
+        <div class="rounded-lg border bg-card p-4">
+          <dt class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            {stat.label}
+          </dt>
+          <dd class="mt-1 font-semibold">{stat.value}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

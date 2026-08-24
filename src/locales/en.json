@@ -1,0 +1,200 @@
+{
+  "$schema": "../../docs/home.schema.json",
+  "site": {
+    "name": "WARDOGS Wiki",
+    "shortName": "WARDOGS Wiki",
+    "description": "WARDOGS Wiki with beginner guides, weapons, vehicles, loadouts, cash economy tips, Control Zone tactics, progression help, and large-scale teamplay strategies.",
+    "tagline": "100-player tactical FPS with three teams, persistent cash, vehicles, destruction, building, and Control Zone warfare.",
+    "legalNotice": "WARDOGS Wiki is an independent fan-made community site. Not affiliated with or endorsed by BULKHEAD or Team17."
+  },
+  "nav": {
+    "home": "Home",
+    "release": "Release",
+    "guides": "Guides",
+    "mechanics": "Mechanics",
+    "weapons": "Weapons",
+    "vehicles": "Vehicles",
+    "updates": "Updates & Fixes",
+    "toggleTheme": "Toggle theme",
+    "menu": "Menu",
+    "close": "Close",
+    "search": "Search",
+    "language": "Language"
+  },
+  "search": { "placeholder": "Search the WARDOGS wiki...", "noResults": "No matches found" },
+  "shared": {
+    "lastUpdated": "Last updated",
+    "publishedOn": "Published",
+    "noArticles": "Pages are being prepared. Check back soon.",
+    "relatedArticles": "Related Articles",
+    "onThisPage": "On this page",
+    "browseAll": "Browse all",
+    "viewAll": "View all",
+    "commentsHeading": "Comments",
+    "share": "Share",
+    "copyLink": "Copy link",
+    "copied": "Copied!",
+    "consentText": "We use cookies for analytics and ads to keep this site free.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "consentTitle": "Cookies",
+    "possiblyOutdated": "This page was last checked on",
+    "outdatedNote": "— details may change with a new build.",
+    "prevArticle": "Previous",
+    "nextArticle": "Next",
+    "minuteRead": "min read",
+    "wasThisHelpful": "Was this helpful?",
+    "feedbackThanks": "Thanks for the feedback!",
+    "sponsoredLabel": "Sponsored",
+    "relatedVideos": "Related videos",
+    "gallery": "Gallery",
+    "gameVersion": "Game version",
+    "allTags": "All Tags",
+    "tagsIndexDescription": "Browse all articles by topic.",
+    "articlesCount": "articles",
+    "recentTitle": "Recent Updates",
+    "recentDescription": "The latest verified updates across the WARDOGS wiki.",
+    "sponsorTitle": "Support this wiki",
+    "sponsorText": "If these guides helped you, consider supporting the site.",
+    "sponsorButton": "Support us",
+    "notFoundSearchHint": "Try searching the wiki instead.",
+    "notFoundPopular": "Popular pages",
+    "galleryLabels": { "close": "Close", "prev": "Previous image", "next": "Next image" },
+    "quickAnswer": "Quick Answer",
+    "skipToContent": "Skip to content",
+    "tapToCopy": "Tap to copy",
+    "open": "Open",
+    "playVideo": "Play video",
+    "closeAd": "Close ad",
+    "adLabel": "Advertisement",
+    "toggleTheme": "Toggle theme",
+    "fallbackNotice": "English fallback",
+    "copyQuickAnswer": "Copy quick answer",
+    "feedbackYes": "Yes",
+    "feedbackNo": "No",
+    "breadcrumbAria": "Breadcrumb",
+    "paginationAria": "Article pagination"
+  },
+  "overview": {
+    "release": { "overviewTitle": "Release & Access", "overviewDescription": "Release date, Early Access, Steam access, platforms, pricing, and system requirements." },
+    "guides": { "overviewTitle": "Guides", "overviewDescription": "Practical WARDOGS guides for first matches, Control Zone objectives, and teamplay." },
+    "mechanics": { "overviewTitle": "Mechanics", "overviewDescription": "Persistent cash, roles, loadouts, building, destruction, and objective systems." },
+    "weapons": { "overviewTitle": "Weapons", "overviewDescription": "Weapon choices, ammunition, equipment costs, and loadout planning." },
+    "vehicles": { "overviewTitle": "Vehicles", "overviewDescription": "Ground and air vehicles, transport, and combined-arms planning." },
+    "updates": { "overviewTitle": "Updates & Fixes", "overviewDescription": "Verified announcements, Early Access changes, server status, and field notes." }
+  },
+  "home": {
+    "meta": {
+      "title": "WARDOGS Wiki — Weapons, Vehicles & Beginner Guides",
+      "description": "Master WARDOGS with beginner guides, weapons, vehicles, loadouts, cash economy tips, Control Zone tactics, roles, progression, and teamplay strategies.",
+      "keywords": "WARDOGS, Steam, wiki, guides, weapons, vehicles, loadouts, cash, Control Zone, roles"
+    },
+    "hero": {
+      "badge": "Fan-Made Tactical Warfare Wiki",
+      "title": "WARDOGS Wiki",
+      "description": "WARDOGS is a large-scale tactical FPS where up to 100 players split across three teams fight for control of a dynamic battlefield. Earn persistent cash, build custom loadouts, deploy vehicles, construct defenses, and work with your squad to dominate the Control Zone.",
+      "stats": [
+        "Early Access Sep 10, 2026",
+        "Updated Aug 2026",
+        "100-Player Battles",
+        "3 Teams",
+        "1M+ Steam Wishlists"
+      ],
+      "ctaPrimary": "Start Beginner Guide",
+      "ctaPrimaryHref": "/guides/beginner-guide",
+      "ctaSecondary": "Explore Weapons",
+      "ctaSecondaryHref": "/weapons",
+      "ctaTertiary": "Build Your Loadout",
+      "ctaTertiaryHref": "/mechanics",
+      "videoId": "hVtmnaUCpuQ",
+      "videoLabel": "Official Media"
+    },
+    "updates": { "title": "Latest Wiki Pages" },
+    "start": {
+      "badge": "Start Here",
+      "title": "Your WARDOGS Journey",
+      "cards": [
+        { "number": "1", "title": "Beginner Guide", "description": "Learn the essential combat systems, cash economy, spawning, objectives, squad play, progression, vehicles, and survival basics before entering your first large-scale battle.", "icon": "lucide:book-open", "href": "/guides/beginner-guide" },
+        { "number": "2", "title": "Weapons & Loadouts", "description": "Understand weapon choices, ammunition, equipment costs, loadout planning, and how to balance combat power against the cash you risk each life.", "icon": "lucide:crosshair", "href": "/weapons" },
+        { "number": "3", "title": "Vehicles", "description": "Learn how ground and air vehicles work, when they are worth purchasing, how transportation rewards cash, and how vehicles can change control of the battlefield.", "icon": "lucide:truck", "href": "/vehicles" },
+        { "number": "4", "title": "Control Zone & Cash", "description": "Master Control Zone scoring, Hot Zone rewards, persistent cash, teamplay income, spending decisions, and the economic strategy behind every match.", "icon": "lucide:landmark", "href": "/mechanics" }
+      ]
+    },
+    "popular": {
+      "badge": "Priority Pages",
+      "title": "Start With These",
+      "quickLinks": [
+        { "label": "WARDOGS Release Date", "href": "/release/release-date" },
+        { "label": "WARDOGS Steam Guide", "href": "/release/steam" },
+        { "label": "WARDOGS Beginner Guide", "href": "/guides/beginner-guide" },
+        { "label": "WARDOGS System Requirements", "href": "/release/system-requirements" }
+      ]
+    },
+    "aboutGame": {
+      "title": "What is WARDOGS?",
+      "paragraphs": [
+        "WARDOGS is a tactical all-out warfare FPS developed by BULKHEAD and published by Team17. Up to 100 players are divided across three teams and fight over randomized Control Zones inside a huge modern military sandbox featuring infantry combat, vehicles, construction, destruction, and proximity voice communication.",
+        "Every player begins with cash and purchases weapons, equipment, and vehicles for each life. Money earned from kills, revives, transportation, objectives, and other teamplay actions persists between matches, turning economic decisions and teamwork into a major part of progression."
+      ],
+      "stats": [
+        { "label": "Developer", "value": "BULKHEAD" },
+        { "label": "Publisher", "value": "Team17" },
+        { "label": "Platform", "value": "PC · Steam" },
+        { "label": "Genre", "value": "Tactical All-Out Warfare FPS" },
+        { "label": "Players", "value": "Up to 100" },
+        { "label": "Teams", "value": "3" },
+        { "label": "Control Zone", "value": "2×2 km" },
+        { "label": "Steam Wishlists", "value": "1M+" }
+      ],
+      "cta": "Explore All Guides",
+      "ctaHref": "/guides"
+    },
+    "explore": {
+      "title": "Explore the Wiki",
+      "description": "Browse the six content clusters planned for the WARDOGS site.",
+      "modules": [
+        { "order": 1, "name": "Release & Access", "description": "Early Access timing, Steam, pricing, platforms, and requirements.", "href": "/release", "displayType": "labeled-cards", "highlights": [ { "label": "Early Access", "detail": "September 10, 2026" }, { "label": "Steam", "detail": "Store and access details" }, { "label": "Platforms", "detail": "PC and Steam focus" } ] },
+        { "order": 2, "name": "Core Guides", "description": "First matches, Control Zone objectives, and teamplay fundamentals.", "href": "/guides", "displayType": "labeled-cards", "highlights": [ { "label": "Gameplay", "detail": "Match loop and objectives" }, { "label": "Beginner", "detail": "First-battle framework" }, { "label": "Control Zone", "detail": "Scoring and team flow" } ] },
+        { "order": 3, "name": "Mechanics", "description": "Persistent cash, roles, progression, construction, and logistics.", "href": "/mechanics", "displayType": "steps", "highlights": [ { "label": "1", "detail": "Understand persistent cash" }, { "label": "2", "detail": "Choose a team role" }, { "label": "3", "detail": "Support the objective" } ] },
+        { "order": 4, "name": "Weapons", "description": "Weapon choices, ammunition, equipment costs, and loadouts.", "href": "/weapons", "displayType": "labeled-cards", "highlights": [ { "label": "Weapons", "detail": "Confirmed equipment focus" }, { "label": "Gunplay", "detail": "Combat choices" }, { "label": "Loadouts", "detail": "Budget and role planning" } ] },
+        { "order": 5, "name": "Vehicles", "description": "Ground and air vehicles, transport, and combined-arms planning.", "href": "/vehicles", "displayType": "labeled-cards", "highlights": [ { "label": "Vehicles", "detail": "Ground and air assets" }, { "label": "Transport", "detail": "Movement and cash rewards" }, { "label": "Combined Arms", "detail": "Vehicle and infantry play" } ] },
+        { "order": 6, "name": "Updates & Fixes", "description": "Verified announcements, Early Access changes, and current status notes.", "href": "/updates", "displayType": "timeline", "highlights": [ { "label": "Server Status", "detail": "Current availability" }, { "label": "Official News", "detail": "Confirmed announcements" }, { "label": "Early Access", "detail": "Version changes" } ] }
+      ]
+    },
+    "faq": {
+      "title": "WARDOGS Essentials",
+      "description": "Quick answers for players preparing to enter WARDOGS.",
+      "items": [
+        { "question": "What is WARDOGS?", "answer": "WARDOGS is a tactical all-out warfare FPS built around large-scale, three-team Control Zone matches with infantry, vehicles, construction, destruction, and a persistent cash economy." },
+        { "question": "When does WARDOGS enter Early Access?", "answer": "The researched Steam listing gives September 10, 2026 as the Early Access date. Check the official Steam page for the current listing." },
+        { "question": "Does this wiki replace the official game site?", "answer": "No. This is an independent guide site; official links are provided for access, announcements, and community channels." }
+      ]
+    },
+    "finalCta": {
+      "title": "Ready to Master WARDOGS?",
+      "description": "From your first $10,000 loadout to coordinated vehicle assaults and high-stakes Control Zone fights, our WARDOGS Wiki helps you make smarter tactical and economic decisions on every deployment.",
+      "primary": "Read the Beginner Guide",
+      "primaryHref": "/guides/beginner-guide",
+      "secondary": "Play WARDOGS on Steam"
+    }
+  },
+  "footer": {
+    "aboutTitle": "WARDOGS Wiki",
+    "about": "WARDOGS Wiki is an independent fan-made guide site covering weapons, vehicles, loadouts, roles, progression, maps, cash economy, Control Zone tactics, and beginner strategies. Our goal is to help new and experienced players make better tactical decisions and understand the game's evolving systems. This site is not affiliated with BULKHEAD or Team17.",
+    "description": "100-player tactical FPS with three teams, persistent cash, vehicles, destruction, building, and Control Zone warfare.",
+    "playGame": "Play WARDOGS on Steam",
+    "officialWebsite": "BULKHEAD Official WARDOGS",
+    "officialDiscord": "Official Discord",
+    "officialYoutube": "Team17 YouTube",
+    "officialTwitter": "Official X",
+    "officialReddit": "r/WarDogs",
+    "aboutLink": "About",
+    "faq": "FAQ",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "copyright": "Copyright",
+    "copyrightText": "© 2026 WARDOGS Wiki. Independent fan-made site; not affiliated with BULKHEAD or Team17.",
+    "community": "Community",
+    "legal": "Legal"
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "$schema": "../../docs/home.schema.json",
+  "site": {
+    "name": "WARDOGS Wiki",
+    "shortName": "WARDOGS Wiki",
+    "description": "WARDOGSの初心者ガイド、武器、乗り物、ロードアウト、キャッシュ経済、Control Zone戦術、進行、チームプレイをまとめたWikiです。",
+    "tagline": "3チーム、持続キャッシュ、乗り物、建築、破壊、Control Zoneを備えた最大100人のタクティカルFPS。",
+    "legalNotice": "WARDOGS Wikiは独立したファンサイトです。BULKHEADおよびTeam17とは提携していません。"
+  },
+  "nav": {
+    "home": "ホーム",
+    "release": "リリース",
+    "guides": "ガイド",
+    "mechanics": "メカニクス",
+    "weapons": "武器",
+    "vehicles": "乗り物",
+    "updates": "更新・修正",
+    "toggleTheme": "テーマ切替",
+    "menu": "メニュー",
+    "close": "閉じる",
+    "search": "検索",
+    "language": "言語"
+  },
+  "search": { "placeholder": "WARDOGS Wikiを検索...", "noResults": "結果が見つかりません" },
+  "shared": {
+    "lastUpdated": "最終更新",
+    "publishedOn": "公開日",
+    "noArticles": "ページを準備中です。しばらくお待ちください。",
+    "relatedArticles": "関連記事",
+    "onThisPage": "このページの内容",
+    "browseAll": "すべて見る",
+    "viewAll": "すべて表示",
+    "commentsHeading": "コメント",
+    "share": "共有",
+    "copyLink": "リンクをコピー",
+    "copied": "コピーしました",
+    "consentText": "サイトを無料で運営するため、分析と広告にCookieを使用します。",
+    "accept": "同意する",
+    "decline": "拒否",
+    "consentTitle": "Cookie",
+    "possiblyOutdated": "このページの確認日:",
+    "outdatedNote": "— 新しいビルドで内容が変わる可能性があります。",
+    "prevArticle": "前のページ",
+    "nextArticle": "次のページ",
+    "minuteRead": "分で読める",
+    "wasThisHelpful": "役に立ちましたか？",
+    "feedbackThanks": "フィードバックありがとうございます！",
+    "sponsoredLabel": "スポンサー",
+    "relatedVideos": "関連動画",
+    "gallery": "ギャラリー",
+    "gameVersion": "ゲームバージョン",
+    "allTags": "すべてのタグ",
+    "tagsIndexDescription": "トピック別に記事を閲覧できます。",
+    "articlesCount": "記事",
+    "recentTitle": "最新更新",
+    "recentDescription": "WARDOGS Wikiの最新情報を新しい順に表示します。",
+    "sponsorTitle": "Wikiを支援する",
+    "sponsorText": "ガイドが役に立った場合はサイトをご支援ください。",
+    "sponsorButton": "支援する",
+    "notFoundSearchHint": "Wiki内を検索してください。",
+    "notFoundPopular": "人気ページ",
+    "galleryLabels": { "close": "閉じる", "prev": "前の画像", "next": "次の画像" },
+    "quickAnswer": "クイック回答",
+    "skipToContent": "本文へスキップ",
+    "tapToCopy": "タップしてコピー",
+    "open": "開く",
+    "playVideo": "動画を再生",
+    "closeAd": "広告を閉じる",
+    "adLabel": "広告",
+    "toggleTheme": "テーマを切り替える",
+    "fallbackNotice": "英語フォールバック",
+    "copyQuickAnswer": "回答をコピー",
+    "feedbackYes": "はい",
+    "feedbackNo": "いいえ",
+    "breadcrumbAria": "パンくずリスト",
+    "paginationAria": "記事ページ"
+  },
+  "overview": {
+    "release": { "overviewTitle": "リリースとアクセス", "overviewDescription": "発売日、Early Access、Steam、対応プラットフォーム、価格、必要スペック。" },
+    "guides": { "overviewTitle": "ガイド", "overviewDescription": "最初の試合、Control Zoneの目標、チームプレイの実用ガイド。" },
+    "mechanics": { "overviewTitle": "メカニクス", "overviewDescription": "持続キャッシュ、役割、ロードアウト、建築、破壊、目標システム。" },
+    "weapons": { "overviewTitle": "武器", "overviewDescription": "武器選択、弾薬、装備コスト、ロードアウト計画。" },
+    "vehicles": { "overviewTitle": "乗り物", "overviewDescription": "地上・航空機、輸送、諸兵科連合の計画。" },
+    "updates": { "overviewTitle": "更新・修正", "overviewDescription": "公式告知、Early Accessの変更、サーバー状況、フィールドノート。" }
+  },
+  "home": {
+    "meta": {
+      "title": "WARDOGS Wiki — 武器・乗り物・初心者ガイド",
+      "description": "WARDOGSの初心者ガイド、武器、乗り物、ロードアウト、キャッシュ経済、Control Zone戦術、役割、進行、チームプレイを解説します。",
+      "keywords": "WARDOGS, Steam, wiki, guides, weapons, vehicles, loadouts, cash, Control Zone, roles"
+    },
+    "hero": {
+      "badge": "ファンメイド・タクティカル・ウォーフェアWiki",
+      "title": "WARDOGS Wiki",
+      "description": "WARDOGSは、最大100人が3チームに分かれ、変化する戦場の支配権を争う大規模タクティカルFPSです。持続キャッシュを稼ぎ、ロードアウトを組み、乗り物を展開し、防衛施設を建設して、分隊とともにControl Zoneを制圧します。",
+      "stats": [
+        "Early Access 2026年9月10日",
+        "更新 2026年8月",
+        "最大100人の戦闘",
+        "3チーム",
+        "Steamウィッシュリスト100万以上"
+      ],
+      "ctaPrimary": "初心者ガイドを読む",
+      "ctaPrimaryHref": "/guides/beginner-guide",
+      "ctaSecondary": "武器を見る",
+      "ctaSecondaryHref": "/weapons",
+      "ctaTertiary": "ロードアウトを組む",
+      "ctaTertiaryHref": "/mechanics",
+      "videoId": "hVtmnaUCpuQ",
+      "videoLabel": "公式メディア"
+    },
+    "updates": { "title": "最新のWikiページ" },
+    "start": {
+      "badge": "ここから始める",
+      "title": "WARDOGSの出撃準備",
+      "cards": [
+        { "number": "1", "title": "初心者ガイド", "description": "最初の大規模戦闘に入る前に、戦闘システム、キャッシュ経済、スポーン、目標、分隊行動、進行、乗り物、生存の基本を学びます。", "icon": "lucide:book-open", "href": "/guides/beginner-guide" },
+        { "number": "2", "title": "武器とロードアウト", "description": "武器、弾薬、装備コスト、ロードアウト計画を理解し、1ライフでリスクにさらすキャッシュと戦闘力のバランスを考えます。", "icon": "lucide:crosshair", "href": "/weapons" },
+        { "number": "3", "title": "乗り物", "description": "地上・航空機の仕組み、購入する価値がある場面、輸送によるキャッシュ報酬、戦場の支配権を変える使い方を学びます。", "icon": "lucide:truck", "href": "/vehicles" },
+        { "number": "4", "title": "Control Zoneとキャッシュ", "description": "Control Zoneの得点、Hot Zone報酬、持続キャッシュ、チームプレイ収入、支出判断、試合を支える経済戦略を理解します。", "icon": "lucide:landmark", "href": "/mechanics" }
+      ]
+    },
+    "popular": {
+      "badge": "優先ページ",
+      "title": "まず読むページ",
+      "quickLinks": [
+        { "label": "WARDOGSリリース日", "href": "/release/release-date" },
+        { "label": "WARDOGS Steamガイド", "href": "/release/steam" },
+        { "label": "WARDOGS初心者ガイド", "href": "/guides/beginner-guide" },
+        { "label": "WARDOGSシステム要件", "href": "/release/system-requirements" }
+      ]
+    },
+    "aboutGame": {
+      "title": "WARDOGSとは？",
+      "paragraphs": [
+        "WARDOGSはBULKHEADが開発し、Team17が発売するタクティカル・オールアウト・ウォーフェアFPSです。最大100人のプレイヤーが3チームに分かれ、歩兵戦、乗り物、建築、破壊、近接ボイスチャットを備えた広大な現代軍事サンドボックス内のランダムなControl Zoneを争います。",
+        "各プレイヤーはキャッシュを持って開始し、1ライフごとに武器、装備、乗り物を購入します。キル、蘇生、輸送、目標達成などのチームプレイ行動で得たお金は試合をまたいで持続し、経済判断と協力が進行の重要な要素になります。"
+      ],
+      "stats": [
+        { "label": "開発", "value": "BULKHEAD" },
+        { "label": "発売元", "value": "Team17" },
+        { "label": "プラットフォーム", "value": "PC · Steam" },
+        { "label": "ジャンル", "value": "タクティカル・オールアウト・ウォーフェアFPS" },
+        { "label": "プレイヤー", "value": "最大100人" },
+        { "label": "チーム", "value": "3" },
+        { "label": "Control Zone", "value": "2×2 km" },
+        { "label": "Steamウィッシュリスト", "value": "100万以上" }
+      ],
+      "cta": "すべてのガイドを見る",
+      "ctaHref": "/guides"
+    },
+    "explore": {
+      "title": "Wikiを探検",
+      "description": "WARDOGS Wikiの6つのコンテンツクラスターを閲覧できます。",
+      "modules": [
+        { "order": 1, "name": "リリースとアクセス", "description": "Early Accessの日程、Steam、価格、対応機種、必要スペック。", "href": "/release", "displayType": "labeled-cards", "highlights": [ { "label": "Early Access", "detail": "2026年9月10日" }, { "label": "Steam", "detail": "ストアとアクセス情報" }, { "label": "プラットフォーム", "detail": "PCとSteamが中心" } ] },
+        { "order": 2, "name": "コアガイド", "description": "最初の試合、Control Zoneの目標、チームプレイの基本。", "href": "/guides", "displayType": "labeled-cards", "highlights": [ { "label": "ゲームプレイ", "detail": "試合の流れと目標" }, { "label": "初心者", "detail": "最初の戦闘の基本" }, { "label": "Control Zone", "detail": "得点とチームの流れ" } ] },
+        { "order": 3, "name": "メカニクス", "description": "持続キャッシュ、役割、進行、建築、兵站。", "href": "/mechanics", "displayType": "steps", "highlights": [ { "label": "1", "detail": "持続キャッシュを理解" }, { "label": "2", "detail": "チームの役割を選ぶ" }, { "label": "3", "detail": "目標を支援する" } ] },
+        { "order": 4, "name": "武器", "description": "武器、弾薬、装備コスト、ロードアウト。", "href": "/weapons", "displayType": "labeled-cards", "highlights": [ { "label": "武器", "detail": "確認済みの装備要素" }, { "label": "銃撃", "detail": "戦闘の選択" }, { "label": "ロードアウト", "detail": "予算と役割の計画" } ] },
+        { "order": 5, "name": "乗り物", "description": "地上・航空機、輸送、諸兵科連合の計画。", "href": "/vehicles", "displayType": "labeled-cards", "highlights": [ { "label": "乗り物", "detail": "地上と航空の資産" }, { "label": "輸送", "detail": "移動とキャッシュ報酬" }, { "label": "諸兵科連合", "detail": "乗り物と歩兵の連携" } ] },
+        { "order": 6, "name": "更新・修正", "description": "公式告知、Early Accessの変更、現在の状況メモ。", "href": "/updates", "displayType": "timeline", "highlights": [ { "label": "サーバー状況", "detail": "現在の稼働状況" }, { "label": "公式ニュース", "detail": "確認済みの告知" }, { "label": "Early Access", "detail": "バージョン変更" } ] }
+      ]
+    },
+    "faq": {
+      "title": "WARDOGSの基本",
+      "description": "出撃前に知っておきたい基本情報です。",
+      "items": [
+        { "question": "WARDOGSとは？", "answer": "WARDOGSは、歩兵、乗り物、建築、破壊、持続キャッシュを組み合わせた3チーム制の大規模Control ZoneタクティカルFPSです。" },
+        { "question": "WARDOGSのEarly Accessはいつですか？", "answer": "調査時点のSteam掲載情報では、Early Accessは2026年9月10日です。最新情報は公式Steamページで確認してください。" },
+        { "question": "このWikiは公式サイトですか？", "answer": "いいえ。独立したガイドサイトです。アクセス、告知、コミュニティについては公式リンクを案内しています。" }
+      ]
+    },
+    "finalCta": {
+      "title": "WARDOGSを極める準備はできましたか？",
+      "description": "最初の10,000ドルのロードアウトから、連携した乗り物攻撃、高リスクなControl Zone戦まで、WARDOGS Wikiは出撃ごとの戦術と経済判断を支援します。",
+      "primary": "初心者ガイドを読む",
+      "primaryHref": "/guides/beginner-guide",
+      "secondary": "SteamでWARDOGSをプレイ"
+    }
+  },
+  "footer": {
+    "aboutTitle": "WARDOGS Wiki",
+    "about": "WARDOGS Wikiは、武器、乗り物、ロードアウト、役割、進行、マップ、キャッシュ経済、Control Zone戦術、初心者向け戦略を扱う独立したファンメイドガイドサイトです。BULKHEADおよびTeam17とは提携していません。",
+    "description": "3チーム、持続キャッシュ、乗り物、破壊、建築、Control Zoneを備えた最大100人のタクティカルFPS。",
+    "playGame": "SteamでWARDOGSをプレイ",
+    "officialWebsite": "BULKHEAD公式WARDOGSページ",
+    "officialDiscord": "公式Discord",
+    "officialYoutube": "Team17 YouTube",
+    "officialTwitter": "公式X",
+    "officialReddit": "r/WarDogs",
+    "aboutLink": "概要",
+    "faq": "FAQ",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfService": "利用規約",
+    "copyright": "著作権",
+    "copyrightText": "© 2026 WARDOGS Wiki。BULKHEADおよびTeam17とは関係のないファンサイトです。",
+    "community": "コミュニティ",
+    "legal": "法的情報"
+  }
+}
