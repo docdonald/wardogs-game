@@ -117,34 +117,25 @@
   }
 
   .card {
-    @apply rounded-lg border bg-card text-card-foreground transition hover:border-nav/50 hover:shadow-md;
+    @apply border bg-card text-card-foreground transition hover:border-nav/50;
     position: relative;
     isolation: isolate;
-    border-radius: 0.25rem;
+    border-radius: 0;
     border-color: hsl(var(--foreground) / 0.2);
-    box-shadow:
-      inset 0 0 0 1px hsl(var(--background) / 0.45),
-      0 0 0 1px hsl(var(--foreground) / 0.06);
+    box-shadow: none;
   }
 
-  /* Reference-card treatment: a second inset frame with clipped corner
-     accents gives the UI the restrained military briefing-card look. */
+  /* All card surfaces use one square outer frame. */
   .card::before,
   .card::after {
-    content: '';
-    position: absolute;
-    inset: 0.42rem;
-    pointer-events: none;
-    border: 1px solid transparent;
-    opacity: 0.72;
+    display: none;
   }
-  .card::before {
-    border-top-color: hsl(var(--foreground) / 0.22);
-    border-left-color: hsl(var(--foreground) / 0.22);
-  }
-  .card::after {
-    border-right-color: hsl(var(--foreground) / 0.22);
-    border-bottom-color: hsl(var(--foreground) / 0.22);
+
+  /* Existing template cards use utility classes instead of `.card`. Keep
+     their content and spacing, but normalize their frame geometry here. */
+  :is(div, aside, details, ol, pre, li).bg-card:is(.border, .border-border, .border-dashed):not(.inline-flex) {
+    border-radius: 0;
+    box-shadow: none;
   }
 
   /* The reference title uses a wide, blocky military display face. Keep the
@@ -242,6 +233,24 @@
     bottom: -1px;
     border-right: 2px solid hsl(var(--brand));
     border-bottom: 2px solid hsl(var(--brand));
+  }
+
+  /* Hero video preview: one thin, square outer frame without the shared
+     card's inset treatment or clipped-corner accents. */
+  .hero-video-frame {
+    border: 1px solid hsl(var(--foreground) / 0.28);
+    border-radius: 0;
+    background: hsl(var(--background) / 0.18);
+    box-shadow: none;
+  }
+
+  .hero-video-frame::before,
+  .hero-video-frame::after {
+    display: none;
+  }
+
+  .hero-video-frame [data-yt-facade] {
+    border-radius: 0;
   }
 
   .hero-field__eyebrow,

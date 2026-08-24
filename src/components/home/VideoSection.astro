@@ -19,7 +19,7 @@ interface Props {
 const { videoId, title = 'Watch trailer' } = Astro.props;
 ---
 {videoId && (
-  <div class="card w-full overflow-hidden p-2">
+  <div class="hero-video-frame w-full overflow-hidden">
     <LazyYouTube videoId={videoId} title={title} />
   </div>
 )}
