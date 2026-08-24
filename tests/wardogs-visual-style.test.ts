@@ -60,6 +60,19 @@ describe('WARDOGS reference visual treatment', () => {
     expect(comments).not.toContain("? 'light'");
   });
 
+  it('injects one consent-aware GA tag from the environment', () => {
+    expect(baseLayout).toContain(
+      "const gaId = env.PUBLIC_GA_ID ?? env.NEXT_PUBLIC_GA_ID;",
+    );
+    expect(baseLayout).toMatch(
+      /<head>[\s\S]*?\{gaId && \([\s\S]*googletagmanager\.com\/gtag\/js\?id=' \+ gaId/,
+    );
+    expect(baseLayout).toContain("gtag('config', gaId, { send_page_view: false });");
+    expect(baseLayout).toContain("window.gtag?.('config', gaId);");
+    expect((baseLayout.match(/googletagmanager\.com\/gtag\/js/g) ?? []).length).toBe(1);
+    expect(baseLayout).not.toContain('G-3Z1JGZ32DC');
+  });
+
   it('uses the official trailer as a muted looping hero background with a fallback', () => {
     expect(home).toContain('data-hero-video-background');
     expect(home).toContain('youtube-nocookie.com/embed/${hero.videoId}');

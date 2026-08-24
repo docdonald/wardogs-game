@@ -107,7 +107,10 @@ const xDefaultHref = defaultAlt
     : `${siteUrl}${Astro.url.pathname.replace(localePrefixRe, '')}`;
 
 // Optional analytics / verification / ads (env-var gated — empty = not injected).
-const gaId = import.meta.env.PUBLIC_GA_ID as string | undefined;
+// PUBLIC_GA_ID is the Astro/Cloudflare name; NEXT_PUBLIC_GA_ID is accepted as
+// a compatibility alias for the env.local convention requested by the site owner.
+const env = import.meta.env as Record<string, string | undefined>;
+const gaId = env.PUBLIC_GA_ID ?? env.NEXT_PUBLIC_GA_ID;
 const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN as string | undefined;
 const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION as string | undefined;
 const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT as string | undefined;
@@ -130,6 +133,27 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
 <!doctype html>
 <html lang={mainLocale} class="dark scroll-smooth">
   <head>
+    {/* One GA tag per page, emitted by this shared layout. The initial config
+        queues gtag without a page view; CookieConsent enables it after consent. */}
+    {gaId && (
+      <>
+        <script
+          is:inline
+          async
+          src={'https://www.googletagmanager.com/gtag/js?id=' + gaId}
+        ></script>
+        <script is:inline define:vars={{ gaId }}>
+          window.dataLayer = window.dataLayer || [];
+          window.gtag =
+            window.gtag ||
+            function gtag() {
+              window.dataLayer.push(arguments);
+            };
+          window.gtag('js', new Date());
+          window.gtag('config', gaId, { send_page_view: false });
+        </script>
+      </>
+    )}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon_io/favicon.ico" sizes="any" />
@@ -210,10 +234,8 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
     {gscVerification && <meta name="google-site-verification" content={gscVerification} />}
 
     {/*
-      Analytics / AdSense are injected DYNAMICALLY (consent-gated).
-      BaseLayout only defines the loader; CookieConsent.astro calls it after
-      the visitor accepts. See GDPR note in AGENTS.md. No tracking env vars
-      → this block renders nothing → zero JS.
+      AdSense is injected dynamically after consent. GA is already defined
+      above so every page contains one tag and consent only enables pageviews.
     */}
     {(gaId || adsenseClient) && (
       <script is:inline define:vars={{ gaId, adsenseClient }}>
@@ -221,16 +243,7 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
           if (window.__awTrackersLoaded) return;
           window.__awTrackersLoaded = true;
           if (gaId) {
-            const s = document.createElement('script');
-            s.async = true;
-            s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
-            document.head.appendChild(s);
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-              dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', gaId);
+            window.gtag?.('config', gaId);
           }
           if (adsenseClient) {
             const s = document.createElement('script');
