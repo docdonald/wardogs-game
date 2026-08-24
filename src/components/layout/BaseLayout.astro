@@ -3,7 +3,7 @@
  * BaseLayout — the root <html> + <head> shell shared by every page.
  *
  * Responsibilities:
- *   - <html lang> and theme class (no FOUC via inline script)
+ *   - <html lang> and the fixed warm-black theme class
  *   - global <head>: charset, viewport, title template, description, og/twitter defaults
  *   - Organization JSON-LD (every page)
  *   - global styles
@@ -128,7 +128,7 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
 ---
 
 <!doctype html>
-<html lang={mainLocale} class="scroll-smooth">
+<html lang={mainLocale} class="dark scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -262,27 +262,9 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
     <JsonLd data={orgJsonLd} />
     {jsonLd.map((d) => <JsonLd data={d} />)}
 
-    {/* No-FOUC theme init — runs before first paint. */}
-    <script is:inline>
-      (() => {
-        let stored = null;
-        try {
-          stored = localStorage.getItem('theme');
-        } catch {
-          /* storage unavailable */
-        }
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || stored === 'black' || (!stored && prefersDark)) {
-          document.documentElement.classList.add('dark');
-          if (stored === 'black') document.documentElement.classList.add('black');
-        }
-      })();
-    </script>
-
-    {/* Keep <meta name="theme-color"> in sync with the active theme color.
+    {/* Set <meta name="theme-color"> from the fixed warm-black theme.
         Meta content is a plain string — var() never resolves there, so the
-        browser chrome color is derived from the computed --brand-text at
-        runtime (initial paint + every theme toggle, via class observer). */}
+        browser chrome color is derived from the computed --background. */}
     <script is:inline>
       (() => {
         const meta = document.createElement('meta');
@@ -290,15 +272,15 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
         document.head.appendChild(meta);
         const apply = () => {
           const v = getComputedStyle(document.documentElement)
-            .getPropertyValue('--brand-text')
+            .getPropertyValue('--background')
             .trim();
           if (v) meta.setAttribute('content', `hsl(${v})`);
         };
-        apply();
-        new MutationObserver(apply).observe(document.documentElement, {
-          attributes: true,
-          attributeFilter: ['class'],
-        });
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', apply, { once: true });
+        } else {
+          apply();
+        }
       })();
     </script>
   </head>

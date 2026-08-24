@@ -1,6 +1,6 @@
 ---
 /**
- * Site header — logo, primary nav, theme toggle, language switcher.
+ * Site header — logo, primary nav, language switcher.
  * Mobile menu uses native <details> (zero JS).
  */
 import { Icon } from 'astro-icon/components';
@@ -9,9 +9,7 @@ import { site } from '~/config/site';
 import { type Locale, defaultLocale, locales, LOCALE_LABELS } from '~/i18n/routing';
 import { getUi } from '~/i18n/ui';
 import { localizePath } from '~/lib/url';
-import ThemeToggle from './ThemeToggle.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
-import SearchButton from './SearchButton.astro';
 import { landingLinkEnabled } from '~/config/project';
 
 interface Props {
@@ -95,8 +93,6 @@ const samePagePathFor = (loc: Locale) => {
           <Icon name="lucide:hammer" class="h-5 w-5" />
         </a>
       )}
-      <SearchButton locale={locale} />
-      <ThemeToggle />
       <LanguageSwitcher locale={locale} pathFor={samePagePathFor} availableLocales={availableLocales} />
 
       {/* Mobile menu */}
@@ -107,15 +103,6 @@ const samePagePathFor = (loc: Locale) => {
           <Icon name="lucide:menu" class="h-5 w-5" />
         </summary>
         <div class="absolute right-0 mt-2 w-56 overflow-hidden rounded-md border bg-card shadow-lg">
-          {/* Prominent search entry — mobile readers don't know Cmd+K */}
-          <button
-            type="button"
-            data-open-search
-            class="flex w-full items-center gap-2 border-b border-border px-3 py-2.5 text-sm font-medium text-nav transition hover:bg-muted"
-          >
-            <Icon name="lucide:search" class="h-4 w-4" />
-            <span>{nav.search ?? 'Search'}</span>
-          </button>
           {
             NAVIGATION_CONFIG.map((item) => (
               <a
@@ -160,14 +147,3 @@ const samePagePathFor = (loc: Locale) => {
     </div>
   </div>
 </header>
-
-<script>
-  // Mobile menu search entry → open the shared search dialog (SearchButton).
-  document.querySelectorAll('[data-open-search]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      (document.getElementById('search-trigger') as HTMLButtonElement | null)?.click();
-      // Close the mobile menu afterwards.
-      document.querySelectorAll('details[open]').forEach((d) => (d as HTMLDetailsElement).open = false);
-    });
-  });
-</script>

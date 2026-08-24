@@ -2,13 +2,12 @@
 /**
  * LandingLayout — the shell for the project landing pages (/landing, /zh/landing).
  *
- * Wraps BaseLayout with a minimal header (logo + language toggle + GitHub +
- * theme toggle) and a simplified footer. Does NOT use SiteHeader (that's the
+ * Wraps BaseLayout with a minimal header (logo + language toggle + GitHub)
+ * and a simplified footer. Does NOT use SiteHeader (that's the
  * demo game's navigation) or StickyBanner (ads) — the landing page is about
  * the project, not the demo game.
  */
 import BaseLayout from '~/components/layout/BaseLayout.astro';
-import ThemeToggle from '~/components/header/ThemeToggle.astro';
 import { Icon } from 'astro-icon/components';
 import {
   landingContent,
@@ -100,7 +99,7 @@ const description = pageDescription ?? t.description;
     </a>
   )}
 
-  {/* Minimal header — logo + language + GitHub + theme toggle */}
+  {/* Minimal header — logo + language + GitHub */}
   <header class="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur">
     <div class="mx-auto flex h-14 max-w-7xl items-center gap-4 px-4">
       <a href={landingPath(locale)} class="flex items-center gap-2 font-bold text-foreground">
@@ -144,7 +143,6 @@ const description = pageDescription ?? t.description;
           <Icon name="lucide:external-link" class="h-4 w-4" />
           <span>Demo</span>
         </a>
-        <ThemeToggle />
       </div>
     </div>
   </header>

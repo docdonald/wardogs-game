@@ -59,7 +59,7 @@ const closeAd = sharedStrings.closeAd ?? 'Close ad';
     const btn = document.getElementById('dismiss-sticky');
     if (!banner || !btn) return;
     // Storage can be blocked (privacy extensions / strict browsers) — degrade
-    // to "dismiss works, just not remembered", same pattern as ThemeToggle.
+    // to "dismiss works, just not remembered".
     let dismissed = false;
     try {
       dismissed = localStorage.getItem('sticky-dismissed') === '1';

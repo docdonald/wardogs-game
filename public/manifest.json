@@ -4,8 +4,8 @@
   "description": "WARDOGS Wiki with beginner guides, weapons, vehicles, loadouts, cash economy tips, Control Zone tactics, progression help, and large-scale teamplay strategies.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#f97316",
+  "background_color": "#17120f",
+  "theme_color": "#17120f",
   "icons": [
     {
       "src": "/favicon_io/android-chrome-192x192.png",

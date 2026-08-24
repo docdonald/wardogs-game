@@ -12,7 +12,7 @@
  * defers until near-viewport — Lighthouse-friendly.
  *
  * Dark mode sync: two MutationObservers + postMessage. Observer A
- * watches <html>.dark class (toggled by ThemeToggle.astro). Observer B
+ * watches the fixed <html>.dark class. Observer B
  * watches the .giscus container's childList (catches the async-inserted
  * iframe so we can sync theme once it exists).
  *
@@ -67,7 +67,7 @@ const heading = shared.commentsHeading ?? 'Comments';
       data-reactions-enabled="1"
       data-emit-metadata="0"
       data-input-position="bottom"
-      data-theme="light"
+      data-theme="dark_dimmed"
       data-lang={lang}
       data-loading="lazy"
       crossorigin="anonymous"
@@ -77,7 +77,7 @@ const heading = shared.commentsHeading ?? 'Comments';
     {/* Dark mode sync — vanilla JS, is:inline so Astro doesn't bundle/delay it */}
     <script is:inline set:html={`(() => {
   function syncTheme() {
-    var theme = document.documentElement.classList.contains('dark') ? 'dark_dimmed' : 'light';
+    var theme = 'dark_dimmed';
     var iframe = document.querySelector('iframe.giscus-frame');
     if (iframe && iframe.contentWindow) {
       iframe.contentWindow.postMessage(
@@ -87,7 +87,7 @@ const heading = shared.commentsHeading ?? 'Comments';
     }
   }
 
-  // Observer A: watch <html>.dark class (user clicks theme toggle)
+  // Observer A: watch <html>.dark class in case an embedding shell changes it.
   new MutationObserver(syncTheme).observe(document.documentElement, {
     attributes: true,
     attributeFilter: ['class'],
