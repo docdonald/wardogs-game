@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 const css = readFileSync(new URL('../src/styles/globals.css', import.meta.url), 'utf8');
 const home = readFileSync(new URL('../src/components/home/HomePage.astro', import.meta.url), 'utf8');
 const header = readFileSync(new URL('../src/components/header/SiteHeader.astro', import.meta.url), 'utf8');
+const routing = readFileSync(new URL('../src/i18n/routing.ts', import.meta.url), 'utf8');
 const landingLayout = readFileSync(
   new URL('../src/components/landing/LandingLayout.astro', import.meta.url),
   'utf8',
@@ -39,6 +40,12 @@ describe('WARDOGS reference visual treatment', () => {
     expect(header).toContain('/favicon_io/android-chrome-192x192.png');
     expect(header).toContain('alt=""');
     expect(header).not.toContain('<Icon name="lucide:hammer" class="h-6 w-6 text-nav" />');
+  });
+
+  it('publishes English only without a language switcher', () => {
+    expect(routing).toContain("export const locales = ['en'] as const;");
+    expect(header).not.toContain('LanguageSwitcher');
+    expect(header).not.toContain('LOCALE_LABELS');
   });
 
   it('uses one fixed warm-black theme without a theme switcher', () => {

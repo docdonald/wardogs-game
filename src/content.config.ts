@@ -103,16 +103,13 @@ const wiki = defineCollection({
 
 /**
  * Handbook collection — the in-site documentation center at /landing/docs
- * (+ /zh/landing/docs). Chapters live OUTSIDE src/content on purpose: the
+ * Chapters live OUTSIDE src/content on purpose: the
  * markdown under docs/handbook/ is the single source of truth, browsable on
  * GitHub, and **survives `pnpm apply-template`** (the learning manual's SOPs
  * and AI prompts are directly useful to fork users) — only the landing ROUTES
  * are removed by the CLI.
  *
- * Files: docs/handbook/<locale>/<slug>.md → id "en/<slug>" / "zh/<slug>".
- * zh chapters MUST reuse the same ASCII slug as their en counterpart —
- * CJK filenames percent-encode in URLs, and 1:1 slug pairing makes the
- * en/zh parity test (tests/handbook.test.ts) trivial.
+ * Files: docs/handbook/en/<slug>.md → id "en/<slug>".
  *
  * Plain .md (not .mdx): handbooks are static prose + code blocks; they do not
  * use the wiki component vocabulary.
@@ -129,8 +126,7 @@ const handbook = defineCollection({
     icon: z.string().default('lucide:book-open'),
     /**
      * 40–60 word direct answer, rendered as the TL;DR card (AI Overviews
-     * candidate). 480 chars ≈ 60-70 English words — zh lands well under,
-     * en translations run longer per word.
+     * candidate). 480 chars accommodates concise English answers.
      */
     tldr: z.string().max(480).optional(),
     /** Last content review — feeds the sitemap lastmod scan (astro.config.ts). */

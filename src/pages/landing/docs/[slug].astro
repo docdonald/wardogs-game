@@ -1,7 +1,7 @@
 ---
 /**
  * Handbook chapter route (/landing/docs/<slug>, English). Source markdown:
- * docs/handbook/en/<slug>.md. zh twin lives at /zh/landing/docs/<slug>
+ * docs/handbook/en/<slug>.md.
  * (same slug — hreflang pairs are always real; parity is enforced by
  * tests/handbook.test.ts).
  */
@@ -39,7 +39,6 @@ const chapterPath = handbookPath('en', slug);
 
 const alternates = [
   { hreflang: 'en', href: `${siteUrl}${chapterPath}` },
-  { hreflang: 'zh', href: `${siteUrl}${handbookPath('zh', slug)}` },
 ];
 
 // Breadcrumb (hub → manual → chapter) + TechArticle for docs content.
@@ -82,7 +81,6 @@ const jsonLd = [
   alternates={alternates}
   pageTitle={`${entry.data.title} | AnvilWiki Docs`}
   pageDescription={entry.data.description}
-  togglePath={handbookPath('zh', slug)}
   extraJsonLd={jsonLd}
 >
   <HandbookChapter

@@ -12,13 +12,7 @@ import * as path from 'node:path';
 
 const ROOT = path.resolve(__dirname, '..');
 
-const ROUTE_FILES = [
-  'src/pages/[locale]/index.astro',
-  'src/pages/[locale]/faq.astro',
-  'src/pages/[locale]/[...slug].astro',
-  'src/pages/[locale]/[legal].astro',
-  'src/i18n/content.ts',
-];
+const ROUTE_FILES = ['src/i18n/content.ts'];
 
 describe('i18n: no hardcoded locale arrays', () => {
   for (const rel of ROUTE_FILES) {

@@ -79,10 +79,6 @@ const {
 
 // Language of the main content (falls back to the UI locale).
 const mainLocale = contentLocale ?? locale;
-// Japanese pages are retained as a fallback-compatible route for now, but
-// they are not part of the published WARDOGS content set. Keep them out of
-// search until a complete translation is intentionally shipped.
-const localeNoindex = locale === 'ja';
 const ogLocaleMap = OG_LOCALE_MAP as Record<string, string>;
 const ogLocale = ogLocaleMap[mainLocale] ?? mainLocale;
 
@@ -90,15 +86,12 @@ const suffix = titleSuffix !== undefined ? titleSuffix : site.name;
 const fullTitle = suffix && !title.includes(suffix) ? `${title} — ${suffix}` : title;
 const orgJsonLd = organizationJsonLd();
 
-// Strip ANY known locale prefix (built from routing.ts so new locales keep
-// x-default pointing at the default-locale URL — a hardcoded en|ja list
-// would silently break for forks that add languages).
+// Strip any known locale prefix when deriving the x-default URL.
 const localePrefixRe = new RegExp(`^/(${locales.join('|')})(?=/|$)`);
 
 // x-default should point at the default-language version when one exists.
 // When the caller passes alternates we derive it from them instead of blind
-// prefix-stripping — that way a page whose default-locale URL was never built
-// (e.g. a ja-only article, or /zh/landing) never emits a dead x-default.
+// prefix-stripping so x-default always points at a real page.
 const defaultAlt = alternates.find((a) => a.hreflang === defaultLocale);
 const xDefaultHref = defaultAlt
   ? defaultAlt.href
@@ -167,7 +160,7 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
-    {noindex || localeNoindex ? (
+    {noindex ? (
       <meta name="robots" content="noindex, nofollow" />
     ) : (
       /* Google Discover large-image previews require explicit permission —
@@ -299,7 +292,7 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
   </head>
 <body
   class="min-h-screen bg-background text-foreground antialiased"
-  data-pagefind-ignore={noindex || localeNoindex ? true : undefined}
+  data-pagefind-ignore={noindex ? true : undefined}
 >
     <slot />
     {/* Consent banner — only rendered when tracking env vars are set. */}

@@ -1,11 +1,5 @@
 /**
- * Handbook parity + frontmatter gate (docs/handbook/{en,zh}/*.md).
- *
- * The in-site docs center renders zh chapters at /zh/landing/docs with
- * hreflang pairs pointing at the en version — a missing half would produce
- * a lying hreflang or a dead alternate. 1:1 parity is therefore a hard
- * requirement, enforced here (build-time Zod covers field TYPES, this test
- * covers language PAIRING + ordering sanity).
+ * English handbook frontmatter and ordering gate (docs/handbook/en/*.md).
  *
  * Pure fs scan (no astro:content under Vitest — see lib/url notes).
  */
@@ -43,24 +37,9 @@ function readFrontmatter(locale: string, file: string): Record<string, string> {
   return out;
 }
 
-describe('handbook: en/zh parity (hard requirement)', () => {
-  it('zh chapters mirror en chapters slug-for-slug', () => {
-    expect(listChapters('zh'), 'every en chapter must have a zh twin (and vice versa)').toEqual(
-      listChapters('en'),
-    );
-  });
-
-  it('en and zh twins share manual + order', () => {
-    for (const file of listChapters('en')) {
-      const en = readFrontmatter('en', file);
-      const zh = readFrontmatter('zh', file);
-      expect(zh.manual, `${file}: manual differs between locales`).toBe(en.manual);
-      expect(zh.order, `${file}: order differs between locales`).toBe(en.order);
-    }
-  });
-
+describe('handbook: English-only frontmatter', () => {
   it('frontmatter carries the required fields', () => {
-    for (const locale of ['en', 'zh']) {
+    for (const locale of ['en']) {
       for (const file of listChapters(locale)) {
         const fm = readFrontmatter(locale, file);
         for (const key of ['title', 'description', 'manual', 'order']) {
@@ -74,7 +53,7 @@ describe('handbook: en/zh parity (hard requirement)', () => {
   });
 
   it('order is unique within each manual', () => {
-    for (const locale of ['en', 'zh']) {
+    for (const locale of ['en']) {
       const seen = new Map<string, string>();
       for (const file of listChapters(locale)) {
         const fm = readFrontmatter(locale, file);
@@ -93,7 +72,6 @@ describe('lib/handbook pure functions', () => {
     data: { manual, order },
   });
   const list = [
-    mk('zh/deploy', 'learn', 5),
     mk('en/pick', 'learn', 1),
     mk('en/deploy', 'learn', 4),
     mk('en/customize', 'dev', 2),
@@ -103,7 +81,7 @@ describe('lib/handbook pure functions', () => {
 
   it('parseHandbookId strips .md and rejects junk', () => {
     expect(parseHandbookId('en/pick-your-game.md')).toEqual({ locale: 'en', slug: 'pick-your-game' });
-    expect(parseHandbookId('zh/launch')).toEqual({ locale: 'zh', slug: 'launch' });
+    expect(parseHandbookId('zh/launch')).toBeNull();
     expect(parseHandbookId('fr/launch')).toBeNull();
     expect(parseHandbookId('noseparator')).toBeNull();
     expect(parseHandbookId('en/')).toBeNull();
@@ -111,11 +89,7 @@ describe('lib/handbook pure functions', () => {
 
   it('sortChapters: learn before dev, order ascending', () => {
     const sorted = sortChapters(list).map((c) => c.id);
-    expect(sorted).toEqual(['en/pick', 'en/pick2', 'en/deploy', 'zh/deploy', 'en/arch', 'en/customize']);
-  });
-
-  it('chaptersForLocale filters one locale', () => {
-    expect(chaptersForLocale(list, 'zh').map((c) => c.id)).toEqual(['zh/deploy']);
+    expect(sorted).toEqual(['en/pick', 'en/pick2', 'en/deploy', 'en/arch', 'en/customize']);
   });
 
   it('prevNext stays inside the same manual', () => {
@@ -133,7 +107,6 @@ describe('lib/handbook pure functions', () => {
 
   it('handbookPath builds locale-correct URLs', () => {
     expect(handbookPath('en', 'pick-your-game')).toBe('/landing/docs/pick-your-game');
-    expect(handbookPath('zh', 'pick-your-game')).toBe('/zh/landing/docs/pick-your-game');
-    expect(handbookPath('zh', '', true)).toBe('/zh/landing/docs');
+    expect(handbookPath('en', '', true)).toBe('/landing/docs');
   });
 });

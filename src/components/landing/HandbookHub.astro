@@ -7,11 +7,11 @@
  */
 import { Icon } from 'astro-icon/components';
 import { type LandingContent } from '~/config/landing';
-import { handbookPath, type HandbookEntry, type HandbookManual } from '~/lib/handbook';
+import { handbookPath, type HandbookEntry, type HandbookManual, type HandbookLocale } from '~/lib/handbook';
 
 interface Props {
   chapters: HandbookEntry[];
-  locale: 'en' | 'zh';
+  locale: HandbookLocale;
   t: LandingContent;
 }
 const { chapters, locale, t } = Astro.props;

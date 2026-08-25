@@ -1,7 +1,7 @@
 ---
 /**
  * Learning Manual index (/landing/docs/learn, English) — the manual's own
- * page with a numbered chapter list. 中文版在 /zh/landing/docs/learn。
+ * page with a numbered chapter list.
  */
 import { getCollection } from 'astro:content';
 import LandingLayout from '~/components/landing/LandingLayout.astro';
@@ -15,7 +15,6 @@ const chapters = chaptersForLocale(await getCollection('handbook'), 'en');
 
 const alternates = [
   { hreflang: 'en', href: `${siteUrl}/landing/docs/learn` },
-  { hreflang: 'zh', href: `${siteUrl}/zh/landing/docs/learn` },
 ];
 ---
 
@@ -24,7 +23,6 @@ const alternates = [
   alternates={alternates}
   pageTitle={`${t.handbook.manuals.learn.label} | AnvilWiki Docs`}
   pageDescription={t.handbook.manuals.learn.description}
-  togglePath="/zh/landing/docs/learn"
 >
   <HandbookManualList manual="learn" chapters={chapters} locale="en" t={t} />
 </LandingLayout>

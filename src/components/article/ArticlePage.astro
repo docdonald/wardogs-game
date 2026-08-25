@@ -42,14 +42,8 @@ interface Props {
   resolved: ResolvedEntry;
   /** hreflang alternates (built by the route page). */
   alternates?: Array<{ hreflang: string; href: string }>;
-  /**
-   * Locales this article's URL exists in (real version or fallback page).
-   * Constrains the language switcher so it never links to a 404
-   * (e.g. a ja-only article must not offer an English link).
-   */
-  availableLocales?: readonly Locale[];
 }
-const { locale, resolved, alternates = [], availableLocales } = Astro.props;
+const { locale, resolved, alternates = [] } = Astro.props;
 const { entry, servedLocale, isFallback } = resolved;
 const ui = getUi(locale);
 const nav = ui.nav as Record<string, string>;
@@ -146,7 +140,6 @@ const jsonLd = [
   description={entry.data.description}
   image={coverUrl}
   alternates={alternates}
-  availableLocales={availableLocales}
   article={true}
   jsonLd={jsonLd}
   noindex={entry.data.noindex}
@@ -323,7 +316,7 @@ const jsonLd = [
     <div
       class="prose prose-lg mt-8 max-w-none dark:prose-invert prose-headings:scroll-mt-20 prose-a:text-nav"
       data-pagefind-body
-      data-pagefind-ignore={locale === 'ja' || entry.data.noindex ? true : undefined}
+      data-pagefind-ignore={entry.data.noindex ? true : undefined}
     >
       <Content />
     </div>

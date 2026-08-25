@@ -16,7 +16,7 @@
  */
 
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
-import { defaultLocale, type Locale } from './routing';
+import { type Locale } from './routing';
 import { slugifyTag } from '~/lib/url';
 
 export type WikiEntry = CollectionEntry<'wiki'>;
@@ -62,14 +62,6 @@ export async function getEntryWithFallback(
   const requested = await getEntry('wiki', id);
   if (requested && isPublished(requested)) {
     return { entry: requested, servedLocale: locale, isFallback: false };
-  }
-
-  // 2. Fall back to English (default locale).
-  if (locale !== defaultLocale) {
-    const fallback = await getEntry('wiki', `${defaultLocale}/${category}/${slug}`);
-    if (fallback && isPublished(fallback)) {
-      return { entry: fallback, servedLocale: defaultLocale, isFallback: true };
-    }
   }
 
   return null;

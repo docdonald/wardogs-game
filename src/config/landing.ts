@@ -1,6 +1,6 @@
 /**
  * Landing page configuration — text content for the project landing pages
- * at /landing (English) and /zh/landing (中文). They introduce the AnvilWiki
+ * at /landing (English). They introduce the AnvilWiki
  * template itself, NOT the demo game.
  *
  * This is separate from site.ts (which holds the DEMO GAME config).
@@ -13,7 +13,7 @@
 /** Keep in sync with package.json "version" (used by the announcement bar). */
 export const PROJECT_VERSION = '2.0.0';
 
-export type LandingLocale = 'en' | 'zh';
+export type LandingLocale = 'en';
 
 interface ManualCopy {
   label: string;
@@ -82,7 +82,7 @@ export interface LandingContent {
     hubSubtitle: string;
     manuals: { learn: ManualCopy; dev: ManualCopy };
     chapterLabel: string;
-    /** Empty for en ("Chapter 3"); "章" for zh ("第 3 章"). */
+    /** Chapter suffix (empty for English). */
     chapterSuffix: string;
     backToHub: string;
     prevLabel: string;
@@ -140,9 +140,7 @@ export const COMMUNITY_SITES: {
   /** Screenshot in public/images/showcase/sites/ (CLI-deleted on fork). */
   image: string;
   imageAltEn: string;
-  imageAltZh: string;
   descriptionEn: string;
-  descriptionZh: string;
 }[] = [
   {
     name: 'Aniimo Wiki',
@@ -150,10 +148,8 @@ export const COMMUNITY_SITES: {
     game: 'Aniimo',
     image: '/images/showcase/sites/aniimo.jpg',
     imageAltEn: 'Screenshot of the Aniimo Wiki homepage',
-    imageAltZh: 'Aniimo Wiki 首页截图',
     descriptionEn:
       'A community wiki for the Roblox anime game Aniimo — guides, tier lists, and fresh codes.',
-    descriptionZh: 'Roblox 动漫游戏 Aniimo 的社区 wiki——攻略、强度榜与最新兑换码。',
   },
   {
     name: "No Man's Sky Wiki",
@@ -161,10 +157,8 @@ export const COMMUNITY_SITES: {
     game: "No Man's Sky",
     image: '/images/showcase/sites/nomanssky.jpg',
     imageAltEn: "Screenshot of the No Man's Sky Wiki homepage",
-    imageAltZh: '无人深空 Wiki 首页截图',
     descriptionEn:
       'A wiki for the space sandbox classic No Man\'s Sky — mechanics references and update guides.',
-    descriptionZh: '太空沙盒经典《无人深空》的 wiki——机制资料与版本更新攻略。',
   },
   {
     name: 'Steal an Egg Wiki',
@@ -172,10 +166,8 @@ export const COMMUNITY_SITES: {
     game: 'Steal an Egg',
     image: '/images/showcase/sites/steal-anegg.jpg',
     imageAltEn: 'Screenshot of the Steal an Egg Wiki homepage',
-    imageAltZh: 'Steal an Egg Wiki 首页截图',
     descriptionEn:
       'A wiki for the Roblox hit Steal an Egg — pets, eggs, codes, and strategies.',
-    descriptionZh: 'Roblox 热门游戏 Steal an Egg 的 wiki——宠物、蛋、兑换码与玩法攻略。',
   },
 ];
 
@@ -454,7 +446,7 @@ pnpm install && pnpm dev`,
       'Questions about deploying your own wiki, feature ideas, or just want to chat about game content sites? Scan the QR code to add the maintainer on WeChat and join the group.',
     qrAlt: 'WeChat QR code — scan to add the maintainer and join the discussion group',
     qrCaption: 'Scan with WeChat',
-    qrNote: 'WeChat group · 中文/English both welcome',
+    qrNote: 'WeChat group · English welcome',
     buttonLabel: 'Join the group',
     buttonAria: 'Open the WeChat group QR code',
     closeAria: 'Close QR code',
@@ -467,290 +459,7 @@ pnpm install && pnpm dev`,
   },
 };
 
-const zh: LandingContent = {
-  htmlLang: 'zh',
-  title: 'AnvilWiki — 开源游戏 Wiki 模板 + AI 内容工作流',
-  description:
-    '开源游戏 wiki 模板 + AI 原生内容工作流:选对游戏、和 AI 对话就能产页、codes 页自动保鲜。Lighthouse 4×100、Cloudflare 免费部署、广告收入 100% 归你。',
-  announcement: {
-    text: `v${PROJECT_VERSION} 发布 —— 内容经营操作系统:PR 门控内容管道(关键词清单 → 八道门禁 → 草稿 PR)、anvilwiki-ops 1.0(多站管理 + AI 引用追踪)、pnpm gen-covers 封面自动生成、Affiliate 建议位。fork 零迁移成本。`,
-    href: RELEASES,
-  },
-  hero: {
-    badge: '开源 · MIT 协议 · Cloudflare Pages',
-    title: '把一个爆发期游戏,24 小时变成你的流量站',
-    subtitle:
-      'AnvilWiki = SEO 强化到极致的游戏 wiki 模板(Astro + Cloudflare Pages,Lighthouse 4×100,免费无限带宽)+ 随仓库分发的 AI 内容工作流:选对游戏、跟 AI 对话就能产页、codes 页自动保鲜——每一分广告收入都归你。',
-    primaryCta: { label: '快速开始', href: '#docs' },
-    secondaryCta: { label: 'GitHub 加星', href: 'https://github.com/PNGTRID/AnvilWiki' },
-    tertiaryCta: { label: '查看 Demo', href: '/' },
-    installCommand: `git clone https://github.com/PNGTRID/AnvilWiki.git
-cd anvilwiki
-pnpm install && pnpm dev`,
-    screenshotCaption: '在线 Demo —— WARDOGS 游戏 wiki',
-    screenshotAlt: 'AnvilWiki 演示站首页 —— 用模板搭建的游戏 wiki',
-    terminalLabel: '终端',
-    copyLabel: '复制',
-    copiedLabel: '已复制!',
-  },
-  socialProof: {
-    lighthouse: [
-      { label: '性能', score: 100 },
-      { label: '无障碍', score: 100 },
-      { label: '最佳实践', score: 100 },
-      { label: 'SEO', score: 100 },
-    ],
-    poweredBy: '基于 Astro + Cloudflare Pages —— 免费无限带宽',
-  },
-  features: [
-    {
-      icon: 'lucide:bot',
-      title: 'AI 原生内容工作流',
-      description:
-        'Agent 技能随仓库分发(.agent/skills/,Agent Skills 开放标准)。对 ZCode / Claude Code / Codex 说「根据这些笔记写一篇 Boss 攻略」,直接产出通过构建校验的 MDX 页面——schema + lint 自动质检,不用学任何脚本。',
-    },
-    {
-      icon: 'lucide:crosshair',
-      title: '选品方法论',
-      description:
-        '多数模板忽略的第一步:四层选品漏斗(Trends 需求验证 + SERP 空位检查)+ 首日 10 页计划——新游爆发的 2-8 周黄金窗口,流量全在这里。',
-    },
-    {
-      icon: 'lucide:ticket',
-      title: 'codes 页自动化',
-      description:
-        '结构化 codes 数据(状态/到期/来源)自动渲染 Active 一键复制区 + Expired 长尾表格(承接「XX 还能用吗」搜索);每周定时审计自动开 issue 提醒保鲜——不用你记得去更新。',
-    },
-    {
-      icon: 'lucide:dollar-sign',
-      title: '广告收入 100% 归你',
-      description:
-        '内置 AdSense 广告位、赞助卡片、联盟链接组件——全部 env 门控默认关闭。无平台抽成,和托管 wiki 农场完全不同。',
-    },
-    {
-      icon: 'lucide:zap',
-      title: 'SEO 工程化 + 极致性能',
-      description:
-        'sitemap(含 lastmod)、JSON-LD 全套、hreflang、面向 AI 搜索的 Quick Answer、llms.txt——建立在 Astro 零 JS 和开箱 Lighthouse 4×100 之上。',
-    },
-    {
-      icon: 'lucide:cloud',
-      title: '永久免费',
-      description:
-        '零配置部署到 Cloudflare Pages:免费无限带宽 + 全球 CDN + SSL;多语言开箱即用(英文根路径,回退机制保证直链永不 404)。永远没有服务器账单。',
-    },
-  ],
-  compare: {
-    title: '为什么选择 AnvilWiki?',
-    subtitle: '与其他游戏内容站方案的对比。',
-    columns: ['AnvilWiki', 'Fandom', 'Starlight', 'Next.js 自建'],
-    rows: [
-      {
-        label: '适用场景',
-        values: ['游戏 SEO 内容站', '社区协作 wiki', '产品文档', '定制应用'],
-      },
-      {
-        label: 'AI 内容管道',
-        values: ['技能随仓库分发', '无', '无', '自建'],
-      },
-      {
-        label: '选品指导',
-        values: ['漏斗 + 首日计划', '无', '无', '无'],
-      },
-      {
-        label: '广告收入',
-        values: ['100% 归你', '平台分成', '无广告', '自己接'],
-      },
-      {
-        label: '托管成本',
-        values: ['免费无限带宽', '免费(平台托管)', '自付', '自付'],
-      },
-      {
-        label: 'SEO 内置',
-        values: ['全套', '平台控制', '文档向', '自建'],
-      },
-      {
-        label: '性能',
-        values: ['Lighthouse 4×100', '中等', '高', '取决于实现'],
-      },
-      {
-        label: '完全拥有',
-        values: ['是(MIT)', '否', '是', '是'],
-      },
-    ],
-  },
-  showcase: {
-    title: '看看实际效果',
-    subtitle: '用 AnvilWiki 构建的在线 Demo——WARDOGS 游戏 wiki 站。',
-    points: [
-      '真实的游戏 wiki 布局(Hero → 快速入口 → 内容模块 → CTA)',
-      '完整内容站实测 Lighthouse 性能 100',
-      '真实多语言:英文根路径 + 日文带前缀 + 自动回退',
-      '广告位 / 搜索 / 评论全部可用(env 驱动,默认关闭)',
-    ],
-    cta: { label: '查看在线 Demo →', href: '/' },
-    browserUrl: 'wardogs-game.wiki/guides/gameplay',
-    mobileCaption: '移动优先:首屏干净、表格横滑、兑换码点击即复制。',
-    articleAlt: 'Boss 攻略文章页 —— 快速答案卡片 + 结构化 Boss 数据卡',
-    mobileAlt: '演示站首页的移动端视图',
-  },
-  builtWith: {
-    title: '用 AnvilWiki 建成的站',
-    subtitle: '社区用户的真实案例——从 Roblox 热游到 Steam 经典,下一个可能就是你的站。',
-    submitLabel: '你也建了站?提交案例 →',
-    submitHref: SHOWCASE_DATA,
-  },
-  docsEntry: {
-    title: '几分钟即可上手',
-    cards: [
-      {
-        icon: 'lucide:crosshair',
-        title: '选对游戏',
-        description: '哪个游戏值得建 wiki?四层选品漏斗 + 首日 10 页计划。',
-        href: '/zh/landing/docs/pick-your-game',
-      },
-      {
-        icon: 'lucide:rocket',
-        title: '快速开始',
-        description: '装好 6 样工具,准备开工环境——只装一次,以后永远用。',
-        href: '/zh/landing/docs/install-tools',
-      },
-      {
-        icon: 'lucide:palette',
-        title: '套用模板',
-        description: 'Fork 模板,一条问答式命令换成你的游戏。',
-        href: '/zh/landing/docs/launch-your-site',
-      },
-      {
-        icon: 'lucide:search',
-        title: 'SEO 指南',
-        description: 'AnvilWiki 如何处理 sitemap、JSON-LD、hreflang 等。',
-        href: 'https://github.com/PNGTRID/AnvilWiki/blob/main/docs/seo.md',
-      },
-    ],
-    readLabel: '阅读',
-  },
-  devGuide: {
-    title: '怎么用:5 步走',
-    subtitle: '从 fork 到上线约 30 分钟,每一步背后都有完整文档。',
-    steps: [
-      {
-        title: 'Fork 并本地跑起来',
-        description: '克隆你的 fork、启动开发服务器——WARDOGS wiki 结构开箱即用。',
-        command: 'pnpm install && pnpm dev',
-        linkLabel: 'README',
-        href: 'https://github.com/PNGTRID/AnvilWiki#readme',
-      },
-      {
-        title: '换成你的游戏',
-        description:
-          '一条交互式 CLI 替换游戏信息、主题色、多语言与导航,并重置 demo 配置(含 wrangler.toml)。',
-        command: 'pnpm apply-template',
-        linkLabel: '套用模板文档',
-        href: 'https://github.com/PNGTRID/AnvilWiki/blob/main/docs/apply-template.md',
-      },
-      {
-        title: '和 AI 对话产页',
-        description:
-          '用 ZCode / Claude Code / Codex 打开仓库直接说——agent 技能随仓库分发,Zod schema 把住每一页的质量关。',
-        command: '"帮我写一篇 Boss 攻略,要点如下:…"',
-        linkLabel: '内容格式文档',
-        href: 'https://github.com/PNGTRID/AnvilWiki/blob/main/docs/content-format.md',
-      },
-      {
-        title: '免费部署上线',
-        description:
-          '推到 GitHub、连接 Cloudflare Pages——自动识别 Astro 构建,免费无限带宽 + 全球 CDN。',
-        command: 'pnpm build && git push',
-        linkLabel: '部署文档',
-        href: 'https://github.com/PNGTRID/AnvilWiki/blob/main/docs/deployment.md',
-      },
-      {
-        title: '保持新鲜',
-        description:
-          '每周审计工作流自动标记过期页面,兑换码技能守住长尾流量,上游更新随时可同步。',
-        command: 'pnpm refresh-audit',
-        linkLabel: '同步更新文档',
-        href: 'https://github.com/PNGTRID/AnvilWiki/blob/main/docs/staying-up-to-date.md',
-      },
-    ],
-    allDocs: {
-      label: '打开文档中心 —— 两本实操手册,含可复制的 AI 提示词',
-      href: '/zh/landing/docs',
-    },
-  },
-  handbook: {
-    hubTitle: 'AnvilWiki 文档中心',
-    hubSubtitle:
-      '两本相互独立的实操手册,按完全零基础标准编写:学习手册 11 章带你从选游戏走到上线、收录、变现,再教你把站打磨成模板、批量铺内页放大、把排名和 AI 引用做上去;开发手册 7 章覆盖定制与工程。每一步都是 SOP + 可复制的 AI 提示词。',
-    manuals: {
-      learn: {
-        label: '学习手册',
-        description:
-          '11 章,零经验起步:选对游戏、装好工具、建起自己的站、首日用 AI 产出 10 页、被 Google 收录、接上广告、每周 30 分钟运营节奏,把第一个站打磨成模板、批量做出几十个流量入口,最后从被收录走到有排名、被 AI 引用。',
-      },
-      dev: {
-        label: '开发手册',
-        description:
-          '7 章,面向定制者与贡献者:改动地图、加栏目与加语言、换主题与改首页、功能开关总表、CI 门禁与安全、同步上游与贡献回流、让 AI 替你运营(anvilwiki-ops 命令行与 MCP)。',
-      },
-    },
-    chapterLabel: '第',
-    chapterSuffix: '章',
-    backToHub: '全部文档',
-    prevLabel: '上一章',
-    nextLabel: '下一章',
-    editLabel: '在 GitHub 上编辑',
-    updatedLabel: '更新于',
-    readLabel: '阅读本章',
-    tldrLabel: '太长不看',
-    onThisPageLabel: '本页目录',
-    manualsLabel: '手册目录',
-    roadmap: {
-      title: '建一个游戏 wiki 站:全部工作一览',
-      hint: '从零到赚钱一共 10 件事。点任意一项,直接跳到手把手教你的那一章。',
-      items: [
-        { label: '选对游戏', time: '2 天', href: '/zh/landing/docs/pick-your-game' },
-        { label: '装好 6 样工具', time: '30 分钟', href: '/zh/landing/docs/install-tools' },
-        { label: '把模板变成你的站', time: '30 分钟', href: '/zh/landing/docs/launch-your-site' },
-        { label: '用 AI 写首日 10 页', time: '1 天', href: '/zh/landing/docs/first-10-pages' },
-        { label: '网站上线(免费托管)', time: '15 分钟', href: '/zh/landing/docs/put-site-online' },
-        { label: '在 Google 登记(站长后台+目录)', time: '20 分钟', href: '/zh/landing/docs/get-on-google' },
-        { label: '买域名并绑定', time: '30 分钟', href: '/zh/landing/docs/put-site-online' },
-        { label: '接广告(AdSense)', time: '审核数天', href: '/zh/landing/docs/enable-ads' },
-        { label: '每周 30 分钟保鲜', time: '每周', href: '/zh/landing/docs/weekly-ops' },
-        { label: '定制:加栏目/语言/换肤', time: '按需', href: '/zh/landing/docs/categories-and-locales' },
-      ],
-    },
-    openManualLabel: '打开这本手册',
-    chaptersCountLabel: '章',
-  },
-  finalCta: {
-    title: '准备好上线你的游戏 wiki 了吗?',
-    subtitle: 'Fork、配置、部署——30 分钟搞定,完全免费。',
-    primaryCta: { label: '快速开始', href: '#docs' },
-    secondaryCta: { label: '阅读文档', href: 'https://github.com/PNGTRID/AnvilWiki#readme' },
-  },
-  community: {
-    title: '扫码进群,一起讨论',
-    subtitle:
-      '部署自己的 wiki 站有问题?想聊功能建议或游戏内容站怎么做?微信扫码添加主理人好友,拉你进交流群。',
-    qrAlt: '微信二维码——扫码添加主理人好友,进群交流讨论',
-    qrCaption: '微信扫码',
-    qrNote: '交流群 · 中文/English 均可',
-    buttonLabel: '加群交流',
-    buttonAria: '打开微信交流群二维码',
-    closeAria: '关闭二维码',
-  },
-  footer: {
-    tagline: '开源游戏 wiki 站点模板。免费、快速、新手友好。',
-    license: 'MIT 协议',
-    madeWith: '基于 Astro 构建 · 部署于 Cloudflare Pages',
-    author: '由 PNG 部落团队主理人 袁锐钦 开源',
-  },
-};
+export const landingContent: Record<LandingLocale, LandingContent> = { en };
 
-export const landingContent: Record<LandingLocale, LandingContent> = { en, zh };
-
-/** Landing-page routes per locale (for language switching + hreflang). */
-export const landingPath = (locale: LandingLocale) => (locale === 'en' ? '/landing' : `/zh/landing`);
+/** English landing-page route. */
+export const landingPath = (_locale: LandingLocale) => '/landing';

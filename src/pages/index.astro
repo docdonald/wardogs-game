@@ -6,7 +6,7 @@
  * (not to /en/). We render the English homepage inline rather than redirecting,
  * because a redirect adds a round-trip and hurts LCP.
  *
- * Non-default locales use /ja/ etc., handled by src/pages/[locale]/index.astro.
+ * The site publishes one English homepage at /.
  */
 import HomePage from '~/components/home/HomePage.astro';
 import { defaultLocale, locales } from '~/i18n/routing';

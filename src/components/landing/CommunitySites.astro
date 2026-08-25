@@ -12,12 +12,10 @@ interface Props {
   t: LandingContent;
 }
 const { t } = Astro.props;
-const locale = t.htmlLang;
-const isZh = locale === 'zh';
 const sites = COMMUNITY_SITES.map((site) => ({
   ...site,
-  description: isZh ? site.descriptionZh : site.descriptionEn,
-  imageAlt: isZh ? site.imageAltZh : site.imageAltEn,
+  description: site.descriptionEn,
+  imageAlt: site.imageAltEn,
   host: site.url.replace('https://', '').replace(/\/$/, ''),
 }));
 ---

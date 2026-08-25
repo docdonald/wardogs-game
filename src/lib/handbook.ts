@@ -8,7 +8,7 @@
 
 export type HandbookManual = 'learn' | 'dev';
 
-export const HANDBOOK_LOCALES = ['en', 'zh'] as const;
+export const HANDBOOK_LOCALES = ['en'] as const;
 export type HandbookLocale = (typeof HANDBOOK_LOCALES)[number];
 
 /** Minimal shape shared by collection entries (structural typing keeps this testable). */
@@ -83,8 +83,8 @@ export function prevNext<T extends ChapterLike>(
 }
 
 /** Public URL of a handbook chapter for a given landing locale. */
-export function handbookPath(locale: HandbookLocale, slug: string, isHub = false): string {
-  const base = locale === 'en' ? '/landing/docs' : `/zh/landing/docs`;
+export function handbookPath(_locale: HandbookLocale, slug: string, isHub = false): string {
+  const base = '/landing/docs';
   return isHub || !slug ? base : `${base}/${slug}`;
 }
 

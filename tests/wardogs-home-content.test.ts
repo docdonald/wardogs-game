@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import en from '~/locales/en.json';
-import ja from '~/locales/ja.json';
 import { site } from '~/config/site';
 
 const homePage = readFileSync(new URL('../src/components/home/HomePage.astro', import.meta.url), 'utf8');
@@ -13,9 +12,8 @@ describe('WARDOGS homepage research content', () => {
     expect(en.home.meta.keywords).toContain('Control Zone');
   });
 
-  it('uses the homepage keyword as the Hero title in every locale', () => {
+  it('uses the homepage keyword as the English Hero title', () => {
     expect(en.home.hero.title).toBe('WARDOGS Wiki');
-    expect(ja.home.hero.title).toBe('WARDOGS Wiki');
   });
 
   it('keeps the trailer inside the right-hand Hero column', () => {
@@ -43,12 +41,10 @@ describe('WARDOGS homepage research content', () => {
     ]);
   });
 
-  it('keeps the researched homepage structure in both locales without codes', () => {
-    for (const locale of [en, ja]) {
-      expect(locale.home.start.cards).toHaveLength(4);
-      expect(locale.home.aboutGame.paragraphs).toHaveLength(2);
-      expect(locale.home.finalCta.title).toBeTruthy();
-      expect(JSON.stringify(locale.home)).not.toMatch(/redeem|code/i);
-    }
+  it('keeps the researched English homepage structure without codes', () => {
+    expect(en.home.start.cards).toHaveLength(4);
+    expect(en.home.aboutGame.paragraphs).toHaveLength(2);
+    expect(en.home.finalCta.title).toBeTruthy();
+    expect(JSON.stringify(en.home)).not.toMatch(/redeem|code/i);
   });
 });

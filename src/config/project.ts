@@ -5,7 +5,7 @@
  */
 
 /**
- * Whether the project landing page (/landing, /zh/landing) exists.
+ * Whether the project landing page (/landing) exists.
  * When true, the demo site header shows a small hammer icon linking to it,
  * so demo visitors can discover the template behind the demo.
  *

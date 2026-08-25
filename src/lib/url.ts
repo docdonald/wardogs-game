@@ -2,7 +2,7 @@
  * URL construction utilities.
  *
  * Centralizes all locale-prefix logic so components never hand-build URLs.
- * English (default locale) has no prefix; other locales are prefixed.
+ * English is the only published locale and has no prefix.
  */
 
 import { defaultLocale, isLocale, type Locale } from '~/i18n/routing';
@@ -12,8 +12,7 @@ import { siteUrl } from '~/config/site';
 export function localizePath(path: string, locale: Locale): string {
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
   if (locale === defaultLocale) return cleanPath;
-  // For the root path "/", avoid producing "/<locale>/" (trailing slash).
-  // The site uses trailingSlash: 'never', so "/ja/" would 404.
+  // For the root path "/", avoid producing a trailing slash on localized URLs.
   if (cleanPath === '/') return `/${locale}`;
   return `/${locale}${cleanPath}`;
 }

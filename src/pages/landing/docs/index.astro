@@ -3,7 +3,7 @@
  * Docs hub (/landing/docs, English) — the in-site documentation center.
  * Lists both handbook manuals (learn + dev) as chapter cards. Chapter source
  * lives in docs/handbook/<locale>/*.md (single source of truth, also on
- * GitHub). 中文版在 /zh/landing/docs。
+ * GitHub).
  */
 import { getCollection } from 'astro:content';
 import LandingLayout from '~/components/landing/LandingLayout.astro';
@@ -18,7 +18,6 @@ const chapters = chaptersForLocale(all, 'en');
 
 const alternates = [
   { hreflang: 'en', href: `${siteUrl}/landing/docs` },
-  { hreflang: 'zh', href: `${siteUrl}/zh/landing/docs` },
 ];
 
 // ItemList JSON-LD: hub-and-spoke signal for the chapter structure.
@@ -42,7 +41,6 @@ const jsonLd = [
   alternates={alternates}
   pageTitle={`${t.handbook.hubTitle} | AnvilWiki`}
   pageDescription={t.handbook.hubSubtitle}
-  togglePath="/zh/landing/docs"
   extraJsonLd={jsonLd}
 >
   <HandbookHub chapters={chapters} locale="en" t={t} />

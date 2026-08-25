@@ -78,12 +78,12 @@ function buildLastmodMap(noindexPaths: Set<string>): Map<string, string> {
   };
   walk(base);
 
-  // Handbook chapters (docs/handbook/<locale>/<slug>.md) → /landing/docs/<slug>
-  // (+ /zh/ prefix). Same frontmatter-driven lastmod contract; the `updated`
+  // English handbook chapters (docs/handbook/en/<slug>.md) → /landing/docs/<slug>.
+  // Same frontmatter-driven lastmod contract; the `updated`
   // field is optional, so chapters without it simply keep the default.
   const hb = path.resolve('./docs/handbook');
   if (fs.existsSync(hb)) {
-    for (const loc of ['en', 'zh']) {
+    for (const loc of ['en']) {
       const dir = path.join(hb, loc);
       if (!fs.existsSync(dir)) continue;
       for (const entry of fs.readdirSync(dir)) {
@@ -95,10 +95,10 @@ function buildLastmodMap(noindexPaths: Set<string>): Map<string, string> {
         const date = new Date(iso);
         if (Number.isNaN(date.getTime())) continue;
         const slug = entry.replace(/\.md$/, '');
-        const pagePath = loc === 'en' ? `/landing/docs/${slug}` : `/zh/landing/docs/${slug}`;
+        const pagePath = `/landing/docs/${slug}`;
         map.set(pagePath, date.toISOString());
         // Hub pages: newest chapter wins.
-        const hubPath = loc === 'en' ? '/landing/docs' : '/zh/landing/docs';
+        const hubPath = '/landing/docs';
         const existing = map.get(hubPath);
         if (!existing || existing < date.toISOString()) {
           map.set(hubPath, date.toISOString());
@@ -150,10 +150,7 @@ export default defineConfig({
         if (noindexPaths.has(pathname)) return false;
         // The template handbook remains in the source tree for maintainers,
         // but a game deployment must not submit it to search engines.
-        if (!landingLinkEnabled && (pathname === '/landing' || pathname.startsWith('/landing/') || pathname === '/zh/landing' || pathname.startsWith('/zh/landing/'))) return false;
-        // Japanese content is currently an incomplete fallback set, not a
-        // published translation. Do not advertise those noindex URLs in XML.
-        if (pathname === '/ja' || pathname.startsWith('/ja/')) return false;
+        if (!landingLinkEnabled && (pathname === '/landing' || pathname.startsWith('/landing/'))) return false;
         return true;
       },
       // Inject <lastmod> from article frontmatter (see buildLastmodMap).

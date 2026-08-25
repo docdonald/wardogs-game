@@ -1,6 +1,6 @@
 ---
 /**
- * Development Manual index (/landing/docs/dev, English). 中文版在 /zh/landing/docs/dev。
+ * Development Manual index (/landing/docs/dev, English).
  */
 import { getCollection } from 'astro:content';
 import LandingLayout from '~/components/landing/LandingLayout.astro';
@@ -14,7 +14,6 @@ const chapters = chaptersForLocale(await getCollection('handbook'), 'en');
 
 const alternates = [
   { hreflang: 'en', href: `${siteUrl}/landing/docs/dev` },
-  { hreflang: 'zh', href: `${siteUrl}/zh/landing/docs/dev` },
 ];
 ---
 
@@ -23,7 +22,6 @@ const alternates = [
   alternates={alternates}
   pageTitle={`${t.handbook.manuals.dev.label} | AnvilWiki Docs`}
   pageDescription={t.handbook.manuals.dev.description}
-  togglePath="/zh/landing/docs/dev"
 >
   <HandbookManualList manual="dev" chapters={chapters} locale="en" t={t} />
 </LandingLayout>

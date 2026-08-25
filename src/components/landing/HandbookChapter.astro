@@ -35,7 +35,7 @@ const { locale, chapter, t, chapters, headings, prev, next } = Astro.props;
 const slug = parseHandbookId(chapter.id)?.slug ?? '';
 const manualLabel = t.handbook.manuals[chapter.data.manual].label;
 const chapterNo = `${t.handbook.chapterLabel} ${chapter.data.order}${t.handbook.chapterSuffix}`;
-const updated = chapter.data.updated?.toLocaleDateString(locale === 'zh' ? 'zh-CN' : 'en-US', {
+const updated = chapter.data.updated?.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'short',
   day: 'numeric',
