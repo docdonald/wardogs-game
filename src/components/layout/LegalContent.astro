@@ -6,12 +6,51 @@
 import { site } from '~/config/site';
 
 interface Props {
-  page: 'about' | 'privacy-policy' | 'terms-of-service' | 'copyright' | 'contact';
+  page: 'about' | 'privacy-policy' | 'terms-of-service' | 'copyright' | 'contact' | 'disclaimer';
 }
 const { page } = Astro.props;
 const game = site.game.name;
 const year = new Date().getFullYear();
 ---
+
+{
+  page === 'disclaimer' && (
+    <>
+      <p>
+        {site.name} is an independent fan-made wiki for {game}. It is not affiliated with,
+        sponsored by, or endorsed by {site.game.developer} or {site.game.publisher ?? 'the game publisher'}.
+      </p>
+      <h2>Information and Accuracy</h2>
+      <p>
+        This site provides guides, reference material, and community notes for informational
+        purposes. Game features, availability, pricing, platforms, dates, requirements, and other
+        details may change during development or after release. We do not guarantee that every
+        page is complete, current, or error-free, so verify important information through the
+        game and its official channels.
+      </p>
+      <h2>Game Intellectual Property</h2>
+      <p>
+        {game} and its related names, logos, artwork, characters, and other assets belong to their
+        respective rights holders. This wiki claims no ownership of those materials and uses
+        approved or publicly available references to help players understand the game.
+      </p>
+      <h2>External Links and Embedded Media</h2>
+      <p>
+        Links to official channels and other external websites are provided for reference. We do
+        not control those sites, their availability, or their privacy practices. Embedded videos,
+        analytics, advertising, and other third-party services are subject to their own terms and
+        policies.
+      </p>
+      <h2>Use at Your Own Risk</h2>
+      <p>
+        You use this site and rely on its content at your own discretion. {site.name} and its
+        contributors are not liable for losses or damages arising from use of the site or reliance
+        on information published here. To report an error or rights concern, contact the community
+        through our Discord server or the Copyright page.
+      </p>
+    </>
+  )
+}
 
 {
   page === 'about' && (

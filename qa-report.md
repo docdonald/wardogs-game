@@ -70,3 +70,60 @@ Utility/legal titles are intentionally shorter than article TDH limits and were 
 ## Conclusion
 
 No P0/P1 blocker remains in the verified local build. The site is **修复后上线** provided the owner performs the two environment-dependent checks: live external links and browser screenshots at desktop, 390px, 360px, and 768px.
+
+## 2026-08-27 phase-3 content acceptance follow-up
+
+- Scope: 11 newly added English keyword pages covering factions, maps, map mechanics, weapons, equipment, vehicles, Gold Bars, Player Skills, and Black Market; the existing Roadmap page was enhanced with the collected image asset.
+- Production build: passed; 137 static pages generated.
+- Content lint: passed; 43 MDX files clean.
+- Astro check: passed with 0 errors, 0 warnings, and 0 hints.
+- Internal links: passed; 6,426 links across 137 pages resolve.
+- Sitemap: passed; 114 sitemap URLs returned HTTP 200 in production preview.
+- Responsive browser audit: desktop 1440px, mobile 390px, 360px, and tablet 768px checked on the home page and new content routes; no horizontal overflow, image load failures, console errors, or visible overlap found.
+- SEO shell: English `lang`, canonical `https://wardogs-game.wiki/...`, description, Open Graph, JSON-LD, robots, sitemap, and favicon links present on sampled pages.
+- New article bodies are source-backed and structured with H2 sections, but a rough English-word count is approximately 604–828 words per page. If “约 1200 字” means approximately 1200 English words, these pages need additional source material before that content-length requirement can be considered complete; no unsupported padding was added.
+
+### New page TDH and target-keyword check
+
+| Route | Target keyword | Title / Description chars | H1 | Visible keyword check |
+|---|---|---:|---|---|
+| `/mechanics/factions/lonestar` | WARDOGS Lonestar faction | 43 / 157 | WARDOGS Lonestar Faction Guide | 1 / 739 / 0.14%; no stuffing observed |
+| `/mechanics/factions/valkyra` | WARDOGS Valkyra faction | 42 / 154 | WARDOGS Valkyra Faction Guide | 1 / 696 / 0.14%; no stuffing observed |
+| `/mechanics/factions/manticore` | WARDOGS Manticore faction | 44 / 157 | WARDOGS Manticore Faction Guide | 1 / 687 / 0.15%; no stuffing observed |
+| `/guides/maps` | WARDOGS maps | 47 / 149 | WARDOGS Maps Guide | 2 / 678 / 0.29%; distinct from map-mechanics intent |
+| `/mechanics/map-mechanics` | WARDOGS map mechanics | 46 / 150 | WARDOGS Map Mechanics Guide | 2 / 809 / 0.25%; distinct from maps overview |
+| `/weapons/weapons-database` | WARDOGS weapons database | 45 / 153 | WARDOGS Weapons Database: Guns and Candidates | 1 / 715 / 0.14%; no stuffing observed |
+| `/weapons/equipment-database` | WARDOGS equipment database | 44 / 158 | WARDOGS Equipment Database: Gear and Utility | 1 / 690 / 0.14%; no stuffing observed |
+| `/vehicles/vehicles-database` | WARDOGS vehicles database | 48 / 150 | WARDOGS Vehicles Database: Ground and Air | 1 / 659 / 0.15%; no stuffing observed |
+| `/mechanics/gold-bars` | WARDOGS Gold Bars | 49 / 155 | WARDOGS Gold Bars Guide: Economy and Rewards | 3 / 702 / 0.43%; no stuffing observed |
+| `/mechanics/player-skills` | WARDOGS player skills | 48 / 153 | WARDOGS Player Skills Guide: Progression | 2 / 683 / 0.29%; no stuffing observed |
+| `/mechanics/black-market` | WARDOGS Black Market | 46 / 155 | WARDOGS Black Market Guide: Vault Economy | 3 / 584 / 0.51%; no stuffing observed |
+| `/updates/roadmap` | WARDOGS roadmap | 46 / 154 | WARDOGS Roadmap: Early Access and Full Release | 3 / 708 / 0.42%; planned items are labeled as such |
+
+The weapons database description was shortened during this follow-up from 164 to 153 characters. All 11 new keyword landing pages and the enhanced Roadmap page meet the requested 40–60 character title and 140–160 character description ranges.
+
+### Confirmed fixes in this follow-up
+
+1. Corrected relative image frontmatter paths for all 11 new pages and the enhanced Roadmap page so Astro resolves and optimizes every image.
+2. Shortened overlong descriptions/summaries in the new vehicle, equipment, weapons, Black Market, Lonestar, and roadmap pages without adding unverified facts.
+
+### Remaining manual confirmation
+
+1. External competitor links found in older articles are source citations, not canonical or brand remnants; confirm those links are intentionally retained.
+2. Verify GA real-time collection and external YouTube/Steam/Team17 links on the deployed domain, because local acceptance cannot prove third-party availability.
+3. Existing legacy utility/hub pages retain shorter TDH by design; normalize them separately only if the 40–60 / 140–160 rule is intended to apply globally rather than to keyword landing pages.
+4. The independent fan-site disclaimer is now available at `/disclaimer` and linked from the footer.
+
+### Current disposition
+
+Technical P0/P1 checks are clear after the roadmap cannibalization fix. Release is **修复后上线**: complete the external-link/GA production confirmation, and decide whether the approximate 1200-word article target is required in English before publishing a final content-length pass.
+
+## 2026-08-27 competitor-link cleanup and disclaimer follow-up
+
+- Removed all competitor-domain hyperlinks from public article content (`wardogs.wiki`, `wardogs.space`, and `wardogswiki.com`). Research and internal strategy files retain source URLs for provenance.
+- Added the standalone `/disclaimer` page, shared legal content, English locale label, and footer navigation link.
+- Final production build: passed; 138 static pages generated.
+- Final content lint, Astro check, tests, and ESLint: passed (43 MDX clean; 0 Astro diagnostics; 95 tests passed).
+- Final internal-link audit: passed; 6,562 links across 138 pages.
+- Final sitemap audit: passed; 115/115 URLs returned HTTP 200, including `/disclaimer`.
+- Public `dist` output contains no competitor-domain hyperlinks; `git diff --check` is clean.

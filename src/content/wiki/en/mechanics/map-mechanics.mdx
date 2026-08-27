@@ -1,0 +1,73 @@
+---
+title: 'WARDOGS Map Mechanics: Zones, FOBs, and Towers'
+description: 'Learn WARDOGS map mechanics through Control Zone scoring, Hot Zone cash, FOBs, transport, building, destruction, and tower details marked unconfirmed.'
+category: mechanics
+date: '2026-08-27'
+lastModified: '2026-08-27'
+summary: 'WARDOGS map mechanics revolve around a randomized Control Zone, Hot Zone cash, three-team scoring, transport, FOB construction, and destructible routes. Tower and code details remain build-dependent.'
+tags: ['map-mechanics', 'control-zone', 'hot-zone', 'fob']
+image: '../../../../assets/phase-3/wardogs-map-mechanics.jpg'
+videos: ['cSn5IGknapM']
+draft: false
+---
+
+import Video from '~/components/mdx/Video.astro';
+
+![Official WARDOGS Foundry screenshot used for map-mechanics context; it does not prove a specific tower or FOB interaction.](/images/phase-3/wardogs-map-mechanics.jpg)
+
+## What are the core WARDOGS map mechanics?
+
+The core loop is to locate the randomized Control Zone, move people and supplies toward it, contest player presence, and use the terrain to hold the approach. Official sources connect this loop with Hot Zone cash, vehicles, forward operating bases, building, and destruction. These systems make the map more than a path between fixed spawn points.
+
+Three teams share the same objective. The faction with the strongest presence receives the published point at the scoring interval, and the first team to reach the victory target wins. The exact tie handling, boundary behaviour, and zone movement rules remain 待确认.
+
+<Video id="cSn5IGknapM" title="WARDOGS | Game Mode Explained — BULKHEAD" />
+
+## How does Control Zone scoring work?
+
+The developer FAQ describes a 30-second scoring tick: the team with the most players in the Control Zone earns one point, and the first team to reach 100 points wins. This is the clearest published scoring framework in the collected evidence. It is a shared match rule, not a faction-specific bonus.
+
+Presence matters because a player leaving the zone can create an opening even when they are chasing an isolated opponent. Medics, pilots, builders, spotters, and transport players can all increase the number of useful teammates who reach or remain near the objective. Tie resolution and contested-tick edge cases are 待确认.
+
+## What does the Hot Zone do?
+
+Official material describes the Hot Zone as a higher-value area where players can earn double cash. It adds an economy incentive to the main objective and can pull all three factions toward a smaller, riskier position. Cash belongs to the individual account, while Control Zone points belong to the team scoreboard.
+
+The evidence does not provide a stable Hot Zone radius, duration, refresh algorithm, or cash-per-second table. Any additional objective multiplier reported by test-build pages should be labelled version-dependent. The confirmed statement is double cash, not a complete scoring formula.
+
+## How do FOBs affect routes?
+
+Official sources confirm that players can build forward operating bases and fortify useful positions. An FOB can therefore support a team’s approach, recovery, and ability to keep pressure near the active objective. The best location depends on the current terrain and route rather than a universal coordinate.
+
+The public material does not define FOB material costs, supply requirements, health, repair, radius, or persistence after a match. Community observations may identify a drill or related interaction, but those details require a versioned build and should not be written as permanent rules. Exact FOB mechanics remain 待确认.
+
+## What do Towers and codes do?
+
+Competitor and test-build material describes Towers, terminals, and code prompts as possible ways to influence the Hot Zone. It does not provide a complete official operation sequence that is stable across versions. A safe page can explain the observed chain—reach the structure, read the current prompt, interact, and defend—while clearly labelling it as build-sensitive.
+
+Do not publish a code length, code source, tower count, cooldown, pull distance, or activation reward without current evidence. The official Team17 and Steam pages confirm the wider objective and economy but do not document those terminal fields. Tower behaviour is 待确认.
+
+## Why do transport and destruction matter?
+
+Transport moves players or supplies into the active fight, while building and destruction change the available routes and cover. A helicopter can support logistics, a fortified approach can protect a push, and a destroyed structure can open or close a line of sight. These are map-level choices that support the three-team objective.
+
+The sources do not publish vehicle capacity, build costs, destruction thresholds, or repair rules. Use the current client’s prompt and patch notes for those details. Do not estimate values from a screenshot or a trailer frame.
+
+## How should a squad read the map?
+
+First identify the active Control Zone and the safest useful route. Then decide whether the squad needs direct pressure, revives, transport, supplies, construction, reconnaissance, or a fallback position. Hot Zone cash can justify extra risk, but the team still needs enough presence in the wider objective to score.
+
+Review the route after every zone or build change. A plan that works on a river crossing may fail in an industrial block, and a vehicle that saves time can also expose the squad. The public evidence supports adaptable objective play, not one universal map rotation.
+
+## What remains unconfirmed?
+
+Hot Zone movement, tower count and code flow, FOB drill costs, construction materials, destruction thresholds, zone boundary updates, resource refreshes, and interaction cooldowns are 待确认. These fields may change during Early Access and should carry a build date when documented.
+
+The direct answer is that WARDOGS map mechanics connect Control Zone scoring with Hot Zone cash, transport, FOBs, building, and destruction. Tower and code details need current-build verification before publication as fixed instructions.
+
+## Sources
+
+- [WARDOGS at Team17](https://www.team17.com/games/wardogs)
+- [WARDOGS on Steam](https://store.steampowered.com/app/1867240/WARDOGS/)
+- [WARDOGS FAQ on Steam](https://steamcommunity.com/app/1867240/discussions/0/762932533852726673/)
+- [WARDOGS | Game Mode Explained](https://www.youtube.com/watch?v=cSn5IGknapM)

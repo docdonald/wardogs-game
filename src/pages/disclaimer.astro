@@ -1,0 +1,14 @@
+---
+import LegalPage from '~/components/layout/LegalPage.astro';
+import LegalContent from '~/components/layout/LegalContent.astro';
+import { defaultLocale } from '~/i18n/routing';
+---
+
+<LegalPage
+  locale={defaultLocale}
+  title="Disclaimer"
+  description="Disclaimer for WARDOGS Wiki, an independent fan-made community site."
+  lastUpdated="2026-08-27"
+>
+  <LegalContent page="disclaimer" />
+</LegalPage>
