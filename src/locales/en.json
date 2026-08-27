@@ -77,11 +77,11 @@
   },
   "overview": {
     "release": { "overviewTitle": "Release & Access", "overviewDescription": "Release date, Early Access, Steam access, platforms, pricing, and system requirements." },
-    "guides": { "overviewTitle": "Guides", "overviewDescription": "Practical WARDOGS guides for first matches, Control Zone objectives, and teamplay." },
-    "mechanics": { "overviewTitle": "Mechanics", "overviewDescription": "Persistent cash, roles, loadouts, building, destruction, and objective systems." },
+    "guides": { "overviewTitle": "Guides", "overviewDescription": "Practical WARDOGS guides for first matches, Control Zone objectives, game modes, maps, and asset comparisons." },
+    "mechanics": { "overviewTitle": "Mechanics", "overviewDescription": "Control Zone systems, Hot Zone rewards, persistent cash, factions, squads, voice chat, roles, and loadouts." },
     "weapons": { "overviewTitle": "Weapons", "overviewDescription": "Weapon choices, ammunition, equipment costs, and loadout planning." },
     "vehicles": { "overviewTitle": "Vehicles", "overviewDescription": "Ground and air vehicles, transport, and combined-arms planning." },
-    "updates": { "overviewTitle": "Updates & Fixes", "overviewDescription": "Verified announcements, Early Access changes, server status, and field notes." }
+    "updates": { "overviewTitle": "Updates & Fixes", "overviewDescription": "Verified official news, development timeline, roadmap changes, Early Access updates, and server status." }
   },
   "home": {
     "meta": {
@@ -149,7 +149,7 @@
         { "number": "1", "title": "Beginner Guide", "description": "Learn the essential combat systems, cash economy, spawning, objectives, squad play, progression, vehicles, and survival basics before entering your first large-scale battle.", "icon": "lucide:book-open", "href": "/guides/beginner-guide" },
         { "number": "2", "title": "Weapons & Loadouts", "description": "Understand weapon choices, ammunition, equipment costs, loadout planning, and how to balance combat power against the cash you risk each life.", "icon": "lucide:crosshair", "href": "/weapons" },
         { "number": "3", "title": "Vehicles", "description": "Learn how ground and air vehicles work, when they are worth purchasing, how transportation rewards cash, and how vehicles can change control of the battlefield.", "icon": "lucide:truck", "href": "/vehicles" },
-        { "number": "4", "title": "Control Zone & Cash", "description": "Master Control Zone scoring, Hot Zone rewards, persistent cash, teamplay income, spending decisions, and the economic strategy behind every match.", "icon": "lucide:landmark", "href": "/mechanics" }
+        { "number": "4", "title": "Control Zone & Cash", "description": "Master Control Zone scoring, Hot Zone rewards, persistent cash, teamplay income, spending decisions, and the economic strategy behind every match.", "icon": "lucide:landmark", "href": "/mechanics/control-zone" }
       ]
     },
     "popular": {
@@ -159,7 +159,9 @@
         { "label": "WARDOGS Release Date", "href": "/release/release-date" },
         { "label": "WARDOGS Steam Guide", "href": "/release/steam" },
         { "label": "WARDOGS Beginner Guide", "href": "/guides/beginner-guide" },
-        { "label": "WARDOGS System Requirements", "href": "/release/system-requirements" }
+        { "label": "WARDOGS System Requirements", "href": "/release/system-requirements" },
+        { "label": "WARDOGS Control Zone", "href": "/mechanics/control-zone" },
+        { "label": "WARDOGS Roadmap", "href": "/updates/roadmap" }
       ]
     },
     "aboutGame": {
@@ -186,11 +188,11 @@
       "description": "Browse the six content clusters planned for the WARDOGS site.",
       "modules": [
         { "order": 1, "name": "Release & Access", "description": "Early Access timing, Steam, pricing, platforms, and requirements.", "href": "/release", "displayType": "labeled-cards", "highlights": [ { "label": "Early Access", "detail": "September 10, 2026" }, { "label": "Steam", "detail": "Store and access details" }, { "label": "Platforms", "detail": "PC and Steam focus" } ] },
-        { "order": 2, "name": "Core Guides", "description": "First matches, Control Zone objectives, and teamplay fundamentals.", "href": "/guides", "displayType": "labeled-cards", "highlights": [ { "label": "Gameplay", "detail": "Match loop and objectives" }, { "label": "Beginner", "detail": "First-battle framework" }, { "label": "Control Zone", "detail": "Scoring and team flow" } ] },
-        { "order": 3, "name": "Mechanics", "description": "Persistent cash, roles, progression, construction, and logistics.", "href": "/mechanics", "displayType": "steps", "highlights": [ { "label": "1", "detail": "Understand persistent cash" }, { "label": "2", "detail": "Choose a team role" }, { "label": "3", "detail": "Support the objective" } ] },
+        { "order": 2, "name": "Core Guides", "description": "First matches, game modes, maps, Control Zone objectives, and evidence-led comparisons.", "href": "/guides", "displayType": "labeled-cards", "highlights": [ { "label": "Gameplay", "detail": "Match loop and objectives" }, { "label": "Maps", "detail": "Battlefield scale and variations" }, { "label": "Compare", "detail": "Weapons, equipment, and vehicles" } ] },
+        { "order": 3, "name": "Mechanics", "description": "Control Zone, Hot Zone, persistent cash, factions, squads, and communication systems.", "href": "/mechanics", "displayType": "steps", "highlights": [ { "label": "1", "detail": "Understand Control Zone scoring" }, { "label": "2", "detail": "Manage persistent cash" }, { "label": "3", "detail": "Coordinate squads and factions" } ] },
         { "order": 4, "name": "Weapons", "description": "Weapon choices, ammunition, equipment costs, and loadouts.", "href": "/weapons", "displayType": "labeled-cards", "highlights": [ { "label": "Weapons", "detail": "Confirmed equipment focus" }, { "label": "Gunplay", "detail": "Combat choices" }, { "label": "Loadouts", "detail": "Budget and role planning" } ] },
         { "order": 5, "name": "Vehicles", "description": "Ground and air vehicles, transport, and combined-arms planning.", "href": "/vehicles", "displayType": "labeled-cards", "highlights": [ { "label": "Vehicles", "detail": "Ground and air assets" }, { "label": "Transport", "detail": "Movement and cash rewards" }, { "label": "Combined Arms", "detail": "Vehicle and infantry play" } ] },
-        { "order": 6, "name": "Updates & Fixes", "description": "Verified announcements, Early Access changes, and current status notes.", "href": "/updates", "displayType": "timeline", "highlights": [ { "label": "Server Status", "detail": "Current availability" }, { "label": "Official News", "detail": "Confirmed announcements" }, { "label": "Early Access", "detail": "Version changes" } ] }
+        { "order": 6, "name": "Updates & Fixes", "description": "Official news, development timeline, roadmap changes, Early Access updates, and current status notes.", "href": "/updates", "displayType": "timeline", "highlights": [ { "label": "Official News", "detail": "Confirmed announcements" }, { "label": "Timeline", "detail": "Reveal through Early Access" }, { "label": "Roadmap", "detail": "Planned development direction" } ] }
       ]
     },
     "faq": {
