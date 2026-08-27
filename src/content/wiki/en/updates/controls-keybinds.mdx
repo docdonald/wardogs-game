@@ -1,0 +1,71 @@
+---
+title: 'WARDOGS Controls and Keybinds: Keyboard and Gamepad'
+description: 'Check WARDOGS controls and keybinds, gamepad support, safe rebinding steps, and known Playtest issues without treating temporary fixes as final defaults.'
+category: updates
+date: '2026-08-27'
+lastModified: '2026-08-27'
+summary: 'WARDOGS discusses gamepad support, but no final keyboard/controller table is published. Beta reports show rebinding conflicts; preserve defaults and treat workarounds as test-build only.'
+tags: ['updates', 'playtest', 'gameplay', 'vehicles']
+draft: false
+---
+
+## What are the official WARDOGS controls?
+
+The complete final keyboard and gamepad table is not published in the official material collected here. Team17’s preorder announcement mentions gamepad support, while the Steam community contains Playtest reports about partial controller behavior and rebinding problems. That means a current default key list must be read from the live build, not copied from an old video.
+
+The safe answer is to keep the default layout until you know the action you are changing. WARDOGS combines infantry, vehicles, logistics, construction, and local voice, so a binding that works for one role may affect another. Exact defaults, controller prompts, aim-assist behavior, and accessibility options are “待确认.”
+
+## Does WARDOGS support a controller?
+
+Official communication says gamepad support is part of the development discussion. Steam community reports from testing describe Steam Input and some native controller functions working, while other interactions—such as certain supply or menu actions—may still require a keyboard. These are build-specific observations, not a complete production support guarantee.
+
+Test the controller in a safe environment before taking it into a live objective. Check movement, menus, vehicle seats, communication, and supply actions separately. If one action fails, do not assume the entire controller is unsupported; record the build and report the missing input.
+
+## What rebinding problems were reported?
+
+In the [Please fix key binding](https://steamcommunity.com/app/1867240/discussions/0/586183940257202862/) thread, a Beta player reported inflexible dependencies for the right mouse button and space bar, while another player said the E lean binding behaved inconsistently. These are player reports from a test build. They demonstrate why the page should warn about conflicts rather than present a fixed workaround as official.
+
+Before changing a key, note its current action and test the new key in a low-risk context. If the binding breaks another action, restore the default profile first. The official sources do not publish a final dependency map or a complete reset command.
+
+## What happened with the parachute binding?
+
+A separate Steam discussion reported that rebinding helicopter collective controls to Space could overwrite the Deploy Parachute action. The player described deleting the `DeployParachute` line from `GameUserSettings.ini` to restore a default bind. This is a community workaround that modifies a local file, not an official support procedure.
+
+If you try any configuration edit, back up the file first and close the game. Do not copy a path or line from a different operating system, build, or account. The official record does not confirm that this workaround is safe or permanent, so it remains “待确认.”
+
+## How should you reset controls safely?
+
+Use the in-game reset-to-default option if the current build provides it. If the menu does not restore a binding, close the game, back up the local configuration, and contact official support with the action that failed and the steps that caused it. Avoid deleting the whole configuration unless an official instruction explains what progress or settings may be affected.
+
+Test one action at a time after the reset. Start with movement, fire, aim, interact, vehicle control, and parachute actions before changing secondary keys. A complete reset procedure, saved-profile location, and controller-specific reset are “待确认.”
+
+## How do controls affect vehicle play?
+
+WARDOGS includes helicopters and other vehicles as part of the combined-arms sandbox. A pilot may need separate movement, camera, collective, yaw, seat, and countermeasure actions, but the public official sources do not provide a stable final vehicle map. Community binding reports show that changing one helicopter action can affect parachute behavior in a test build.
+
+Keep the default vehicle controls until you can verify every related action. Test in a safe area, communicate with passengers, and do not assume a keyboard bind transfers directly to a controller. Exact aircraft controls, HOTAS support, aim assist, and seat-switch keys are “待确认.”
+
+## What should accessibility-focused players check?
+
+Look for the current build’s options for controller layout, sensitivity, hold/toggle behavior, subtitles, voice controls, and remapping. The official material collected here does not publish a full accessibility matrix, so the page should point readers to the live menu and note missing options by version. Do not promise that every action can be rebound.
+
+If a required action is not available, document the limitation and send feedback through the official channel. A community profile may help temporarily, but it should not be presented as a supported default. Keep personal bindings backed up before an update.
+
+## What should you do when a key stops working?
+
+First restore defaults and restart the game. Then check whether the action was overwritten by another binding, whether the controller is being handled through Steam Input, and whether the current test or game build has a known issue. Use the exact action name and the build date when reporting it.
+
+Do not install a third-party key mapper or edit system files before confirming the failure. The collected sources do not publish a universal keybind repair tool. If the issue involves parachute, vehicle, or anti-cheat behavior, stop repeated tests until the configuration is backed up.
+
+## What remains unconfirmed?
+
+The final keyboard table, controller layout, native versus Steam Input coverage, aim assist, accessibility options, full rebinding compatibility, vehicle/HOTAS bindings, and a supported config-reset method are “待确认.” The Beta threads are useful issue reports, not permanent documentation. Refresh this page after official controls or patch notes are published.
+
+The direct answer is to use the live in-game defaults, change one binding at a time, and keep a backup. Gamepad support is planned or observed in testing, but the final control scheme and several rebinding interactions remain version-dependent.
+
+## Sources
+
+- [WARDOGS Steam preorder announcement](https://steamcommunity.com/app/1867240/announcements/)
+- [Please fix key binding](https://steamcommunity.com/app/1867240/discussions/0/586183940257202862/)
+- [No keyboard shortcut for the parachute](https://steamcommunity.com/app/1867240/discussions/0/586183940257160008/)
+- [Controller discussion](https://steamcommunity.com/app/1867240/discussions/0/588435120315310278/)
