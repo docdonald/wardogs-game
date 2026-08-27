@@ -1,6 +1,10 @@
 import { describe, it, expect } from 'vitest';
+import { readFileSync } from 'node:fs';
 import { videoObjectJsonLd, urlListJsonLd, imageObjectJsonLd } from '~/lib/seo';
 import { slugifyTag, tagPath, tagsPath, recentPath } from '~/lib/url';
+
+const tagPage = readFileSync(new URL('../src/components/article/TagListPage.astro', import.meta.url), 'utf8');
+const tagRoute = readFileSync(new URL('../src/pages/tags/[tag].astro', import.meta.url), 'utf8');
 
 describe('slugifyTag', () => {
   it('lowercases and hyphenates whitespace', () => {
@@ -22,6 +26,14 @@ describe('tag/recent URL helpers', () => {
     expect(tagsPath('en')).toBe('/tags');
     expect(tagPath('fire-boss', 'en')).toBe('/tags/fire-boss');
     expect(recentPath('en')).toBe('/recent');
+  });
+});
+
+describe('tag indexability', () => {
+  it('keeps only multi-article tag pages indexable', () => {
+    expect(tagPage).toContain('entries.length >= 2');
+    expect(tagPage).toContain('noindex={!indexable}');
+    expect(tagRoute).toContain('tag: tagSlug');
   });
 });
 

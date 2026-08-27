@@ -7,9 +7,15 @@ const homePage = readFileSync(new URL('../src/components/home/HomePage.astro', i
 
 describe('WARDOGS homepage research content', () => {
   it('uses the researched homepage SEO metadata', () => {
-    expect(en.home.meta.title).toBe('WARDOGS Wiki — Weapons, Vehicles & Beginner Guides');
-    expect(en.home.meta.description).toContain('cash economy tips');
-    expect(en.home.meta.keywords).toContain('Control Zone');
+    expect(en.home.meta.title).toBe('WARDOGS Wiki — Beginner Guides, Weapons, Vehicles & Playtest');
+    expect(en.home.meta.title.length).toBeLessThanOrEqual(60);
+    expect(en.home.meta.description).toContain('Release Date');
+    expect(en.home.meta.description).toContain('Playtest');
+    expect(en.home.meta.description).toContain('Gameplay');
+    expect(en.home.meta.description).toContain('Guides');
+    expect(en.home.meta.description.length).toBeGreaterThanOrEqual(140);
+    expect(en.home.meta.description.length).toBeLessThanOrEqual(160);
+    expect(en.home.meta.keywords).toContain('Playtest');
   });
 
   it('uses the homepage keyword as the English Hero title', () => {
@@ -26,6 +32,20 @@ describe('WARDOGS homepage research content', () => {
     expect(videoPosition).toBeLessThan(heroEnd);
   });
 
+  it('promotes access and database routes in priority links', () => {
+    const links = en.home.popular.quickLinks.map((link: { href: string }) => link.href);
+    expect(links).toEqual(expect.arrayContaining([
+      '/release/playtest',
+      '/release/beta',
+      '/release/download-preload',
+      '/release/system-requirements',
+      '/mechanics/factions',
+      '/guides/maps',
+      '/weapons',
+      '/vehicles',
+    ]));
+  });
+
   it('uses the researched official entities and release facts', () => {
     expect(site.social.official).toBe('https://bulkhead.com/games/wardogs/');
     expect(site.social.discord).toBe('https://discord.gg/TxKKdspkCp');
@@ -38,6 +58,17 @@ describe('WARDOGS homepage research content', () => {
       '100-Player Battles',
       '3 Teams',
       '1M+ Steam Wishlists',
+    ]);
+  });
+
+  it('uses the access and field-guide navigation labels', () => {
+    expect(en.nav.access).toBe('Access');
+    expect(en.nav.accessLinks).toHaveLength(4);
+    expect(en.nav.accessLinks.map((link: { href: string }) => link.href)).toEqual([
+      '/release/playtest',
+      '/release/beta',
+      '/release/download-preload',
+      '/release/system-requirements',
     ]);
   });
 

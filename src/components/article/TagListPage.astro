@@ -22,7 +22,7 @@ interface Props {
 }
 const { locale, tagSlug, alternates = [] } = Astro.props;
 const ui = getUi(locale);
-const nav = ui.nav as Record<string, string>;
+const nav = ui.nav as unknown as Record<string, string>;
 const shared = ui.shared as unknown as Record<string, any>;
 
 const label = await tagLabelFor(tagSlug, locale);
@@ -30,6 +30,10 @@ const title = label ?? tagSlug;
 const description = `${title} — ${shared.allTags} · ${ui.site.tagline}`;
 
 const entries = await getEntriesByTag(tagSlug, locale);
+// Keep single-article aggregations reachable for readers, but keep them out
+// of the index. A tag is indexable only when it represents a reusable topic
+// with at least two published articles.
+const indexable = entries.length >= 2;
 const jsonLd = [
   urlListJsonLd({
     name: title,
@@ -51,6 +55,7 @@ const jsonLd = [
   description={description}
   alternates={alternates}
   jsonLd={jsonLd}
+  noindex={!indexable}
 >
   <div class="space-y-6">
     <header>

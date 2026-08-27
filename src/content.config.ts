@@ -43,6 +43,11 @@ const wiki = defineCollection({
       gameVersion: z.string().max(20).optional(),
       /** Quick-answer summary shown before the article body (AI Overviews / featured snippet). */
       summary: z.string().max(200).optional(),
+      /** Optional source/status overrides for the article header. */
+      status: z.string().max(80).optional(),
+      lastVerified: z.string().max(80).optional(),
+      primarySource: z.string().url().optional(),
+      nextAction: z.string().max(120).optional(),
       /** Article author name (E-E-A-T signal). Falls back to site.defaultAuthor. */
       author: z.string().optional(),
       /**

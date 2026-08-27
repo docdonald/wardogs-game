@@ -136,3 +136,60 @@ Technical P0/P1 checks are clear after the roadmap cannibalization fix. Release 
 - Final internal-link audit: passed; 6,562 links across 138 pages.
 - Final sitemap audit: passed; 115/115 URLs returned HTTP 200, including `/disclaimer`.
 - Public `dist` output contains no competitor-domain hyperlinks; `git diff --check` is clean.
+
+## 2026-08-27 first-layer SEO and content-entry optimization
+
+### Scope and route coverage
+
+- Preserved the existing Astro 5 static architecture and all 61 English MDX articles.
+- Production output contains 136 HTML pages across the homepage, six category hubs, 61 article pages, legal/utility routes, tag routes, and the Wiki index.
+- Strengthened existing Factions, Maps, Weapons, and Vehicles hubs with homepage and article-sidebar entry points; no empty Coming Soon route was added.
+- Added an Access menu in the desktop/mobile header for the existing Playtest, Beta, Download, and System Requirements routes.
+
+### Confirmed implementation changes
+
+1. Homepage metadata now uses the approved search-intent copy: title `WARDOGS Wiki — Beginner Guides, Weapons, Vehicles & Playtest` (60 characters) and a 150-character description containing Release Date, Playtest, Gameplay, and Beginner Guides. The primary H1 remains `WARDOGS Wiki`.
+2. Homepage Priority Pages and the article sidebar now expose Playtest, Beta, Download and System Requirements first, followed by existing Factions, Maps, Weapons, and Vehicles indexes.
+3. Every article renders one source-aware status strip. `status`, `lastVerified`, `primarySource`, and `nextAction` are optional frontmatter fields; existing pages fall back only to their existing date/draft/source-note context and do not receive invented game facts.
+4. The Hero keeps a static official YouTube poster as the background and uses the existing click/keyboard `LazyYouTube` facade for playback. No Hero iframe is present on first paint.
+5. Tag pages with fewer than two published articles remain reachable but emit `noindex, nofollow`; the sitemap excludes those thin tag URLs. Multi-article tags remain indexable.
+6. `package.json` now identifies the WARDOGS project and `https://github.com/docdonald/wardogs-game.git`; no AnvilWiki homepage/repository metadata remains in that file.
+
+### Build, tests, and static audits
+
+- `CI=true corepack pnpm build`: passed; 136 pages built and Pagefind indexed 62 pages / 2,513 words.
+- `CI=true corepack pnpm typecheck`: passed; 0 errors, warnings, or hints across 133 files.
+- `CI=true corepack pnpm lint`: passed.
+- `CI=true corepack pnpm test`: passed; 14 files, 100 tests.
+- `CI=true corepack pnpm check-content`: passed; 61 MDX files clean.
+- `CI=true corepack pnpm check-links`: passed; 9,887 internal links across 136 pages resolve.
+- Production preview sitemap audit: passed; 115 sitemap URLs returned HTTP 200. Thin one-article tags such as `/tags/black-market` and `/tags/vault` are absent from sitemap while still returning 200 when visited directly.
+- `node_modules/.bin/astro check` and focused status/tag/home/visual tests also passed. `pnpm` required `CI=true` in this non-interactive environment; the first unguarded install attempt was stopped before changing tracked files, then the local dependency cache was restored.
+
+### Responsive browser review
+
+- Homepage checked at desktop 1440×900 and mobile 390×844; `/release/playtest` checked at 390×844, 360×800, and 768×900.
+- `document.documentElement.scrollWidth` matched the client width at 390px and 360px; the 768px article layout used a two-column status grid without horizontal overflow.
+- Homepage first paint exposed the poster/facade only (`heroIframe: false`); clicking the facade remains the explicit activation path for the YouTube iframe.
+- Screenshots captured for review: `qa-artifacts/2026-08-27-optimization/home-desktop-1440.png` and `qa-artifacts/2026-08-27-optimization/playtest-mobile-390.png`.
+
+### TDH and keyword spot-check
+
+Counts below are visible-main-text heuristics for detecting omission or stuffing, not density targets.
+
+| Route | Target keyword | Title / description chars | H1 | Visible count / words / density |
+|---|---|---:|---|---:|
+| `/` | WARDOGS Wiki | 60 / 150 | WARDOGS Wiki | 8 / 1,128 / 0.71% |
+| `/release/playtest` | WARDOGS playtest | 46 / 143 | WARDOGS Playtest Signup, Steam Access & Status | 9 / 1,561 / 0.58% |
+
+The homepage and Playtest page have distinct intent: the homepage is the broad WARDOGS Wiki entry point, while Playtest answers access and invitation questions. No new page was created for deferred second-layer topics.
+
+### Remaining manual confirmation
+
+1. Confirm Google Analytics collection and YouTube/Steam/Team17 availability on the deployed domain; local preview cannot validate third-party telemetry or external uptime.
+2. When frontmatter gains verified source/status values, populate the optional article status fields; no values were guessed in this pass.
+3. Recheck Playtest, Beta, Download, and System Requirements facts after each official release announcement.
+
+### Current disposition
+
+First-layer changes are **修复后上线**: production build, content, links, sitemap, type, lint, tests, and responsive checks pass. Proceed to the second-layer pages only after their source packs and real parameters are collected.

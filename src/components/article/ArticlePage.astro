@@ -46,7 +46,7 @@ interface Props {
 const { locale, resolved, alternates = [] } = Astro.props;
 const { entry, servedLocale, isFallback } = resolved;
 const ui = getUi(locale);
-const nav = ui.nav as Record<string, string>;
+const nav = ui.nav as unknown as Record<string, string>;
 const shared = ui.shared as unknown as Record<string, any>;
 const overview = (ui.overview as Record<string, { overviewTitle: string }>)[entry.data.category];
 const navItem = NAVIGATION_CONFIG.find((n) => n.key === entry.data.category);
@@ -82,6 +82,27 @@ const author = entry.data.author ?? site.defaultAuthor;
 const authorInfo = getAuthor(author);
 const summary = entry.data.summary;
 const outdated = isPossiblyOutdated(category, entry.data.lastModified, entry.data.date);
+const verifiedDate = entry.data.lastVerified ?? (entry.data.lastModified ?? entry.data.date).toLocaleDateString(locale, { timeZone: 'UTC' });
+const articleStatus = [
+  {
+    label: shared.currentStatus ?? 'Current status',
+    value: entry.data.status ?? shared.publishedStatus ?? 'Published',
+  },
+  {
+    label: shared.lastVerified ?? 'Last verified',
+    value: verifiedDate,
+  },
+  {
+    label: shared.primarySource ?? 'Primary source',
+    value: entry.data.primarySource ? (shared.openSource ?? 'Open source') : (shared.sourceNotes ?? 'Source notes'),
+    href: entry.data.primarySource ?? '#sources',
+  },
+  {
+    label: shared.nextAction ?? 'Next action',
+    value: entry.data.nextAction ?? (shared.reviewSources ?? 'Review source notes'),
+    href: '#sources',
+  },
+];
 
 // Reading time estimate: ~200 wpm for space-separated languages,
 // ~400 chars/min for CJK (no spaces). Author-facing, purely informational.
@@ -232,6 +253,32 @@ const jsonLd = [
         </span>
       </div>
     </header>
+
+    <aside
+      data-article-status
+      class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+      aria-label={shared.articleStatus ?? 'Article status'}
+    >
+      {articleStatus.map((item) => (
+        <div class="card p-4">
+          <p class="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+            {item.label}
+          </p>
+          {item.href ? (
+            <a
+              href={item.href}
+              target={item.href.startsWith('http') ? '_blank' : undefined}
+              rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              class="mt-2 block text-sm font-semibold text-foreground hover:text-nav"
+            >
+              {item.value}
+            </a>
+          ) : (
+            <p class="mt-2 text-sm font-semibold text-foreground">{item.value}</p>
+          )}
+        </div>
+      ))}
+    </aside>
 
     {/* Quick Answer / TL;DR — answer-first for AI Overviews & featured snippets */}
     {summary && (

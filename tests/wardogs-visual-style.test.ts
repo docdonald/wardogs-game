@@ -80,11 +80,11 @@ describe('WARDOGS reference visual treatment', () => {
     expect(baseLayout).not.toContain('G-3Z1JGZ32DC');
   });
 
-  it('uses the official trailer as a muted looping hero background with a fallback', () => {
+  it('uses the official trailer as a poster-first hero background with a fallback', () => {
     expect(home).toContain('data-hero-video-background');
-    expect(home).toContain('youtube-nocookie.com/embed/${hero.videoId}');
-    expect(home).toContain('autoplay=1&mute=1');
-    expect(home).toContain('loop=1');
+    expect(home).not.toContain('youtube-nocookie.com/embed/${hero.videoId}');
+    expect(home).not.toContain('autoplay=1&mute=1');
+    expect(home).not.toContain('loop=1');
     expect(home).toContain('i.ytimg.com/vi/${hero.videoId}/maxresdefault.jpg');
     expect(css).toMatch(/\.hero-field\s*\{/);
     expect(css).toMatch(/background-image:/);

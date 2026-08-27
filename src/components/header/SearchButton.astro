@@ -26,7 +26,7 @@ interface Props {
 const { locale } = Astro.props;
 const ui = getUi(locale);
 const search = ui.search as Record<string, string>;
-const nav = ui.nav as Record<string, string>;
+const nav = ui.nav as unknown as Record<string, string>;
 const btnLabel = nav.search ?? 'Search';
 const noResults = search.noResults ?? 'No matches found';
 const placeholder = search.placeholder ?? 'Search...';

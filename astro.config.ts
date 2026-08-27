@@ -21,8 +21,18 @@ import { landingLinkEnabled } from './src/config/project';
  *
  * Plain fs scan at config time — `astro:content` is not importable here.
  */
+function slugifyTagForSitemap(tag: string): string {
+  const slug = tag
+    .trim()
+    .toLowerCase()
+    .replace(/[\s_]+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+  return slug || tag.trim();
+}
+
 function buildLastmodMap(noindexPaths: Set<string>): Map<string, string> {
   const map = new Map<string, string>();
+  const tagCounts = new Map<string, number>();
   const base = path.resolve('./src/content/wiki');
   if (!fs.existsSync(base)) return map;
 
@@ -39,6 +49,17 @@ function buildLastmodMap(noindexPaths: Set<string>): Map<string, string> {
       // lastmod (would tell Google a page updated that didn't).
       if (/^draft:\s*true\s*$/m.test(src.split('---')[1] ?? '')) continue;
       const fm = src.split('---')[1] ?? '';
+      // Tags are authored as compact YAML arrays in the content pack. Keep a
+      // tiny parser here so thin tag routes can be filtered from sitemap.xml
+      // without importing Astro's content runtime during config evaluation.
+      const tagsRaw = fm.match(/^tags:\s*\[([^\]]*)\]\s*$/m)?.[1] ?? '';
+      for (const token of tagsRaw.match(/'(?:[^']*)'|"(?:[^"]*)"|[^,]+/g) ?? []) {
+        const tag = token.trim().replace(/^['"]|['"]$/g, '').trim();
+        if (tag) {
+          const tagSlug = slugifyTagForSitemap(tag);
+          tagCounts.set(tagSlug, (tagCounts.get(tagSlug) ?? 0) + 1);
+        }
+      }
       const lm = fm.match(/^lastModified:\s*(.+)$/m)?.[1]?.trim();
       const dt = fm.match(/^date:\s*(.+)$/m)?.[1]?.trim();
       const iso = (lm || dt || '').replace(/['"]/g, '');
@@ -77,6 +98,12 @@ function buildLastmodMap(noindexPaths: Set<string>): Map<string, string> {
     }
   };
   walk(base);
+
+  // Tag pages remain useful navigation targets, but single-article tags are
+  // marked noindex by TagListPage and should not be submitted to Google.
+  for (const [tagSlug, count] of tagCounts) {
+    if (count < 2) noindexPaths.add(`/tags/${tagSlug}`);
+  }
 
   // English handbook chapters (docs/handbook/en/<slug>.md) → /landing/docs/<slug>.
   // Same frontmatter-driven lastmod contract; the `updated`

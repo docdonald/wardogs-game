@@ -6,7 +6,23 @@
   "type": "object",
   "properties": {
     "site": { "type": "object" },
-    "nav": { "type": "object", "additionalProperties": { "type": "string" } },
+    "nav": {
+      "type": "object",
+      "properties": {
+        "accessLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "href"],
+            "properties": {
+              "label": { "type": "string" },
+              "href": { "type": "string", "pattern": "^/" }
+            }
+          }
+        }
+      },
+      "additionalProperties": { "type": "string" }
+    },
     "overview": { "type": "object" },
     "footer": { "type": "object" },
     "shared": { "type": "object" },

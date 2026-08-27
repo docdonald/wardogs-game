@@ -143,8 +143,7 @@
     background-color: hsl(var(--background));
   }
 
-  .hero-field__poster,
-  .hero-field__iframe {
+  .hero-field__poster {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -159,11 +158,6 @@
   .hero-field__poster {
     filter: grayscale(0.35) saturate(0.7) contrast(1.05);
     opacity: 0.56;
-  }
-
-  .hero-field__iframe {
-    border: 0;
-    opacity: 0.42;
   }
 
   .hero-field__veil {

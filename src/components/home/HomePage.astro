@@ -80,7 +80,7 @@ function trendingLabel(link: QuickLink): string {
   return typeof link === 'string' ? link : link.label;
 }
 function navLabel(key: string): string {
-  return (ui.nav as Record<string, string>)[key] ?? key;
+  return (ui.nav as unknown as Record<string, string>)[key] ?? key;
 }
 ---
 
@@ -97,8 +97,9 @@ function navLabel(key: string): string {
     class="hero-field relative -mx-4 flex min-h-[52vh] items-center overflow-hidden border-b border-border md:min-h-[68vh]"
   >
     {
-      /* Official Team17 trailer: autoplay is muted and decorative; the
-        right-hand card remains the accessible click-to-play control. */
+      /* Official Team17 trailer poster: the interactive video card on the
+        right remains the only click-to-play surface. The poster is static so
+        the first paint does not create a YouTube iframe. */
     }
     {
       hero.videoId && (
@@ -111,14 +112,6 @@ function navLabel(key: string): string {
             height="720"
             loading="eager"
             decoding="async"
-          />
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${hero.videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${hero.videoId}&playsinline=1&rel=0&modestbranding=1`}
-            title={hero.videoLabel ?? `${site.game.name} official trailer`}
-            tabindex="-1"
-            loading="eager"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            class="hero-field__iframe"
           />
         </div>
       )

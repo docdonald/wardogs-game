@@ -16,7 +16,7 @@ import { pageTitle, simpleBreadcrumbJsonLd, urlListJsonLd } from '~/lib/seo';
 
 const locale = defaultLocale;
 const ui = getUi(locale);
-const nav = ui.nav as Record<string, string>;
+const nav = ui.nav as unknown as Record<string, string>;
 const shared = ui.shared as unknown as Record<string, string>;
 const overview = ui.overview as Record<
   string,

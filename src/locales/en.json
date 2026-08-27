@@ -16,11 +16,41 @@
     "weapons": "Weapons",
     "vehicles": "Vehicles",
     "updates": "Updates & Fixes",
+    "access": "Access",
+    "accessMenu": "Access guides",
+    "accessLinks": [
+      { "label": "Playtest", "href": "/release/playtest" },
+      { "label": "Beta", "href": "/release/beta" },
+      { "label": "Download", "href": "/release/download-preload" },
+      { "label": "System Requirements", "href": "/release/system-requirements" }
+    ],
+    "playtest": "Playtest",
+    "beta": "Beta",
+    "download": "Download",
+    "systemRequirements": "System Requirements",
+    "factions": "Factions",
+    "maps": "Maps",
     "toggleTheme": "Toggle theme",
     "menu": "Menu",
     "close": "Close",
     "search": "Search",
     "language": "Language"
+  },
+  "sidebar": {
+    "priorityTitle": "Priority routes",
+    "priorityLinks": [
+      { "label": "Playtest access", "href": "/release/playtest" },
+      { "label": "Beta status", "href": "/release/beta" },
+      { "label": "Download and preload", "href": "/release/download-preload" },
+      { "label": "System requirements", "href": "/release/system-requirements" }
+    ],
+    "fieldTitle": "Field indexes",
+    "fieldLinks": [
+      { "label": "Factions", "href": "/mechanics/factions" },
+      { "label": "Maps", "href": "/guides/maps" },
+      { "label": "Weapons", "href": "/weapons" },
+      { "label": "Vehicles", "href": "/vehicles" }
+    ]
   },
   "search": { "placeholder": "Search the WARDOGS wiki...", "noResults": "No matches found" },
   "shared": {
@@ -62,6 +92,15 @@
     "notFoundPopular": "Popular pages",
     "galleryLabels": { "close": "Close", "prev": "Previous image", "next": "Next image" },
     "quickAnswer": "Quick Answer",
+    "articleStatus": "Article status",
+    "publishedStatus": "Published",
+    "currentStatus": "Current status",
+    "lastVerified": "Last verified",
+    "primarySource": "Primary source",
+    "nextAction": "Next action",
+    "sourceNotes": "Source notes",
+    "reviewSources": "Review source notes",
+    "openSource": "Open source",
     "skipToContent": "Skip to content",
     "tapToCopy": "Tap to copy",
     "open": "Open",
@@ -108,9 +147,9 @@
   },
   "home": {
     "meta": {
-      "title": "WARDOGS Wiki — Weapons, Vehicles & Beginner Guides",
-      "description": "Master WARDOGS with beginner guides, weapons, vehicles, loadouts, cash economy tips, Control Zone tactics, roles, progression, and teamplay strategies.",
-      "keywords": "WARDOGS, Steam, wiki, guides, weapons, vehicles, loadouts, cash, Control Zone, roles"
+      "title": "WARDOGS Wiki — Beginner Guides, Weapons, Vehicles & Playtest",
+      "description": "WARDOGS Wiki covers the Release Date, Playtest access, Gameplay, Beginner Guides, weapons, vehicles, Control Zone tactics, cash economy, and teamplay.",
+      "keywords": "WARDOGS, Steam, wiki, release date, Playtest, gameplay, guides, weapons, vehicles, loadouts, cash, Control Zone, roles"
     },
     "hero": {
       "badge": "Fan-Made Tactical Warfare Wiki",
@@ -237,12 +276,16 @@
       "badge": "Priority Pages",
       "title": "Start With These",
       "quickLinks": [
-        { "label": "WARDOGS Release Date", "href": "/release/release-date" },
-        { "label": "WARDOGS Steam Guide", "href": "/release/steam" },
-        { "label": "WARDOGS Beginner Guide", "href": "/guides/beginner-guide" },
+        { "label": "WARDOGS Playtest", "href": "/release/playtest" },
+        { "label": "WARDOGS Beta Status", "href": "/release/beta" },
+        { "label": "WARDOGS Download and Preload", "href": "/release/download-preload" },
         { "label": "WARDOGS System Requirements", "href": "/release/system-requirements" },
-        { "label": "WARDOGS Control Zone", "href": "/mechanics/control-zone" },
-        { "label": "WARDOGS Roadmap", "href": "/updates/roadmap" }
+        { "label": "WARDOGS Release Date", "href": "/release/release-date" },
+        { "label": "WARDOGS Beginner Guide", "href": "/guides/beginner-guide" },
+        { "label": "WARDOGS Factions", "href": "/mechanics/factions" },
+        { "label": "WARDOGS Maps", "href": "/guides/maps" },
+        { "label": "WARDOGS Weapons", "href": "/weapons" },
+        { "label": "WARDOGS Vehicles", "href": "/vehicles" }
       ]
     },
     "aboutGame": {
