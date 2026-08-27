@@ -7,11 +7,12 @@
  *
  * Sections (top to bottom):
  *   1. Hero          — title, description, CTAs (strong visual anchor)
- *   2. QuickStart    — four researched deployment starting points
- *   3. Recent Updates + Trending links (two columns)
- *   4. GameOverview  — researched game description and facts
- *   5. Explore       — content modules with displayTypes
- *   6. FinalCta      — bottom call-to-action
+ *   2. CurrentStatus — release and access snapshot from researched facts
+ *   3. QuickStart    — four researched deployment starting points
+ *   4. Recent Updates + Trending links (two columns)
+ *   5. GameOverview  — researched game description and facts
+ *   6. Explore       — content modules with displayTypes
+ *   7. FinalCta      — bottom call-to-action
  *
  * v0.2 refactor: trimmed from 8 sections to 5. Removed GameInfo (info
  * duplicated Hero stats), FAQ (moved to /faq), standalone TrendingNow
@@ -24,12 +25,12 @@ import VideoSection from '~/components/home/VideoSection.astro';
 import QuickStart from '~/components/home/QuickStart.astro';
 import GameOverview from '~/components/home/GameOverview.astro';
 import ExploreModules from '~/components/home/ExploreModules.astro';
+import CurrentStatus from '~/components/home/CurrentStatus.astro';
 import { site } from '~/config/site';
-import { NAVIGATION_CONFIG } from '~/config/navigation';
 import { type Locale } from '~/i18n/routing';
 import { getUi } from '~/i18n/ui';
 import { getRecentEntries, parseEntryId } from '~/lib/content';
-import { localizePath, listPath, detailPath } from '~/lib/url';
+import { localizePath, recentPath, detailPath } from '~/lib/url';
 
 interface Props {
   locale: Locale;
@@ -46,6 +47,7 @@ const recent = await getRecentEntries(locale, 6);
 
 const meta = home.meta ?? { title: site.name, description: site.description };
 const hero = home.hero ?? {};
+const status = home.status ?? { items: [] };
 const updates = home.updates ?? { title: 'Recent Updates' };
 const start = home.start ?? { cards: [] };
 const popular = home.popular ?? { title: 'Trending Now', quickLinks: [] };
@@ -169,6 +171,16 @@ function trendingLabel(link: QuickLink): string {
     </div>
   </section>
 
+  {/* ─────────────────────────── Current Status ───────────────────────── */}
+  <CurrentStatus
+    locale={locale}
+    badge={status.badge}
+    title={status.title}
+    description={status.description}
+    reviewed={status.reviewed}
+    items={status.items}
+  />
+
   {/* ───────────────────────────── Quick Start ────────────────────────── */}
   <QuickStart
     locale={locale}
@@ -184,7 +196,7 @@ function trendingLabel(link: QuickLink): string {
       <div class="lg:col-span-2">
         <div class="flex items-baseline justify-between">
           <h2 class="display-title text-2xl">{updates.title}</h2>
-          <a href={listPath(NAVIGATION_CONFIG[1]?.key ?? 'guides', locale)} class="text-sm text-foreground hover:text-nav hover:underline"
+          <a href={recentPath(locale)} class="text-sm text-foreground hover:text-nav hover:underline"
             >{shared.browseAll}</a
           >
         </div>

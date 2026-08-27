@@ -41,6 +41,28 @@
             "videoLabel": { "type": "string" }
           }
         },
+        "status": {
+          "type": "object",
+          "properties": {
+            "badge": { "type": "string" },
+            "title": { "type": "string" },
+            "description": { "type": "string" },
+            "reviewed": { "type": "string" },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["label", "value", "detail", "href"],
+                "properties": {
+                  "label": { "type": "string" },
+                  "value": { "type": "string" },
+                  "detail": { "type": "string" },
+                  "href": { "type": "string", "pattern": "^/" }
+                }
+              }
+            }
+          }
+        },
         "updates": {
           "type": "object",
           "properties": {

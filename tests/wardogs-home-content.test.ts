@@ -47,4 +47,44 @@ describe('WARDOGS homepage research content', () => {
     expect(en.home.finalCta.title).toBeTruthy();
     expect(JSON.stringify(en.home)).not.toMatch(/redeem|code/i);
   });
+
+  it('exposes a source-aware current status block from researched facts', () => {
+    expect(en.home.status).toEqual({
+      badge: 'Current Status',
+      title: 'What is happening now?',
+      description: 'Release and access details from the latest collected official sources.',
+      reviewed: 'Reviewed Aug 23, 2026',
+      items: [
+        {
+          label: 'Early Access',
+          value: 'September 10, 2026',
+          detail: 'Steam launch date',
+          href: '/release/release-date',
+        },
+        {
+          label: 'Current access',
+          value: 'Closed Beta ended',
+          detail: 'Check official Playtest routes',
+          href: '/release/beta',
+        },
+        {
+          label: 'Launch platform',
+          value: 'Windows PC / Steam',
+          detail: 'Confirmed platform',
+          href: '/release/platforms',
+        },
+        {
+          label: 'Match format',
+          value: 'Up to 100 players',
+          detail: 'Three teams, one Control Zone',
+          href: '/guides/what-is-wardogs',
+        },
+      ],
+    });
+  });
+
+  it('sends the recent-pages browse link to the recent index', () => {
+    expect(homePage).toContain("recentPath(locale)");
+    expect(homePage).not.toContain('listPath(NAVIGATION_CONFIG[1]?.key ?? \'guides\', locale)');
+  });
 });
