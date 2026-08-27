@@ -118,6 +118,15 @@ The weapons database description was shortened during this follow-up from 164 to
 
 Technical P0/P1 checks are clear after the roadmap cannibalization fix. Release is **修复后上线**: complete the external-link/GA production confirmation, and decide whether the approximate 1200-word article target is required in English before publishing a final content-length pass.
 
+## 2026-08-27 template-brand isolation follow-up
+
+- Removed the public `/landing` and `/landing/docs/*` route files; the production build no longer emits those template pages.
+- Renamed the Cloudflare Pages project in `wrangler.toml` from `anvilwiki` to `wardogs-game-wiki`.
+- Internal template source/config files remain in the repository for maintainers, but they are not imported by public routes.
+- Final build: 116 static pages generated; `/landing` and `/landing/docs` return 404 in production preview.
+- Final check-links: 5,546 links across 116 pages passed.
+- Final sitemap: 115/115 URLs returned HTTP 200.
+
 ## 2026-08-27 competitor-link cleanup and disclaimer follow-up
 
 - Removed all competitor-domain hyperlinks from public article content (`wardogs.wiki`, `wardogs.space`, and `wardogswiki.com`). Research and internal strategy files retain source URLs for provenance.
