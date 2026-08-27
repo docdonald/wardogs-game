@@ -26,10 +26,11 @@ import QuickStart from '~/components/home/QuickStart.astro';
 import GameOverview from '~/components/home/GameOverview.astro';
 import ExploreModules from '~/components/home/ExploreModules.astro';
 import CurrentStatus from '~/components/home/CurrentStatus.astro';
+import { NAVIGATION_CONFIG } from '~/config/navigation';
 import { site } from '~/config/site';
 import { type Locale } from '~/i18n/routing';
 import { getUi } from '~/i18n/ui';
-import { getRecentEntries, parseEntryId } from '~/lib/content';
+import { getEntriesByCategory, getRecentEntries, parseEntryId } from '~/lib/content';
 import { localizePath, recentPath, detailPath } from '~/lib/url';
 
 interface Props {
@@ -43,12 +44,26 @@ const ui = getUi(locale);
 const home = ui.home as any;
 const shared = ui.shared as unknown as Record<string, any>;
 
-const recent = await getRecentEntries(locale, 6);
+const [recentEntries, officialUpdates, categoryCounts] = await Promise.all([
+  getRecentEntries(locale, 12),
+  getEntriesByCategory('updates', locale),
+  Promise.all(
+    NAVIGATION_CONFIG.map(async (item) => ({
+      item,
+      count: (await getEntriesByCategory(item.key, locale)).length,
+    })),
+  ),
+]);
+const recent = recentEntries
+  .filter((entry) => parseEntryId(entry.id)?.category !== 'updates')
+  .slice(0, 6);
 
 const meta = home.meta ?? { title: site.name, description: site.description };
 const hero = home.hero ?? {};
 const status = home.status ?? { items: [] };
 const updates = home.updates ?? { title: 'Recent Updates' };
+const database = home.database ?? {};
+const evidence = home.evidence ?? {};
 const start = home.start ?? { cards: [] };
 const popular = home.popular ?? { title: 'Trending Now', quickLinks: [] };
 const explore = home.explore ?? { modules: [] };
@@ -64,6 +79,9 @@ function trendingHref(link: QuickLink): string | null {
 function trendingLabel(link: QuickLink): string {
   return typeof link === 'string' ? link : link.label;
 }
+function navLabel(key: string): string {
+  return (ui.nav as Record<string, string>)[key] ?? key;
+}
 ---
 
 <LocaleLayout
@@ -75,31 +93,37 @@ function trendingLabel(link: QuickLink): string {
   jsonLd={jsonLd}
 >
   {/* ─────────────────────────────── Hero ─────────────────────────────── */}
-  <section class="hero-field relative -mx-4 flex min-h-[52vh] items-center overflow-hidden border-b border-border md:min-h-[68vh]">
-    {/* Official Team17 trailer: autoplay is muted and decorative; the
-        right-hand card remains the accessible click-to-play control. */}
-    {hero.videoId && (
-      <div data-hero-video-background aria-hidden="true" class="hero-field__media">
-        <img
-          src={`https://i.ytimg.com/vi/${hero.videoId}/maxresdefault.jpg`}
-          alt=""
-          class="hero-field__poster"
-          width="1280"
-          height="720"
-          loading="eager"
-          decoding="async"
-        />
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${hero.videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${hero.videoId}&playsinline=1&rel=0&modestbranding=1`}
-          title={hero.videoLabel ?? `${site.game.name} official trailer`}
-          tabindex="-1"
-          loading="eager"
-          allow="autoplay; encrypted-media; picture-in-picture"
-          class="hero-field__iframe"
-        ></iframe>
-      </div>
-    )}
-    <div aria-hidden="true" class="hero-field__veil" />
+  <section
+    class="hero-field relative -mx-4 flex min-h-[52vh] items-center overflow-hidden border-b border-border md:min-h-[68vh]"
+  >
+    {
+      /* Official Team17 trailer: autoplay is muted and decorative; the
+        right-hand card remains the accessible click-to-play control. */
+    }
+    {
+      hero.videoId && (
+        <div data-hero-video-background aria-hidden="true" class="hero-field__media">
+          <img
+            src={`https://i.ytimg.com/vi/${hero.videoId}/maxresdefault.jpg`}
+            alt=""
+            class="hero-field__poster"
+            width="1280"
+            height="720"
+            loading="eager"
+            decoding="async"
+          />
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${hero.videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${hero.videoId}&playsinline=1&rel=0&modestbranding=1`}
+            title={hero.videoLabel ?? `${site.game.name} official trailer`}
+            tabindex="-1"
+            loading="eager"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            class="hero-field__iframe"
+          />
+        </div>
+      )
+    }
+    <div aria-hidden="true" class="hero-field__veil"></div>
     {/* Faint game-name watermark — pure CSS, no image asset required. */}
     <span
       aria-hidden="true"
@@ -108,9 +132,13 @@ function trendingLabel(link: QuickLink): string {
       {site.game.name}
     </span>
 
-    <div class="hero-field__frame relative mx-auto grid w-full max-w-7xl gap-8 px-4 py-12 md:grid-cols-2 md:items-center md:gap-10 md:px-8 md:py-20">
+    <div
+      class="hero-field__frame relative mx-auto grid w-full max-w-7xl gap-8 px-4 py-12 md:grid-cols-2 md:items-center md:gap-10 md:px-8 md:py-20"
+    >
       <div class="relative z-10">
-        <p class="hero-field__eyebrow text-sm font-semibold uppercase tracking-[0.2em]">{hero.badge}</p>
+        <p class="hero-field__eyebrow text-sm font-semibold uppercase tracking-[0.2em]">
+          {hero.badge}
+        </p>
         <h1
           class="display-title mt-4 max-w-3xl text-4xl font-black tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
         >
@@ -152,22 +180,29 @@ function trendingLabel(link: QuickLink): string {
         </div>
       </div>
 
-      {hero.videoId && (
-        <div class="relative z-10 md:pt-6">
-          <div class="hero-field__panel-label">Official gameplay footage / Team17</div>
-          <VideoSection videoId={hero.videoId} title={hero.videoLabel ?? `${site.game.name} trailer`} />
-        </div>
-      )}
+      {
+        hero.videoId && (
+          <div class="relative z-10 md:pt-6">
+            <div class="hero-field__panel-label">Official gameplay footage / Team17</div>
+            <VideoSection
+              videoId={hero.videoId}
+              title={hero.videoLabel ?? `${site.game.name} trailer`}
+            />
+          </div>
+        )
+      }
 
-      {Array.isArray(hero.stats) && hero.stats.length > 0 && (
-        <ul class="hero-field__stats relative z-10 grid gap-2 sm:grid-cols-2 md:col-span-2 lg:grid-cols-5">
-          {hero.stats.map((stat: string) => (
-            <li class="border border-foreground/20 bg-background/45 px-3 py-3 text-xs font-medium text-foreground/70">
-              {stat}
-            </li>
-          ))}
-        </ul>
-      )}
+      {
+        Array.isArray(hero.stats) && hero.stats.length > 0 && (
+          <ul class="hero-field__stats relative z-10 grid gap-2 sm:grid-cols-2 md:col-span-2 lg:grid-cols-5">
+            {hero.stats.map((stat: string) => (
+              <li class="border border-foreground/20 bg-background/45 px-3 py-3 text-xs font-medium text-foreground/70">
+                {stat}
+              </li>
+            ))}
+          </ul>
+        )
+      }
     </div>
   </section>
 
@@ -182,12 +217,43 @@ function trendingLabel(link: QuickLink): string {
   />
 
   {/* ───────────────────────────── Quick Start ────────────────────────── */}
-  <QuickStart
-    locale={locale}
-    badge={start.badge}
-    title={start.title}
-    cards={start.cards}
-  />
+  <QuickStart locale={locale} badge={start.badge} title={start.title} cards={start.cards} />
+
+  {/* ─────────────────────────── Database index ───────────────────────── */}
+  {
+    categoryCounts.some(({ count }) => count > 0) && (
+      <section class="section border-t border-border" aria-labelledby="database-index-title">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-wider text-nav">{database.badge}</p>
+            <h2 id="database-index-title" class="display-title mt-1 text-2xl md:text-3xl">
+              {database.title}
+            </h2>
+            <p class="mt-2 max-w-2xl text-sm text-muted-foreground">{database.description}</p>
+          </div>
+          <a href={localizePath('/wiki', locale)} class="btn-outline text-sm">
+            {database.viewIndex}
+          </a>
+        </div>
+        <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {categoryCounts.map(({ item, count }) => (
+            <a
+              href={localizePath(item.path, locale)}
+              class="card flex items-center justify-between gap-4 p-4"
+            >
+              <span>
+                <span class="block text-sm font-semibold">{navLabel(item.key)}</span>
+                <span class="mt-1 block text-xs text-muted-foreground">
+                  {count} {database.articleCount}
+                </span>
+              </span>
+              <Icon name={item.icon} class="h-5 w-5 shrink-0 text-nav" />
+            </a>
+          ))}
+        </div>
+      </section>
+    )
+  }
 
   {/* ───────────────────── Recent Updates + Trending ───────────────────── */}
   <section class="section border-t border-border">
@@ -196,8 +262,9 @@ function trendingLabel(link: QuickLink): string {
       <div class="lg:col-span-2">
         <div class="flex items-baseline justify-between">
           <h2 class="display-title text-2xl">{updates.title}</h2>
-          <a href={recentPath(locale)} class="text-sm text-foreground hover:text-nav hover:underline"
-            >{shared.browseAll}</a
+          <a
+            href={recentPath(locale)}
+            class="text-sm text-foreground hover:text-nav hover:underline">{shared.browseAll}</a
           >
         </div>
         <div class="mt-4 grid gap-4 sm:grid-cols-2">
@@ -223,52 +290,134 @@ function trendingLabel(link: QuickLink): string {
             )
           }
         </div>
+
+        {
+          officialUpdates.length > 0 && (
+            <div class="mt-8 border-t border-border pt-6" aria-labelledby="official-updates-title">
+              <div class="flex flex-wrap items-baseline justify-between gap-2">
+                <div>
+                  <p class="text-sm font-semibold uppercase tracking-wider text-nav">
+                    {updates.officialBadge}
+                  </p>
+                  <h3 id="official-updates-title" class="display-title mt-1 text-xl">
+                    {updates.officialTitle}
+                  </h3>
+                  <p class="mt-1 text-sm text-muted-foreground">{updates.officialDescription}</p>
+                </div>
+                <a
+                  href={localizePath('/updates', locale)}
+                  class="text-sm text-foreground hover:text-nav hover:underline"
+                >
+                  {shared.viewAll}
+                </a>
+              </div>
+              <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                {officialUpdates.slice(0, 3).map((entry) => {
+                  const parsed = parseEntryId(entry.id);
+                  if (!parsed) return null;
+                  return (
+                    <a
+                      href={detailPath(parsed.category, parsed.slug, locale)}
+                      class="card block p-4"
+                    >
+                      <p class="text-xs uppercase tracking-wider text-nav">
+                        {updates.officialItemLabel}
+                      </p>
+                      <h4 class="mt-1 font-semibold leading-snug">{entry.data.title}</h4>
+                      <p class="mt-2 text-xs text-muted-foreground">
+                        {entry.data.lastModified
+                          ? `${shared.lastUpdated}: ${entry.data.lastModified.toLocaleDateString(locale, { timeZone: 'UTC' })}`
+                          : `${shared.publishedOn}: ${entry.data.date.toLocaleDateString(locale, { timeZone: 'UTC' })}`}
+                      </p>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          )
+        }
       </div>
 
       {/* Trending — 1/3 width sidebar list. */}
-      {trendingLinks.length > 0 && (
-        <aside>
-          <p class="text-sm font-semibold uppercase tracking-wider text-foreground">{popular.badge}</p>
-          <h2 class="display-title mt-1 text-2xl">{popular.title}</h2>
-          <ul class="mt-4 space-y-2">
-            {trendingLinks.map((link: QuickLink) => {
-              const href = trendingHref(link);
-              const label = trendingLabel(link);
-              return (
-                <li>
-                  {href ? (
-                    <a
-                      href={href}
-                      class="flex items-center gap-2 rounded-md border bg-card p-3 text-sm font-medium transition hover:border-nav/50"
-                    >
-                      <Icon name="lucide:trending-up" class="h-4 w-4 shrink-0 text-nav" />
-                      <span class="leading-snug">{label}</span>
-                    </a>
-                  ) : (
-                    <div class="flex items-center gap-2 rounded-md border bg-card p-3 text-sm font-medium">
-                      <Icon name="lucide:trending-up" class="h-4 w-4 shrink-0 text-nav" />
-                      <span class="leading-snug">{label}</span>
-                    </div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </aside>
-      )}
+      {
+        trendingLinks.length > 0 && (
+          <aside>
+            <p class="text-sm font-semibold uppercase tracking-wider text-foreground">
+              {popular.badge}
+            </p>
+            <h2 class="display-title mt-1 text-2xl">{popular.title}</h2>
+            <ul class="mt-4 space-y-2">
+              {trendingLinks.map((link: QuickLink) => {
+                const href = trendingHref(link);
+                const label = trendingLabel(link);
+                return (
+                  <li>
+                    {href ? (
+                      <a
+                        href={href}
+                        class="flex items-center gap-2 rounded-md border bg-card p-3 text-sm font-medium transition hover:border-nav/50"
+                      >
+                        <Icon name="lucide:trending-up" class="h-4 w-4 shrink-0 text-nav" />
+                        <span class="leading-snug">{label}</span>
+                      </a>
+                    ) : (
+                      <div class="flex items-center gap-2 rounded-md border bg-card p-3 text-sm font-medium">
+                        <Icon name="lucide:trending-up" class="h-4 w-4 shrink-0 text-nav" />
+                        <span class="leading-snug">{label}</span>
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </aside>
+        )
+      }
     </div>
   </section>
 
   {/* ─────────────────────────── Game Overview ────────────────────────── */}
-  {aboutGame && (
-    <GameOverview
-      title={aboutGame.title}
-      paragraphs={aboutGame.paragraphs}
-      stats={aboutGame.stats}
-      cta={aboutGame.cta}
-      href={localizePath(aboutGame.ctaHref ?? '/guides', locale)}
-    />
-  )}
+  {
+    aboutGame && (
+      <GameOverview
+        title={aboutGame.title}
+        paragraphs={aboutGame.paragraphs}
+        stats={aboutGame.stats}
+        cta={aboutGame.cta}
+        href={localizePath(aboutGame.ctaHref ?? '/guides', locale)}
+      />
+    )
+  }
+
+  {/* ─────────────────────────── Evidence policy ───────────────────────── */}
+  {
+    evidence.items?.length > 0 && (
+      <section class="section border-t border-border" aria-labelledby="evidence-policy-title">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-wider text-nav">{evidence.badge}</p>
+            <h2 id="evidence-policy-title" class="display-title mt-1 text-2xl md:text-3xl">
+              {evidence.title}
+            </h2>
+            <p class="mt-2 max-w-2xl text-sm text-muted-foreground">{evidence.description}</p>
+          </div>
+          {evidence.href && evidence.link && (
+            <a href={localizePath(evidence.href, locale)} class="btn-outline text-sm">
+              {evidence.link}
+            </a>
+          )}
+        </div>
+        <div class="mt-6 grid gap-3 md:grid-cols-3">
+          {evidence.items.map((item: { label: string; detail: string }) => (
+            <div class="card p-4">
+              <h3 class="font-semibold">{item.label}</h3>
+              <p class="mt-2 text-sm text-muted-foreground">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
 
   {/* ──────────────────────────── Explore Modules ─────────────────────── */}
   {
