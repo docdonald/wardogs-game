@@ -40,6 +40,8 @@
     "priorityTitle": "Priority routes",
     "priorityLinks": [
       { "label": "Playtest access", "href": "/release/playtest" },
+      { "label": "Alpha Key checks", "href": "/release/alpha-key" },
+      { "label": "FirstLook Login", "href": "/release/firstlook-login" },
       { "label": "Beta status", "href": "/release/beta" },
       { "label": "Download and preload", "href": "/release/download-preload" },
       { "label": "System requirements", "href": "/release/system-requirements" }
@@ -282,10 +284,13 @@
         { "label": "WARDOGS System Requirements", "href": "/release/system-requirements" },
         { "label": "WARDOGS Release Date", "href": "/release/release-date" },
         { "label": "WARDOGS Beginner Guide", "href": "/guides/beginner-guide" },
+        { "label": "WARDOGS Compare Tool", "href": "/guides/compare" },
         { "label": "WARDOGS Factions", "href": "/mechanics/factions" },
         { "label": "WARDOGS Maps", "href": "/guides/maps" },
         { "label": "WARDOGS Weapons", "href": "/weapons" },
-        { "label": "WARDOGS Vehicles", "href": "/vehicles" }
+        { "label": "WARDOGS Vehicles", "href": "/vehicles" },
+        { "label": "WARDOGS Official Videos", "href": "/updates/official-videos" },
+        { "label": "WARDOGS Community", "href": "/updates/community" }
       ]
     },
     "aboutGame": {
