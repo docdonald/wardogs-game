@@ -48,3 +48,21 @@ export function isPossiblyOutdated(
   const ageMs = now.getTime() - ref.getTime();
   return ageMs > STALE_AFTER_DAYS * 24 * 60 * 60 * 1000;
 }
+
+/**
+ * Split article entries into image and text-only groups while preserving the
+ * source order inside each group. Category list pages use the two groups to
+ * keep visual cards together when a category has fewer covers than articles.
+ */
+export function splitEntriesByImage<T extends { data: { image?: unknown } }>(entries: T[]): {
+  withImages: T[];
+  withoutImages: T[];
+} {
+  return entries.reduce(
+    (groups, entry) => {
+      (entry.data.image ? groups.withImages : groups.withoutImages).push(entry);
+      return groups;
+    },
+    { withImages: [] as T[], withoutImages: [] as T[] },
+  );
+}

@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { parseEntryId, isPossiblyOutdated, STALE_AFTER_DAYS } from '~/lib/content-utils';
+import {
+  parseEntryId,
+  isPossiblyOutdated,
+  splitEntriesByImage,
+  STALE_AFTER_DAYS,
+} from '~/lib/content-utils';
 
 describe('parseEntryId', () => {
   it('parses a simple id into locale/category/slug', () => {
@@ -64,5 +69,21 @@ describe('isPossiblyOutdated', () => {
     // Published recently but lastModified is ancient → outdated (data bug,
     // but the function must honor the explicit field).
     expect(isPossiblyOutdated('tier-list', stale, fresh, now)).toBe(true);
+  });
+});
+
+describe('splitEntriesByImage', () => {
+  it('keeps image cards first and preserves order within each group', () => {
+    const entries = [
+      { id: 'no-image-first', data: {} },
+      { id: 'image-first', data: { image: { src: '/first.webp' } } },
+      { id: 'no-image-second', data: { image: undefined } },
+      { id: 'image-second', data: { image: { src: '/second.webp' } } },
+    ];
+
+    expect(splitEntriesByImage(entries)).toEqual({
+      withImages: [entries[1], entries[3]],
+      withoutImages: [entries[0], entries[2]],
+    });
   });
 });
