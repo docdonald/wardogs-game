@@ -1,0 +1,24 @@
+---
+/**
+ * AdsterraNativeBanner — the Adsterra native banner for game-site pages.
+ *
+ * The provider script and container are kept together so the zone is loaded
+ * exactly once wherever this component is rendered. Both values are
+ * environment-driven; an empty value disables the slot safely. The reserved
+ * space keeps late ad fill from shifting the page content.
+ */
+const nativeScript = import.meta.env.PUBLIC_ADSTERRA_NATIVE_SCRIPT as string | undefined;
+const nativeContainerId = import.meta.env.PUBLIC_ADSTERRA_NATIVE_CONTAINER as string | undefined;
+const show = Boolean(nativeScript && nativeContainerId);
+---
+
+{show && (
+  <div
+    class="my-8 flex min-h-[250px] flex-col items-center justify-center"
+    aria-label="Advertisement"
+    data-adsterra-native
+  >
+    <script is:inline async="async" data-cfasync="false" src={nativeScript}></script>
+    <div id={nativeContainerId}></div>
+  </div>
+)}

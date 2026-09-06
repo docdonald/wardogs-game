@@ -62,3 +62,8 @@ PUBLIC_CF_BEACON_TOKEN = ""
 #PUBLIC_GA_ID = ""
 # Google Search Console verification meta token
 #PUBLIC_GSC_VERIFICATION = ""
+# Adsterra Native Banner (inner pages; empty disables the slot)
+PUBLIC_ADSTERRA_NATIVE_SCRIPT = "https://wistfulseverely.com/8bd4c999a0adea620ac968dcc919745a/invoke.js"
+PUBLIC_ADSTERRA_NATIVE_CONTAINER = "container-8bd4c999a0adea620ac968dcc919745a"
+# Adsterra Social Bar (empty disables the script)
+PUBLIC_ADSTERRA_SOCIALBAR_SCRIPT = "https://wistfulseverely.com/c5/f3/f9/c5f3f9cb93d8417ed0b9c171d0a18a4a.js"

@@ -17,6 +17,7 @@ import { organizationJsonLd } from '~/lib/seo';
 import JsonLd from '~/components/seo/JsonLd.astro';
 import CookieConsent from './CookieConsent.astro';
 import { getUi } from '~/i18n/ui';
+import AdsterraSocialBar from '~/components/ads/AdsterraSocialBar.astro';
 
 interface Props {
   title: string;
@@ -45,6 +46,8 @@ interface Props {
   articlePublished?: Date;
   /** Article last-modified date → article:modified_time. */
   articleModified?: Date;
+  /** Load the Adsterra social bar for the game-site shell. */
+  adsterraSocialBar?: boolean;
   /**
    * Locale of the MAIN CONTENT. Defaults to `locale` (the UI chrome). Pass
    * `servedLocale` on English-fallback pages so <html lang> / og:locale match
@@ -75,6 +78,7 @@ const {
   articlePublished,
   articleModified,
   contentLocale,
+  adsterraSocialBar = false,
 } = Astro.props;
 
 // Language of the main content (falls back to the UI locale).
@@ -308,5 +312,6 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
         privacyLabel={privacyLabel}
       />
     )}
+    {adsterraSocialBar && <AdsterraSocialBar />}
   </body>
 </html>

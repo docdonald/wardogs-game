@@ -1,0 +1,12 @@
+---
+/**
+ * AdsterraSocialBar — the site-wide social bar for the game-site shell.
+ *
+ * This is deliberately a single shared component so the provider script is
+ * emitted once, immediately before the closing body tag in BaseLayout. An
+ * empty environment value keeps the script disabled.
+ */
+const socialBarScript = import.meta.env.PUBLIC_ADSTERRA_SOCIALBAR_SCRIPT as string | undefined;
+---
+
+{socialBarScript && <script is:inline src={socialBarScript}></script>}
