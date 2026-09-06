@@ -54,7 +54,7 @@ describe('WARDOGS homepage research content', () => {
     expect(site.game.publisher).toBe('Team17');
     expect(en.home.hero.stats).toEqual([
       'Early Access Sep 10, 2026',
-      'Updated Aug 2026',
+      'Updated Sep 2026',
       '100-Player Battles',
       '3 Teams',
       '1M+ Steam Wishlists',
@@ -84,7 +84,7 @@ describe('WARDOGS homepage research content', () => {
       badge: 'Current Status',
       title: 'What is happening now?',
       description: 'Release and access details from the latest collected official sources.',
-      reviewed: 'Reviewed Aug 23, 2026',
+      reviewed: 'Reviewed Sep 6, 2026',
       items: [
         {
           label: 'Early Access',
@@ -94,8 +94,8 @@ describe('WARDOGS homepage research content', () => {
         },
         {
           label: 'Current access',
-          value: 'Closed Beta ended',
-          detail: 'Check official Playtest routes',
+          value: 'September beta ended',
+          detail: 'September beta ended; watch Steam',
           href: '/release/beta',
         },
         {
