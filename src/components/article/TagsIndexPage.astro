@@ -26,7 +26,12 @@ const description = shared.tagsIndexDescription as string;
 
 const tags = await getTagsWithCounts(locale);
 
-const jsonLd = simpleBreadcrumbJsonLd({ pageLabel: title, path: tagsPath(locale), locale, homeLabel: nav.home });
+const jsonLd = simpleBreadcrumbJsonLd({
+  pageLabel: title,
+  path: tagsPath(locale),
+  locale,
+  homeLabel: nav.home,
+});
 ---
 
 <LocaleLayout
@@ -35,6 +40,7 @@ const jsonLd = simpleBreadcrumbJsonLd({ pageLabel: title, path: tagsPath(locale)
   description={description}
   alternates={alternates}
   jsonLd={[jsonLd]}
+  noindex={true}
 >
   <div class="space-y-6">
     <header>

@@ -87,6 +87,9 @@
     "articlesCount": "articles",
     "recentTitle": "Recent Updates",
     "recentDescription": "The latest verified updates across the WARDOGS wiki.",
+    "categoryPages": "published pages",
+    "withImages": "Pages with media",
+    "withoutImages": "Text-first pages",
     "sponsorTitle": "Support this wiki",
     "sponsorText": "If these guides helped you, consider supporting the site.",
     "sponsorButton": "Support us",
@@ -217,7 +220,8 @@
       "title": "Browse the Database",
       "description": "Find every published WARDOGS Wiki page by topic, with counts that reflect the current English content set.",
       "viewIndex": "Open full Wiki Index",
-      "articleCount": "pages"
+      "articleCount": "pages",
+      "browseCategory": "Browse category"
     },
     "evidence": {
       "badge": "Evidence Policy",

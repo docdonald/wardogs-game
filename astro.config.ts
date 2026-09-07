@@ -138,6 +138,10 @@ function buildLastmodMap(noindexPaths: Set<string>): Map<string, string> {
 }
 
 const noindexPaths = new Set<string>();
+// The tag directory is a navigation utility, not a standalone search result.
+// Keep it reachable for readers while aligning its noindex header with the
+// sitemap filter so Google receives one consistent indexing signal.
+noindexPaths.add('/tags');
 const lastmodMap = buildLastmodMap(noindexPaths);
 
 // https://astro.build/config
