@@ -71,6 +71,13 @@ Utility/legal titles are intentionally shorter than article TDH limits and were 
 
 No P0/P1 blocker remains in the verified local build. The site is **修复后上线** provided the owner performs the two environment-dependent checks: live external links and browser screenshots at desktop, 390px, 360px, and 768px.
 
+## 2026-09-07 source-backed content expansion
+
+- Added `/mechanics/monetization-and-pay-to-win`, `/guides/solo-guide`, and `/release/engine-and-performance` as English keyword pages.
+- Frontmatter titles are 40–60 characters before the shared site suffix; descriptions are 140–160 characters. Astro resolves the new routes and their registered YouTube videos.
+- The new articles are approximately 786, 920, and 809 English words respectively, use H2 sections, begin with direct answers, and include only the collected official facts.
+- Official media attribution is shown below the inline image or video on each page. The homepage quick links and article sidebar priority routes now expose the three pages.
+
 ## 2026-08-27 phase-3 content acceptance follow-up
 
 - Scope: 11 newly added English keyword pages covering factions, maps, map mechanics, weapons, equipment, vehicles, Gold Bars, Player Skills, and Black Market; the existing Roadmap page was enhanced with the collected image asset.

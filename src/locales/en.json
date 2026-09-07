@@ -44,7 +44,10 @@
       { "label": "FirstLook Login", "href": "/release/firstlook-login" },
       { "label": "Beta status", "href": "/release/beta" },
       { "label": "Download and preload", "href": "/release/download-preload" },
-      { "label": "System requirements", "href": "/release/system-requirements" }
+      { "label": "System requirements", "href": "/release/system-requirements" },
+      { "label": "Engine and performance", "href": "/release/engine-and-performance" },
+      { "label": "Solo Guide", "href": "/guides/solo-guide" },
+      { "label": "Monetization policy", "href": "/mechanics/monetization-and-pay-to-win" }
     ],
     "fieldTitle": "Field indexes",
     "fieldLinks": [
@@ -294,7 +297,10 @@
         { "label": "WARDOGS Weapons", "href": "/weapons" },
         { "label": "WARDOGS Vehicles", "href": "/vehicles" },
         { "label": "WARDOGS Official Videos", "href": "/updates/official-videos" },
-        { "label": "WARDOGS Community", "href": "/updates/community" }
+        { "label": "WARDOGS Community", "href": "/updates/community" },
+        { "label": "WARDOGS Solo Guide", "href": "/guides/solo-guide" },
+        { "label": "WARDOGS Monetization Guide", "href": "/mechanics/monetization-and-pay-to-win" },
+        { "label": "WARDOGS Engine & Performance", "href": "/release/engine-and-performance" }
       ]
     },
     "aboutGame": {

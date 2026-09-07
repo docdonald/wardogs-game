@@ -13,3 +13,9 @@ Audit date: 2026-08-23
 ## Coverage limits
 
 The current content pack covers the existing English MDX set and its linked hubs. Keyword intents without source-backed pages remain listed as content opportunities in `qa-report.md`; they were not filled with invented facts.
+
+## 2026-09-07 content expansion
+
+- Added three source-backed English pages: `mechanics/monetization-and-pay-to-win`, `guides/solo-guide`, and `release/engine-and-performance`.
+- Each page uses the official Steam or Team17 material already collected for this project, with an official image or video source shown in the article where available.
+- Deferred topics such as detailed anti-cheat behavior, Twitch Drop rewards, named asset statistics, and numeric Compare fields remain outside this expansion because the collected sources do not publish those details.
