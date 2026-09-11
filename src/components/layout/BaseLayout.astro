@@ -130,6 +130,12 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
 <!doctype html>
 <html lang={mainLocale} class="dark scroll-smooth">
   <head>
+    <script
+      is:inline
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5995090198623567"
+      crossorigin="anonymous"
+    ></script>
     {/* One GA tag per page, emitted by this shared layout. The initial config
         queues gtag without a page view; CookieConsent enables it after consent. */}
     {gaId && (
@@ -230,10 +236,9 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
     {/* Google Search Console verification (optional) */}
     {gscVerification && <meta name="google-site-verification" content={gscVerification} />}
 
-    {/*
-      AdSense is injected dynamically after consent. GA is already defined
-      above so every page contains one tag and consent only enables pageviews.
-    */}
+    {/* GA is already defined above so every page contains one tag. The AdSense
+        loader is declared at the top of <head>; the fallback below only adds
+        it when a deployment removes that static tag, preventing duplicates. */}
     {(gaId || adsenseClient) && (
       <script is:inline define:vars={{ gaId, adsenseClient }}>
         window.__awLoadTrackers = () => {
@@ -242,7 +247,10 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
           if (gaId) {
             window.gtag?.('config', gaId);
           }
-          if (adsenseClient) {
+          if (
+            adsenseClient &&
+            !document.querySelector('script[src*="adsbygoogle.js?client="]')
+          ) {
             const s = document.createElement('script');
             s.async = true;
             s.crossOrigin = 'anonymous';
