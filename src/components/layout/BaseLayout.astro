@@ -169,7 +169,6 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    {keywords && <meta name="keywords" content={keywords} />}
     {noindex ? (
       <meta name="robots" content="noindex, nofollow" />
     ) : (
@@ -225,7 +224,7 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
     )}
 
     {/* Twitter */}
-    <meta name="twitter:card" content={article ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />

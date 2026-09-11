@@ -12,10 +12,10 @@ const header = readFileSync(
 );
 const indexPage = readFileSync(new URL('../src/pages/wiki.astro', import.meta.url), 'utf8');
 
-describe('WARDOGS wiki discovery surfaces', () => {
+describe('WARDOGS Game wiki discovery surfaces', () => {
   it('defines the Wiki Index copy in the English locale', () => {
     expect(en.nav.index).toBe('Wiki Index');
-    expect(en.shared.wikiIndexTitle).toBe('WARDOGS Wiki Index');
+    expect(en.shared.wikiIndexTitle).toBe('WARDOGS Game Wiki Index');
     expect(en.shared.wikiIndexDescription).toContain('Browse every published page');
   });
 

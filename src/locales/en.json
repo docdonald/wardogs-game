@@ -1,11 +1,11 @@
 {
   "$schema": "../../docs/home.schema.json",
   "site": {
-    "name": "WARDOGS Wiki",
-    "shortName": "WARDOGS Wiki",
-    "description": "WARDOGS Wiki with beginner guides, weapons, vehicles, loadouts, cash economy tips, Control Zone tactics, progression help, and large-scale teamplay strategies.",
+    "name": "WARDOGS Game Wiki",
+    "shortName": "WARDOGS Game Wiki",
+    "description": "WARDOGS Game wiki with beginner guides, weapon stats, vehicle lists, cash tips and Control Zone tactics for the September 10, 2026 Early Access launch.",
     "tagline": "100-player tactical FPS with three teams, persistent cash, vehicles, destruction, building, and Control Zone warfare.",
-    "legalNotice": "WARDOGS Wiki is an independent fan-made community site. Not affiliated with or endorsed by BULKHEAD or Team17."
+    "legalNotice": "WARDOGS Game Wiki is an independent fan-made community site. Not affiliated with or endorsed by BULKHEAD or Team17."
   },
   "nav": {
     "home": "Home",
@@ -122,7 +122,7 @@
     "feedbackNo": "No",
     "breadcrumbAria": "Breadcrumb",
     "paginationAria": "Article pagination",
-    "wikiIndexTitle": "WARDOGS Wiki Index",
+    "wikiIndexTitle": "WARDOGS Game Wiki Index",
     "wikiIndexDescription": "Browse every published page by topic, from release details and beginner guides to mechanics, vehicles, weapons, and official updates.",
     "wikiIndexPages": "pages",
     "wikiIndexBrowse": "Browse category"
@@ -155,20 +155,19 @@
   },
   "home": {
     "meta": {
-      "title": "WARDOGS Wiki — Beginner Guides, Weapons, Vehicles & Playtest",
-      "description": "WARDOGS Wiki covers the Release Date, Playtest access, Gameplay, Beginner Guides, weapons, vehicles, Control Zone tactics, cash economy, and teamplay.",
-      "keywords": "WARDOGS, Steam, wiki, release date, Playtest, gameplay, guides, weapons, vehicles, loadouts, cash, Control Zone, roles"
+      "title": "WARDOGS Game Wiki — Beginner Guides, Weapon Stats & Tips",
+      "description": "WARDOGS Game wiki with beginner guides, weapon stats, vehicle lists, cash tips and Control Zone tactics for the September 10, 2026 Early Access launch."
     },
     "hero": {
-      "badge": "Fan-Made Tactical Warfare Wiki",
-      "title": "WARDOGS Wiki",
-      "description": "WARDOGS is a large-scale tactical FPS where up to 100 players split across three teams fight for control of a dynamic battlefield. Earn persistent cash, build custom loadouts, deploy vehicles, construct defenses, and work with your squad to dominate the Control Zone.",
+      "badge": "Independent WARDOGS Game Wiki",
+      "title": "WARDOGS Game Wiki",
+      "description": "WARDOGS Game is a large-scale tactical FPS where up to 100 players split across three teams fight for control of a dynamic battlefield. This WARDOGS Game wiki covers the Early Access launch, weapon stats, vehicle lists, the persistent cash economy, and how to hold the Control Zone.",
       "stats": [
-        "Early Access Sep 10, 2026",
-        "Updated Sep 2026",
+        "Early Access Live",
+        "Updated Sep 10, 2026",
         "100-Player Battles",
         "3 Teams",
-        "1M+ Steam Wishlists"
+        "Steam Early Access"
       ],
       "ctaPrimary": "Start Beginner Guide",
       "ctaPrimaryHref": "/guides/beginner-guide",
@@ -183,18 +182,18 @@
       "badge": "Current Status",
       "title": "What is happening now?",
       "description": "Release and access details from the latest collected official sources.",
-      "reviewed": "Reviewed Sep 6, 2026",
+      "reviewed": "Reviewed Sep 10, 2026",
       "items": [
         {
           "label": "Early Access",
-          "value": "September 10, 2026",
-          "detail": "Steam launch date",
+          "value": "Live now",
+          "detail": "Steam Early Access",
           "href": "/release/release-date"
         },
         {
           "label": "Current access",
-          "value": "September beta ended",
-          "detail": "September beta ended; watch Steam",
+          "value": "Early Access live",
+          "detail": "Purchase and play on Steam",
           "href": "/release/beta"
         },
         {
@@ -221,7 +220,7 @@
     "database": {
       "badge": "Wiki Index",
       "title": "Browse the Database",
-      "description": "Find every published WARDOGS Wiki page by topic, with counts that reflect the current English content set.",
+      "description": "Find every published WARDOGS Game Wiki page by topic, with counts that reflect the current English content set.",
       "viewIndex": "Open full Wiki Index",
       "articleCount": "pages",
       "browseCategory": "Browse category"
@@ -333,8 +332,8 @@
           "href": "/release",
           "displayType": "labeled-cards",
           "highlights": [
-            { "label": "Early Access", "detail": "September 10, 2026" },
-            { "label": "Steam", "detail": "Store and access details" },
+            { "label": "Early Access", "detail": "Live September 10, 2026" },
+            { "label": "Steam", "detail": "Purchase and access details" },
             { "label": "Platforms", "detail": "PC and Steam focus" }
           ]
         },
@@ -409,8 +408,8 @@
           "answer": "WARDOGS is a tactical all-out warfare FPS built around large-scale, three-team Control Zone matches with infantry, vehicles, construction, destruction, and a persistent cash economy."
         },
         {
-          "question": "When does WARDOGS enter Early Access?",
-          "answer": "The researched Steam listing gives September 10, 2026 as the Early Access date. Check the official Steam page for the current listing."
+          "question": "Is WARDOGS in Early Access?",
+          "answer": "Yes. WARDOGS entered Steam Early Access on September 10, 2026. Check the official Steam page for the current purchase and update status."
         },
         {
           "question": "Does this wiki replace the official game site?",
@@ -420,15 +419,15 @@
     },
     "finalCta": {
       "title": "Ready to Master WARDOGS?",
-      "description": "From your first $10,000 loadout to coordinated vehicle assaults and high-stakes Control Zone fights, our WARDOGS Wiki helps you make smarter tactical and economic decisions on every deployment.",
+      "description": "From your first $10,000 loadout to coordinated vehicle assaults and high-stakes Control Zone fights, our WARDOGS Game Wiki helps you make smarter tactical and economic decisions on every deployment.",
       "primary": "Read the Beginner Guide",
       "primaryHref": "/guides/beginner-guide",
       "secondary": "Play WARDOGS on Steam"
     }
   },
   "footer": {
-    "aboutTitle": "WARDOGS Wiki",
-    "about": "WARDOGS Wiki is an independent fan-made guide site covering weapons, vehicles, loadouts, roles, progression, maps, cash economy, Control Zone tactics, and beginner strategies. Our goal is to help new and experienced players make better tactical decisions and understand the game's evolving systems. This site is not affiliated with BULKHEAD or Team17.",
+    "aboutTitle": "WARDOGS Game Wiki",
+    "about": "WARDOGS Game Wiki is an independent fan-made guide site covering weapons, vehicles, loadouts, roles, progression, maps, cash economy, Control Zone tactics, and beginner strategies. Our goal is to help new and experienced players make better tactical decisions and understand the game's evolving systems. This site is not affiliated with BULKHEAD or Team17.",
     "description": "100-player tactical FPS with three teams, persistent cash, vehicles, destruction, building, and Control Zone warfare.",
     "playGame": "Play WARDOGS on Steam",
     "officialWebsite": "BULKHEAD Official WARDOGS",
@@ -442,7 +441,7 @@
     "termsOfService": "Terms of Service",
     "copyright": "Copyright",
     "disclaimer": "Disclaimer",
-    "copyrightText": "© 2026 WARDOGS Wiki. Independent fan-made site; not affiliated with BULKHEAD or Team17.",
+    "copyrightText": "© 2026 WARDOGS Game Wiki. Independent fan-made site; not affiliated with BULKHEAD or Team17.",
     "community": "Community",
     "legal": "Legal"
   }

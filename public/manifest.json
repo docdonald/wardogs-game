@@ -1,7 +1,7 @@
 {
-  "name": "WARDOGS Wiki",
-  "short_name": "WARDOGS Wiki",
-  "description": "WARDOGS Wiki with beginner guides, weapons, vehicles, loadouts, cash economy tips, Control Zone tactics, progression help, and large-scale teamplay strategies.",
+  "name": "WARDOGS Game Wiki",
+  "short_name": "WARDOGS Game Wiki",
+  "description": "WARDOGS Game wiki with beginner guides, weapon stats, vehicle lists, cash tips and Control Zone tactics for the September 10, 2026 Early Access launch.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#17120f",

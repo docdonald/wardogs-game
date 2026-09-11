@@ -5,21 +5,23 @@ import { site } from '~/config/site';
 
 const homePage = readFileSync(new URL('../src/components/home/HomePage.astro', import.meta.url), 'utf8');
 
-describe('WARDOGS homepage research content', () => {
+describe('WARDOGS Game homepage research content', () => {
   it('uses the researched homepage SEO metadata', () => {
-    expect(en.home.meta.title).toBe('WARDOGS Wiki — Beginner Guides, Weapons, Vehicles & Playtest');
+    expect(en.home.meta.title).toBe('WARDOGS Game Wiki — Beginner Guides, Weapon Stats & Tips');
     expect(en.home.meta.title.length).toBeLessThanOrEqual(60);
-    expect(en.home.meta.description).toContain('Release Date');
-    expect(en.home.meta.description).toContain('Playtest');
-    expect(en.home.meta.description).toContain('Gameplay');
-    expect(en.home.meta.description).toContain('Guides');
+    expect(en.home.meta.description).toContain('WARDOGS Game');
+    expect(en.home.meta.description).toContain('weapon stats');
+    expect(en.home.meta.description).toContain('vehicle lists');
+    expect(en.home.meta.description).toContain('Control Zone');
     expect(en.home.meta.description.length).toBeGreaterThanOrEqual(140);
     expect(en.home.meta.description.length).toBeLessThanOrEqual(160);
-    expect(en.home.meta.keywords).toContain('Playtest');
+    expect(en.home.meta).not.toHaveProperty('keywords');
   });
 
   it('uses the homepage keyword as the English Hero title', () => {
-    expect(en.home.hero.title).toBe('WARDOGS Wiki');
+    expect(en.home.hero.title).toBe('WARDOGS Game Wiki');
+    expect(en.home.hero.description).toContain('WARDOGS Game is');
+    expect(en.home.hero.description).toContain('This WARDOGS Game wiki covers');
   });
 
   it('keeps the trailer inside the right-hand Hero column', () => {
@@ -53,11 +55,11 @@ describe('WARDOGS homepage research content', () => {
     expect(site.social.reddit).toBe('https://www.reddit.com/r/WarDogs/');
     expect(site.game.publisher).toBe('Team17');
     expect(en.home.hero.stats).toEqual([
-      'Early Access Sep 10, 2026',
-      'Updated Sep 2026',
+      'Early Access Live',
+      'Updated Sep 10, 2026',
       '100-Player Battles',
       '3 Teams',
-      '1M+ Steam Wishlists',
+      'Steam Early Access',
     ]);
   });
 
@@ -84,18 +86,18 @@ describe('WARDOGS homepage research content', () => {
       badge: 'Current Status',
       title: 'What is happening now?',
       description: 'Release and access details from the latest collected official sources.',
-      reviewed: 'Reviewed Sep 6, 2026',
+      reviewed: 'Reviewed Sep 10, 2026',
       items: [
         {
           label: 'Early Access',
-          value: 'September 10, 2026',
-          detail: 'Steam launch date',
+          value: 'Live now',
+          detail: 'Steam Early Access',
           href: '/release/release-date',
         },
         {
           label: 'Current access',
-          value: 'September beta ended',
-          detail: 'September beta ended; watch Steam',
+          value: 'Early Access live',
+          detail: 'Purchase and play on Steam',
           href: '/release/beta',
         },
         {

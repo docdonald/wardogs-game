@@ -61,16 +61,16 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  name: 'WARDOGS Wiki',
-  shortName: 'WARDOGS Wiki',
+  name: 'WARDOGS Game Wiki',
+  shortName: 'WARDOGS Game Wiki',
   description:
-    'WARDOGS Wiki with beginner guides, weapons, vehicles, loadouts, cash economy tips, Control Zone tactics, progression help, and large-scale teamplay strategies.',
+    'WARDOGS Game wiki with beginner guides, weapon stats, vehicle lists, cash tips and Control Zone tactics for the September 10, 2026 Early Access launch.',
   keywords: 'WARDOGS, Steam, wiki, guides, weapons, vehicles, loadouts, cash, Control Zone, roles',
   domain: 'wardogs-game.wiki',
   tagline:
     '100-player tactical FPS with three teams, persistent cash, vehicles, destruction, building, and Control Zone warfare.',
   legalNotice:
-    'WARDOGS Wiki is an independent fan-made community site. Not affiliated with or endorsed by BULKHEAD or Team17.',
+    'WARDOGS Game Wiki is an independent fan-made community site. Not affiliated with or endorsed by BULKHEAD or Team17.',
   social: {
     official: 'https://bulkhead.com/games/wardogs/',
     steam: 'https://store.steampowered.com/app/1867240/WARDOGS/',
