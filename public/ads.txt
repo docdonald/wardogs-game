@@ -1,3 +1,4 @@
 # ads.txt — authorized digital sellers.
-# Replace with your actual Google AdSense publisher ID (ca-pub-XXXXXXXXXXXXXXXX) when monetizing.
+# Google AdSense publisher: pub-5995090198623567
+google.com, pub-5995090198623567, DIRECT, f08c47fec0942fa0
 # Learn more: https://iabtechlab.com/ads-txt/
