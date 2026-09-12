@@ -1,5 +1,40 @@
 # WARDOGS pre-launch QA report
 
+## 2026-09-11 WARDOGS cash guide refresh
+
+### Scope and content result
+
+- Updated the existing canonical article `src/content/wiki/en/mechanics/how-to-make-money.mdx`; no competing `/cash` route was created because the current Astro router is category-first and this file already owns the equivalent intent.
+- Primary keyword: `wardogs cash`. Equivalent wording `how to make money in WARDOGS` appears naturally in the rendered H1 and first H2.
+- Body length: 1,200 whitespace-delimited words including the visible Sources section; first body heading is H2 and body H1 count is 0.
+- Current factual scope: official `$10,000` starting cash, teamplay cash rewards, and Hot Zone double cash. Closed-beta payout figures are labeled historical and are not used as current Season 1 rates.
+- Internal links added or retained for Hot Zone, Logistics, Medic, and FOB guidance; all resolve in the built output.
+
+### Verification evidence
+
+| Class | Command or evidence | Result |
+| --- | --- | --- |
+| Content lint | `node --experimental-strip-types scripts/check-content.ts` | Passed; 71 MDX files clean |
+| Astro schema/typecheck | `node_modules/.bin/astro check` | Passed; 0 errors, 0 warnings, 1 pre-existing hint in `BaseLayout.astro` (`keywords` unused) |
+| Lint | `node_modules/.bin/eslint . --ext .js,.ts,.astro` | Passed |
+| Tests | `node_modules/.bin/vitest run` | Passed; 15 files, 105 tests |
+| Production build | `node_modules/.bin/astro build` | Passed; 159 pages built, including `/mechanics/how-to-make-money` |
+| Search index | `node_modules/.bin/pagefind --site dist --exclude-selectors '[data-pagefind-ignore]'` | Passed; 72 English pages / 2,967 words indexed |
+| Built internal links | `node --experimental-strip-types scripts/check-links.ts` | Passed; 12,625 links across 160 pages |
+| Config | `node --experimental-strip-types scripts/check-config.ts` | Passed; nav, locales, and deployment domain consistent |
+| Built metadata | Direct inspection of `dist/mechanics/how-to-make-money/index.html` | Passed; H1, description, canonical, Article JSON-LD, BreadcrumbList, and VideoObject present |
+| Formatting | `git diff --check` | Passed |
+
+### Coverage gaps
+
+- The required `pnpm` commands could not be used in this sandbox: the installed pnpm process hangs before producing output. The repository’s installed local executables were used for the checks above; no dependency or lockfile changes were made.
+- `astro preview` could not bind `127.0.0.1:4321` because local socket listening is denied by the sandbox. Therefore the sitemap HTTP crawl and browser screenshots at 375/768/1440 CSS pixels remain environment-dependent follow-up checks, not passed claims in this refresh.
+- No live game session or payout log was supplied, so current cash-per-action, cash-per-minute, and break-even values remain intentionally absent from the article.
+
+### Disposition
+
+The article content and static build are ready for review. HTTP sitemap checks and browser visual review remain incomplete only because of the local sandbox restrictions above.
+
 Audit date: 2026-08-23
 
 ## Scope and result
