@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">WARDOGS Patch 0.11</title>
+  <desc id="desc">A field-intel style cover for the WARDOGS Patch 0.11 notes.</desc>
+  <rect width="1200" height="675" fill="#0f131c"/>
+  <rect x="0" y="0" width="14" height="675" fill="#e89d0f"/>
+  <rect x="64" y="58" width="1072" height="559" rx="8" fill="none" stroke="#4a4e45" stroke-width="2"/>
+  <path d="M64 122h1072M64 553h1072" stroke="#2b302d" stroke-width="2"/>
+  <g fill="#e89d0f" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    <text x="100" y="112" font-size="28" letter-spacing="7">WARDOGS // UPDATE BRIEF</text>
+    <text x="100" y="286" font-size="86" letter-spacing="4">PATCH 0.11</text>
+  </g>
+  <g fill="#e8edf2" font-family="Arial, Helvetica, sans-serif">
+    <text x="100" y="372" font-size="36" letter-spacing="2">SERVER BROWSER // CASH BONUS</text>
+    <text x="100" y="460" font-size="24" fill="#8f9895">COMMUNITY · OFFICIAL · SEARCH · SERVER ID</text>
+  </g>
+  <circle cx="1038" cy="250" r="54" fill="none" stroke="#e89d0f" stroke-width="5"/>
+  <path d="M1014 250l17 17 34-39" fill="none" stroke="#e89d0f" stroke-width="8" stroke-linecap="square"/>
+</svg>

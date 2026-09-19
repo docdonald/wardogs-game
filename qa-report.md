@@ -1,5 +1,29 @@
 # WARDOGS pre-launch QA report
 
+## 2026-09-18 Patch 0.11 content refresh
+
+### Scope and content result
+
+- Added `/guides/community-server-browser` and `/updates/patch-0-11` with source-backed Server ID, server-browser, and Community Server cash guidance.
+- Updated the Patch Notes, Official News, Community, Server Status, Beginner, Squads, Persistent Cash, and Cash Guide pages, plus homepage freshness and priority links.
+- Added two 1200×675 SVG cover assets for the new articles. The covers are original site graphics and do not assert gameplay facts beyond the article titles.
+
+### Verification evidence
+
+| Class | Command or evidence | Result |
+| --- | --- | --- |
+| Content lint | `node --experimental-strip-types scripts/check-content.ts` | Passed; 73 MDX files clean |
+| Astro schema/typecheck | `node_modules/.bin/astro check` | Passed; 0 errors, 0 warnings, 1 pre-existing hint in `BaseLayout.astro` |
+| Lint | `node_modules/.bin/eslint . --ext .js,.ts,.astro` | Passed |
+| Tests | `node_modules/.bin/vitest run` | Passed; 15 files, 105 tests |
+| Production build | `CI=true corepack pnpm build` | Passed; 161 pages built, including both new routes |
+| Pagefind | Included in the production build | Passed; 74 English pages indexed |
+| Built internal links | `node --experimental-strip-types scripts/check-links.ts` | Passed; 13,072 links across 162 pages |
+| Config | `node --experimental-strip-types scripts/check-config.ts` | Passed; nav, locales, and deployment domain consistent |
+| Formatting | `git diff --check` | Passed |
+
+The `pnpm check-content` wrapper hit the sandbox's `tsx` IPC pipe restriction, so the equivalent content checker was run through Node's strip-types mode; no dependency or lockfile changes were made.
+
 ## 2026-09-11 WARDOGS cash guide refresh
 
 ### Scope and content result

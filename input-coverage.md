@@ -1,5 +1,19 @@
 # Input coverage
 
+## 2026-09-18 Patch 0.11 content refresh
+
+| Input | Location or URL | Parse result | Disposition |
+| --- | --- | --- | --- |
+| Official Patch 0.11 announcement | `https://store.steampowered.com/news/app/1867240/view/701027323413005176` | Server-browser split, persistent Community Server IDs, search and filters, one-week 5% End of Match Community Server cash bonus, fixes, and upcoming browser features | Primary source for the new patch article and all affected economy/browser updates |
+| Server ID join instructions | `https://allthings.how/wardogs-how-to-join-a-server-by-id-from-the-server-browser/` and `https://www.shacknews.com/article/150731/invite-friends-create-squad-wardogs` | DEPLOY → Server Browser → JOIN BY ID in the bottom-left → six-digit ID → LOOKUP | Used for the player-facing join sequence and friend regrouping steps |
+| Existing affected pages | `src/content/wiki/en/updates`, `src/content/wiki/en/mechanics`, `src/content/wiki/en/guides`, `src/locales/en.json` | Eight existing pages and homepage freshness/entry links needed the Patch 0.11 update | Updated in place; no duplicate category or cash route created |
+
+### Normalized records
+
+- `/guides/community-server-browser`: server browser and Server ID task guide.
+- `/updates/patch-0-11`: dated official patch summary.
+- Existing economy, community, server-status, official-news, patch-notes, beginner, and squad pages now link to the canonical guides and carry the September 18 freshness date.
+
 Audit date: 2026-08-23
 
 ## Project inputs reviewed

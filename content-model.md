@@ -1,5 +1,22 @@
 # WARDOGS cash content model
 
+## 2026-09-18 Patch 0.11 content model
+
+| Primary keyword | Equivalent wording | Player job | Page family | Canonical target |
+| --- | --- | --- | --- | --- |
+| `wardogs community server browser` | `wardogs join by id`, `wardogs server id`, `join wardogs community server` | Find a Community Server and regroup with friends | Server-browser task guide | `/guides/community-server-browser` |
+| `wardogs patch 0.11` | `wardogs server browser update`, `wardogs 5% cash bonus` | Understand the dated browser and economy changes | Official patch update | `/updates/patch-0-11` |
+
+The two intents are distinct: the guide answers “how do I join?”, while the update page answers “what changed?”. Existing cash, community, server-status, official-news, patch-notes, beginner, and squad pages link to these canonical targets instead of competing with them.
+
+### Supported primitives and relationships
+
+- `Task`: open DEPLOY, select the browser, join by ID, regroup, and choose filters.
+- `Resource`: Community Server end-of-match cash bonus and persistent personal cash.
+- `Entity`: Community Server, Official Server, Server ID, squad, and Server Browser.
+- `Version`: Patch 0.11, deployed after the September 14 maintenance window.
+- Relationships: the patch `changes` the browser; Server ID `joins` a Community Server; Community Server `adds` the end-of-match cash bonus; the guide `links` to the patch and cash articles.
+
 Audit date: 2026-09-11
 
 ## Canonical intent cluster

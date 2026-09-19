@@ -164,7 +164,7 @@
       "description": "WARDOGS Game is a large-scale tactical FPS where up to 100 players split across three teams fight for control of a dynamic battlefield. This WARDOGS Game wiki covers the Early Access launch, weapon stats, vehicle lists, the persistent cash economy, and how to hold the Control Zone.",
       "stats": [
         "Early Access Live",
-        "Updated Sep 10, 2026",
+        "Updated Sep 18, 2026",
         "100-Player Battles",
         "3 Teams",
         "Steam Early Access"
@@ -182,7 +182,7 @@
       "badge": "Current Status",
       "title": "What is happening now?",
       "description": "Release and access details from the latest collected official sources.",
-      "reviewed": "Reviewed Sep 10, 2026",
+      "reviewed": "Reviewed Sep 18, 2026",
       "items": [
         {
           "label": "Early Access",
@@ -297,6 +297,8 @@
         { "label": "WARDOGS Vehicles", "href": "/vehicles" },
         { "label": "WARDOGS Official Videos", "href": "/updates/official-videos" },
         { "label": "WARDOGS Community", "href": "/updates/community" },
+        { "label": "Community Server Browser", "href": "/guides/community-server-browser" },
+        { "label": "Patch 0.11 Notes", "href": "/updates/patch-0-11" },
         { "label": "WARDOGS Solo Guide", "href": "/guides/solo-guide" },
         { "label": "WARDOGS Monetization Guide", "href": "/mechanics/monetization-and-pay-to-win" },
         { "label": "WARDOGS Engine & Performance", "href": "/release/engine-and-performance" }
