@@ -1,5 +1,28 @@
 # WARDOGS pre-launch QA report
 
+## 2026-09-20 automated content freshness scan
+
+### Scope and content result
+
+- The official Steam announcement feed was checked through September 20. Patch 0.11 remains the newest gameplay-affecting post; the September 15 two-million-copies-sold post is a milestone, not a balance or feature update.
+- No duplicate high-value route was created. The existing `/mechanics/progression-guide` already owns the XP and unlock intent, so it was expanded with the published Season 1 unlock moves and a new cover asset.
+- Updated the progression, cash, official-news, patch-notes, and server-status pages, plus homepage freshness and the progression priority link. Added the official economy-abuse boundary to the cash guide without describing or teaching an exploit.
+
+### Verification evidence
+
+| Class | Command or evidence | Result |
+| --- | --- | --- |
+| Official source scan | Steam announcement archive checked through 2026-09-20 | Passed; latest gameplay post is Patch 0.11 and the latest milestone is two million copies sold |
+| Content scope | Existing canonical routes reviewed before editing | Passed; no competing progression or cash route added |
+| Content lint | `node --experimental-strip-types scripts/check-content.ts` | Passed; 73 MDX files clean |
+| Astro schema/typecheck | `CI=true corepack pnpm typecheck` | Passed; 0 errors, 0 warnings, 1 pre-existing hint in `BaseLayout.astro` |
+| Lint | `CI=true corepack pnpm lint` | Passed |
+| Tests | `CI=true corepack pnpm test` | Passed; 15 files, 105 tests |
+| Production build | `CI=true corepack pnpm build` | Passed; 161 pages built, 74 English pages indexed |
+| Built internal links | `node --experimental-strip-types scripts/check-links.ts` | Passed; 13,073 links across 162 pages |
+| Config | `node --experimental-strip-types scripts/check-config.ts` | Passed |
+| Formatting | `git diff --check` | Passed |
+
 ## 2026-09-18 Patch 0.11 content refresh
 
 ### Scope and content result

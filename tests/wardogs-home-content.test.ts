@@ -56,7 +56,7 @@ describe('WARDOGS Game homepage research content', () => {
     expect(site.game.publisher).toBe('Team17');
     expect(en.home.hero.stats).toEqual([
       'Early Access Live',
-      'Updated Sep 18, 2026',
+      'Updated Sep 20, 2026',
       '100-Player Battles',
       '3 Teams',
       'Steam Early Access',
@@ -86,7 +86,7 @@ describe('WARDOGS Game homepage research content', () => {
       badge: 'Current Status',
       title: 'What is happening now?',
       description: 'Release and access details from the latest collected official sources.',
-      reviewed: 'Reviewed Sep 18, 2026',
+      reviewed: 'Reviewed Sep 20, 2026',
       items: [
         {
           label: 'Early Access',

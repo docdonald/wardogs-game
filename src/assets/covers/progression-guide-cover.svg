@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">WARDOGS Season 1 Progression Guide</title>
+  <desc id="desc">A field-intel style cover for the WARDOGS Season 1 progression and XP guide.</desc>
+  <rect width="1200" height="675" fill="#0f131c"/>
+  <rect x="0" y="0" width="14" height="675" fill="#e89d0f"/>
+  <rect x="64" y="58" width="1072" height="559" rx="8" fill="none" stroke="#4a4e45" stroke-width="2"/>
+  <path d="M64 122h1072M64 553h1072" stroke="#2b302d" stroke-width="2"/>
+  <g fill="#e89d0f" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    <text x="100" y="112" font-size="28" letter-spacing="7">WARDOGS // FIELD GUIDE</text>
+    <text x="100" y="286" font-size="70" letter-spacing="3">PROGRESSION</text>
+    <text x="100" y="356" font-size="70" letter-spacing="3">SEASON 1 XP</text>
+  </g>
+  <g fill="#e8edf2" font-family="Arial, Helvetica, sans-serif">
+    <text x="100" y="430" font-size="30" letter-spacing="3">LEVEL BANDS // ROLE UNLOCKS // CASH</text>
+    <text x="100" y="505" font-size="22" fill="#8f9895">PLAN THE TRACK · BUY THE LIFE · KEEP THE BALANCE</text>
+  </g>
+  <path d="M1000 220h110M1000 260h78M1000 300h144M1000 340h96" stroke="#e89d0f" stroke-width="8" stroke-linecap="square"/>
+</svg>
