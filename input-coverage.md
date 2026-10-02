@@ -67,3 +67,11 @@ The input is ready for content modeling with documented evidence gaps; no blocki
 - Added three source-backed English pages: `mechanics/monetization-and-pay-to-win`, `guides/solo-guide`, and `release/engine-and-performance`.
 - Each page uses the official Steam or Team17 material already collected for this project, with an official image or video source shown in the article where available.
 - Deferred topics such as detailed anti-cheat behavior, Twitch Drop rewards, named asset statistics, and numeric Compare fields remain outside this expansion because the collected sources do not publish those details.
+# WARDOGS input coverage — 2026-10-02 scan
+
+Sources collected before writing the October refresh:
+
+- Official Steam announcements: Update 0.1.2, Season 02 teaser (October 15, 2026), 3 million sales milestone, and the scheduled October 2 Security & Stability Hotfix.
+- Microsoft Support: [KB5124010 for Windows 11](https://support.microsoft.com/en-us/servicing/os/windows-11/2026/09/kb5124010-windows-11-24h2-25h2-update), used only to identify the Windows update associated with WD-L020.
+- Existing official Early Access & Beyond video, used for the previously published seasonal economy model.
+- PC Gamer coverage of the current XP-grind discussion, used as secondary context rather than as a source for game mechanics or wipe policy.

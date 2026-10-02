@@ -1,0 +1,74 @@
+---
+title: 'WARDOGS Update 0.1.2 Patch Notes: WD-L020 and Server Flow'
+description: 'Read the official WARDOGS Update 0.1.2 changes: WD-L020 crash fix, exploit fixes, DEPLOY server categories, filters, stability work, and Season 2 context.'
+category: updates
+image: '../../../../assets/covers/update-0-1-2-cover.svg'
+date: '2026-09-29'
+lastModified: '2026-10-02'
+summary: 'Update 0.1.2 fixes the Windows 11 WD-L020 crash, closes XP and cash exploits, adds four DEPLOY categories, restores Official filters, and improves server stability before Season 2.'
+tags: ['updates', 'server-status', 'community', 'system-requirements', 'progression']
+gameVersion: 'Update 0.1.2'
+status: 'Official Update 0.1.2 notes and October 2 hotfix notice'
+lastVerified: '2026-10-02'
+primarySource: 'https://steamcommunity.com/app/1867240/announcements/'
+nextAction: 'Check the next official Season 2 patch note for final wipe and content details'
+draft: false
+---
+
+## What does WARDOGS Update 0.1.2 change?
+
+Update 0.1.2 is a minor security, stability, and quality-of-life patch released on September 29, 2026. The official announcement focuses on the Windows 11 **WD-L020** crash, cash and XP exploit prevention, a new **DEPLOY** server-selection flow, and server-browser improvements. It is separate from the larger Season 2 content update planned for October 15.
+
+## How does the new DEPLOY flow work?
+
+Press **DEPLOY**, then choose the server category that matches the way you want to play:
+
+| Choice | Official description |
+| --- | --- |
+| Official | Official servers; Advanced Filters are available again. |
+| Community | Player-hosted servers with the Community browser tools. |
+| Infantry Mode | Community servers surfaced with the Infantry Mode modifier. |
+| Low-Level | Community servers surfaced with the Low-Level modifier. |
+
+The [Community Server Browser guide](/guides/community-server-browser) keeps the Server ID path and explains what changed from Patch 0.11. Update 0.1.2 also keeps long names available on hover, shows connection and queue information after Join, reports the number of selected regions, and supports a gamepad on the DEPLOY screen.
+
+## How does the WD-L020 crash fix work?
+
+The official patch says it fixes the Windows 11 **WD-L020** crash associated with the September preview update **KB5124010**. Microsoft’s [KB5124010 support page](https://support.microsoft.com/en-us/servicing/os/windows-11/2026/09/kb5124010-windows-11-24h2-25h2-update) identifies that update and its affected Windows 11 versions; it does not provide a WARDOGS-specific workaround.
+
+Install the official WARDOGS client update through Steam before trying to diagnose the error. If the game still fails, save the exact code, Windows version, build, and time of failure for a support report. Do not disable security features or install an unofficial DLL based on a forum post. See the [crash-fix checklist](/updates/crash-fix) for reversible troubleshooting.
+
+## Which cash and XP exploits were addressed?
+
+The patch makes several reward checks server-authoritative or scales them to the work actually performed:
+
+- Revive validity checks are now server authoritative.
+- Vehicle fly-through rewards are capped.
+- Destroying a buildable pays according to its build progress instead of granting a full reward for an unbuilt schematic.
+- Depositing pallets into an FOB outside the zone gives reduced rewards.
+
+The announcement also states that repeatable exploit abuse and real-money trading can lead to cash and progression resets or permanent bans. The [cash guide](/mechanics/how-to-make-money) covers legitimate teamplay routes and does not turn exploits into farming instructions.
+
+## What community-server changes affect admins?
+
+Community Server admins can schedule a daily restart time in UTC, restrict RCON access with `AllowedHosts`, and use capped RCON message and broadcast lengths. RCON now defaults to Standard response detail, configuration responses no longer expose server internals, and `ServerImageURL` is checked when the configuration loads.
+
+These are server-administration changes rather than player loadout rules. Players should still use the current DEPLOY categories and the visible server details when choosing a match.
+
+## What other bug fixes shipped?
+
+The official list includes fixes for throwables being used from enclosed vehicle seats, adaptive crosshair visibility while aiming down sights, buildable critical-spot placement, Havoc damage from 20mm and 30mm cannon fire, localization, server stability, and general security. The note does not publish a complete list of every changed file or every regional effect.
+
+## What is the October 2 hotfix notice?
+
+The official feed separately announced a **Security & Stability Hotfix** planned for **October 2 at 08:00 UTC**, with an expected one-hour downtime. That notice is a maintenance schedule, not a second itemized patch note. Check the announcement feed for the completion message and any additional changes before describing the hotfix as deployed.
+
+## How does this relate to Season 2?
+
+Update 0.1.2 says Season 2 is planned as the larger content update, with new map conditions, equipment, balance reworks, and additional features. The official Season 02 teaser gives October 15, 2026 as the target date. It does not yet publish the full content list, launch hour, or final wipe table; see the [Season 2 guide](/updates/season-02) for the dated preparation summary.
+
+## Sources
+
+- [WARDOGS Official Announcements](https://steamcommunity.com/app/1867240/announcements/)
+- [Microsoft Support: KB5124010](https://support.microsoft.com/en-us/servicing/os/windows-11/2026/09/kb5124010-windows-11-24h2-25h2-update)
+- [WARDOGS Steam store page](https://store.steampowered.com/app/1867240/WARDOGS/)

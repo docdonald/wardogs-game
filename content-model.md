@@ -55,3 +55,10 @@ The existing article owns this intent. No `/cash` alias or second money page is 
 The page gives a direct answer within the first H2, uses a comparison table for route selection, and keeps current fixed values to the official `$10,000` starting balance and Hot Zone double-cash rule. Beta values are explicitly historical. No current cash-per-action ranking, exploit, or guaranteed profit claim is published.
 
 Stress coverage: long title and H2, 1,200-word body, six-row table, five FAQ questions, inline image with alt text, optional video, multiple internal links, and omitted payout values. The built page must preserve wrapping and link resolution at narrow and wide layouts.
+# WARDOGS content model refresh — 2026-10-02
+
+The October 2026 scan adds two high-intent update pages and keeps related search intent on the existing canonical pages:
+
+- `WARDOGS Season 2` → `/updates/season-02` (official October 15 date, preparation, and explicitly unlisted wipe scope).
+- `WARDOGS Update 0.1.2` → `/updates/patch-0-1-2` (WD-L020, DEPLOY categories, exploit fixes, and the scheduled October 2 hotfix).
+- Server-browser, cash, patch-history, crash-fix, progress-wipe, roadmap, and server-status pages were refreshed in place; no duplicate route was created for those intents.

@@ -31,3 +31,11 @@ Audit date: 2026-09-11
 ## SEO and schema ownership
 
 The article frontmatter owns title, description, summary, dates, version status, and primary source. `ArticlePage.astro` owns the canonical URL, Article JSON-LD, BreadcrumbList, and registered VideoObject. The article body owns factual links and the visible Sources section. No redirect or shared route change is required.
+# WARDOGS route map refresh — 2026-10-02
+
+New canonical routes:
+
+- `/updates/season-02` — Season 2 date, preparation, and wipe-status boundaries.
+- `/updates/patch-0-1-2` — Update 0.1.2 fixes, server-flow changes, and maintenance notice.
+
+Related existing routes remain canonical for server joining, crash troubleshooting, cash economy, progress wipes, roadmap, and patch history.
