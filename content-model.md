@@ -61,4 +61,5 @@ The October 2026 scan adds two high-intent update pages and keeps related search
 
 - `WARDOGS Season 2` → `/updates/season-02` (official October 15 date, preparation, and explicitly unlisted wipe scope).
 - `WARDOGS Update 0.1.2` → `/updates/patch-0-1-2` (WD-L020, DEPLOY categories, exploit fixes, and the scheduled October 2 hotfix).
+- `WARDOGS IR Rangefinder and CIWS Hotfix` → `/updates/ir-rangefinder-ciws-hotfix` (vendor removal, Season 2 battery requirement, and CIWS versus Havoc timing).
 - Server-browser, cash, patch-history, crash-fix, progress-wipe, roadmap, and server-status pages were refreshed in place; no duplicate route was created for those intents.

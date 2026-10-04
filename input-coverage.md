@@ -72,6 +72,7 @@ The input is ready for content modeling with documented evidence gaps; no blocki
 Sources collected before writing the October refresh:
 
 - Official Steam announcements: Update 0.1.2, Season 02 teaser (October 15, 2026), 3 million sales milestone, and the scheduled October 2 Security & Stability Hotfix.
+- Official Steam announcement: October 2 IR Goggles & CIWS Balance Hotfix, including regional vendor disablement, the Season 2 battery requirement, and the Havoc timing change.
 - Microsoft Support: [KB5124010 for Windows 11](https://support.microsoft.com/en-us/servicing/os/windows-11/2026/09/kb5124010-windows-11-24h2-25h2-update), used only to identify the Windows update associated with WD-L020.
 - Existing official Early Access & Beyond video, used for the previously published seasonal economy model.
 - PC Gamer coverage of the current XP-grind discussion, used as secondary context rather than as a source for game mechanics or wipe policy.

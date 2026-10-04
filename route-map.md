@@ -37,5 +37,6 @@ New canonical routes:
 
 - `/updates/season-02` — Season 2 date, preparation, and wipe-status boundaries.
 - `/updates/patch-0-1-2` — Update 0.1.2 fixes, server-flow changes, and maintenance notice.
+- `/updates/ir-rangefinder-ciws-hotfix` — October 2 IR Rangefinder and CIWS balance changes.
 
 Related existing routes remain canonical for server joining, crash troubleshooting, cash economy, progress wipes, roadmap, and patch history.

@@ -284,4 +284,4 @@ The homepage and Playtest page have distinct intent: the homepage is the broad W
 First-layer changes are **修复后上线**: production build, content, links, sitemap, type, lint, tests, and responsive checks pass. Proceed to the second-layer pages only after their source packs and real parameters are collected.
 # WARDOGS content refresh QA — 2026-10-02
 
-The scan found material official changes and updated the patch, server, crash, progression, roadmap, homepage, and related guide content. The new Season 2 and Update 0.1.2 pages cite official Steam announcements; Windows crash context also links Microsoft KB5124010. Season 2 wipe fields remain explicitly unlisted until an official retention table is published.
+The scan found the October 2 IR Rangefinder and CIWS balance hotfix in addition to the earlier Update 0.1.2 and Season 2 notices. It adds a focused hotfix page and updates patch history, official news, development timeline, vehicle guidance, and homepage links. Battery, vendor timing, and full anti-air values remain unlisted until an official table is published.
